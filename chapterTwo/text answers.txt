@@ -1,0 +1,39 @@
+2.7
+a.  IDEs
+b.  if statements
+c.  division and remainder
+d.  innermost
+e.  destructive
+
+2.8
+//  run the program
+
+2.9
+a.  true
+b.  false: '!' & '@' are not a valid character to declare a variable in Java.
+c.  false: division, multiplication & remainder has the highest precedence in arithmetic operators.
+d. true
+
+2.10
+a.  x = 10
+
+b.  Value of 5 * 1 is 5\n
+c.  x is 5 and y is 1
+d.  6 is not equal to 5\n
+
+2.11
+a.
+b.
+c.
+d.
+
+2.12
+d
+
+2.13
+1314
+The multiplication operator is highest in arithmetic precedence and the operands surrounding it will execute first
+
+2.14
+// run the program
+

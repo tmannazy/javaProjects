@@ -1,1 +1,6 @@
 idea installers/
+./chapterTwo/.idea/.gitignore
+./chapterTwo/.idea/misc.xml, ./chapterTwo/.idea/modules.xml, ./chapterTwo/.idea/vcs.xml, ./chapterTwo/chapterTwo.iml
+./chapterTwo/.idea/workspace.xml
+./chapterTwo/src/
+./chapterTwo/.idea/
