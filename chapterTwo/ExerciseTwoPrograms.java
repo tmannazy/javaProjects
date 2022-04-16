@@ -81,13 +81,6 @@ public void displayAdjacentNumbers() {
         System.out.printf("The sum of the numbers is: %d%n", (firstNumber + secondNumber + thirdNumber));
         System.out.printf("The average of the numbers is: %d%n", ((firstNumber + secondNumber + thirdNumber) / 3));
         System.out.printf("The product of the numbers is: %d%n", (firstNumber * secondNumber * thirdNumber));
-//        if(secondNumber > firstNumber)
-//            firstNumber = secondNumber;
-//        if(thirdNumber > firstNumber) {
-//            firstNumber = thirdNumber;
-//            System.out.printf("The largest number is: %d%n%n", firstNumber);
-//        }
-
         System.out.printf("The smallest number is: %d%n", Math.min(firstNumber,Math.min(secondNumber, thirdNumber)));
         System.out.printf("The largest number is: %d%n%n", Math.max(firstNumber,Math.max(secondNumber, thirdNumber)));
     }
