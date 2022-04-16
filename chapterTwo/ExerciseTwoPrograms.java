@@ -203,7 +203,7 @@ public void displayAdjacentNumbers() {
     }
 
 
-    public void getNegativePositiveAndZero() {
+    public void getNegativePositiveAndZeroNumbers() {
         int positiveNumber = 0;
         int negativeNumber = 0;
         int zeroNumber = 0;
@@ -291,7 +291,7 @@ public void displayAdjacentNumbers() {
         supply.getIntValueOfChar();
         supply.separateDigitsFromUser();
         supply.displayTableOfSquaresAndCubes();
-        supply.getNegativePositiveAndZero();
+        supply.getNegativePositiveAndZeroNumbers();
         supply.calculateBMI();
     }
 }
