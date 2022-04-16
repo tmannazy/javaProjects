@@ -215,6 +215,7 @@ public void displayAdjacentNumbers() {
         int negativeNumber = 0;
         int zeroNumber = 0;
 
+        System.out.println("Question 2.32");
         System.out.print("Enter your first number: ");
         firstNumber = userInput.nextInt();
 
@@ -265,8 +266,7 @@ public void displayAdjacentNumbers() {
         if (fifthNumber == 0)
             zeroNumber = zeroNumber + 1;
 
-        System.out.println ("\n");
-        System.out.printf("Positive numbers = %d\n", positiveNumber);
+        System.out.printf("%nPositive numbers = %d%n", positiveNumber);
         System.out.printf("Negative numbers = %d%n", negativeNumber);
         System.out.printf("Zero numbers = %d%n", zeroNumber);
     }
