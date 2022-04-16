@@ -11,11 +11,11 @@ public class ExerciseTwoPrograms {
         System.out.print("Enter an integer: \n\n");
     }
 
-// b
+// 2.8b
 //    int a, b, c;
 //    a = b * c;
 
-// c
+// 2.8c
 // This program performs a sample payroll calculation.
 
 public void displayAdjacentNumbers(){
@@ -90,6 +90,10 @@ public void displayAdjacentNumbers(){
         System.out.println("*       *  *       *    *      *   *  \n*       *   *     *     *       * *    \n*********     ***       *        *    \n");
     }
 
+    public void findSmallestAndLargestInIntegerOfFive(){
+        System.out.println("Question 2.24");
+    }
+
     public void isNumberDivisibleByThree(){
         System.out.println("Question 2.25");
         System.out.println("Enter a whole number: ");
@@ -116,6 +120,12 @@ public void displayAdjacentNumbers(){
             System.out.printf("%d to power 3 is not a multiple of %d to power 2%n%n", firstNumber, secondNumber);
     }
 
+    public void displayCheckerBoard(){
+        System.out.println("Question 2.27");
+        System.out.println("* * * * * * * * \n * * * * * * * *\n* * * * * * * * \n * * * * * * * *");
+        System.out.println("* * * * * * * * \n * * * * * * * *\n* * * * * * * * \n * * * * * * * *\n\n");
+    }
+
     public static void main(String... args){
         ExerciseTwoPrograms supply = new ExerciseTwoPrograms();
 //        supply.displayEnterAnInteger();
@@ -125,7 +135,8 @@ public void displayAdjacentNumbers(){
 //        supply.findSumAverageProductSmallestAndLarget();
 //        supply.displayShapes();
 //        supply.isNumberDivisibleByThree();
-        supply.isTripleOfFirstNumberDivisibleBySecondNumber();
+//        supply.isTripleOfFirstNumberDivisibleBySecondNumber();
+        supply.displayCheckerBoard();
 
 
 
