@@ -7,7 +7,8 @@ public class ExerciseTwoPrograms {
 
 // 2.8a
     public void displayEnterAnInteger(){
-        System.out.print("Enter an integer: ");
+        System.out.println("Question 2.8a");
+        System.out.print("Enter an integer: \n\n");
     }
 
 // b
@@ -19,18 +20,29 @@ public class ExerciseTwoPrograms {
 
 // 2.14
 public void displayAdjacentNumbers(){
-        System.out.println("\n1 2  3 4");
+        System.out.println("Question 2.14");
+        System.out.println("1 2  3 4");
         System.out.print("1 ");
         System.out.print("2 ");
         System.out.print(" 3");
         System.out.print(" 4\n");
-        System.out.printf("%s %s  %s %s","1","2","3","4");
+        System.out.printf("%s %s  %s %s%n%n","1","2","3","4");
 }
 
 // 2.15
     public void doSomeArithmeticWithUserInput(){
+        System.out.println("Question 2.15");
         System.out.println("Please enter two whole numbers of your choice below");
-        System.out.println
+        System.out.print("Enter first number: ");
+        firstNumber = userInput.nextInt();
+        System.out.print("Enter second number: ");
+        secondNumber = userInput.nextInt();
+        int squareOfFirstNumber = firstNumber * firstNumber;
+        int squareOfSecondNumber = secondNumber * secondNumber;
+        System.out.printf("The square of your first number = %d%n",squareOfFirstNumber);
+        System.out.printf("The square of your second number = %d%n",squareOfSecondNumber);
+        System.out.printf("The sum of numbers when squared = %d%n", (squareOfFirstNumber + squareOfSecondNumber));
+        System.out.printf("The difference of numbers when squared = %d%n%n",(squareOfFirstNumber - squareOfSecondNumber));
     }
 
 //public void x%(){
@@ -42,6 +54,7 @@ public void displayAdjacentNumbers(){
         ExerciseTwoPrograms supply = new ExerciseTwoPrograms();
         supply.displayEnterAnInteger();
         supply.displayAdjacentNumbers();
+        supply.doSomeArithmeticWithUserInput();
 
 
 
