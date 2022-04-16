@@ -5,6 +5,8 @@ public class ExerciseTwoPrograms {
     int firstNumber;
     int secondNumber;
     int thirdNumber;
+    int fourthNumber;
+    int fifthNumber;
 
     public void displayEnterAnInteger() {
         System.out.println("Question 2.8a");
@@ -208,6 +210,68 @@ public void displayAdjacentNumbers() {
     }
 
 
+    public void getNegativePositiveAndZero() {
+        int positiveNumber = 0;
+        int negativeNumber = 0;
+        int zeroNumber = 0;
+
+        System.out.print("Enter your first number: ");
+        firstNumber = userInput.nextInt();
+
+        System.out.print("Enter your second number: ");
+        secondNumber = userInput.nextInt();
+
+        System.out.print("Enter your third number: ");
+        thirdNumber = userInput.nextInt();
+
+        System.out.print("Enter your fourth number: ");
+        fourthNumber= userInput.nextInt();
+
+        System.out.print("Enter your fifth number: ");
+        fifthNumber = userInput.nextInt();
+
+        if (firstNumber > 0)
+            positiveNumber = positiveNumber + 1;
+        if (secondNumber > 0)
+            positiveNumber = positiveNumber + 1;
+        if (thirdNumber > 0)
+            positiveNumber = positiveNumber + 1;
+        if (fourthNumber > 0)
+            positiveNumber = positiveNumber + 1;
+        if (fifthNumber > 0)
+            positiveNumber = positiveNumber + 1;
+
+
+        if (firstNumber < 0)
+            negativeNumber = negativeNumber + 1;
+        if (secondNumber > 0)
+            negativeNumber = negativeNumber + 1;
+        if (thirdNumber > 0)
+            negativeNumber = negativeNumber + 1;
+        if (fourthNumber > 0)
+            negativeNumber = negativeNumber + 1;
+        if (fifthNumber > 0)
+            negativeNumber = negativeNumber + 1;
+
+
+        if (firstNumber == 0)
+            zeroNumber = zeroNumber + 1;
+        if (secondNumber == 0)
+            zeroNumber = zeroNumber + 1;
+        if (thirdNumber == 0)
+            zeroNumber = zeroNumber + 1;
+        if (fourthNumber == 0)
+            zeroNumber = zeroNumber + 1;
+        if (fifthNumber == 0)
+            zeroNumber = zeroNumber + 1;
+
+        System.out.println ("\n");
+        System.out.printf("Positive numbers = %d\n", positiveNumber);
+        System.out.printf("Negative numbers = %d%n", negativeNumber);
+        System.out.printf("Zero numbers = %d%n", zeroNumber);
+    }
+
+
       public static void main(String... args) {
         ExerciseTwoPrograms supply = new ExerciseTwoPrograms();
 //        supply.displayEnterAnInteger();
@@ -223,6 +287,7 @@ public void displayAdjacentNumbers() {
 //        supply.getIntValueOfChar();
 //        supply.separateDigitsFromUser();
 //        supply.displayTableOfSquaresAndCubes();
+          supply.getNegativePositiveAndZero();
 
 
 
