@@ -68,15 +68,24 @@ public void displayAdjacentNumbers() {
     public void findSumAverageProductSmallestAndLarget() {
         System.out.println("Question 2.17");
         System.out.println("Please enter three whole numbers of your choice below");
+        System.out.print("Enter first number: ");
         firstNumber = userInput.nextInt();
         System.out.print("Enter second number: ");
         secondNumber = userInput.nextInt();
         System.out.print("Enter third number: ");
         thirdNumber = userInput.nextInt();
 
+
         System.out.printf("The sum of the numbers is: %d%n", (firstNumber + secondNumber + thirdNumber));
         System.out.printf("The average of the numbers is: %d%n", ((firstNumber + secondNumber + thirdNumber) / 3));
         System.out.printf("The product of the numbers is: %d%n", (firstNumber * secondNumber * thirdNumber));
+//        if(secondNumber > firstNumber)
+//            firstNumber = secondNumber;
+//        if(thirdNumber > firstNumber) {
+//            firstNumber = thirdNumber;
+//            System.out.printf("The largest number is: %d%n%n", firstNumber);
+//        }
+
         System.out.printf("The smallest number is: %d%n", Math.min(firstNumber,Math.min(secondNumber, thirdNumber)));
         System.out.printf("The largest number is: %d%n%n", Math.max(firstNumber,Math.max(secondNumber, thirdNumber)));
     }
@@ -199,8 +208,7 @@ public void displayAdjacentNumbers() {
     }
 
 
-
-    public static void main(String... args) {
+      public static void main(String... args) {
         ExerciseTwoPrograms supply = new ExerciseTwoPrograms();
 //        supply.displayEnterAnInteger();
 //        supply.displayAdjacentNumbers();
@@ -214,7 +222,7 @@ public void displayAdjacentNumbers() {
 //        supply.circleTheoremCalculation();
 //        supply.getIntValueOfChar();
 //        supply.separateDigitsFromUser();
-        supply.displayTableOfSquaresAndCubes();
+//        supply.displayTableOfSquaresAndCubes();
 
 
 
