@@ -271,28 +271,34 @@ public void displayAdjacentNumbers() {
         System.out.printf("Zero numbers = %d%n", zeroNumber);
     }
 
+    public void calculateBMI() {
+        System.out.println("Question 2.33");
+        System.out.print("Enter your weight in kg: ");
+        int userWeight = userInput.nextInt();
+        System.out.print("Enter your height in metres: ");
+        float userHeight = userInput.nextFloat();
+
+        float BMI = (float) userWeight / (userHeight * userHeight);
+        System.out.printf("Your calculated BMI is %.2f kg/m2%n%n", BMI);
+    }
+
 
       public static void main(String... args) {
         ExerciseTwoPrograms supply = new ExerciseTwoPrograms();
-//        supply.displayEnterAnInteger();
-//        supply.displayAdjacentNumbers();
-//        supply.doSomeArithmeticWithUserInput();
-//        supply.doSomeComparisonFromUserInputWithHundred();
-//        supply.findSumAverageProductSmallestAndLarget();
-//        supply.displayShapes();
-//        supply.isNumberDivisibleByThree();
-//        supply.isTripleOfFirstNumberDivisibleBySecondNumber();
-//        supply.displayCheckerBoard();
-//        supply.circleTheoremCalculation();
-//        supply.getIntValueOfChar();
-//        supply.separateDigitsFromUser();
-//        supply.displayTableOfSquaresAndCubes();
-          supply.getNegativePositiveAndZero();
-
-
-
-
-
-
+        supply.displayEnterAnInteger();
+        supply.displayAdjacentNumbers();
+        supply.doSomeArithmeticWithUserInput();
+        supply.doSomeComparisonFromUserInputWithHundred();
+        supply.findSumAverageProductSmallestAndLarget();
+        supply.displayShapes();
+        supply.isNumberDivisibleByThree();
+        supply.isTripleOfFirstNumberDivisibleBySecondNumber();
+        supply.displayCheckerBoard();
+        supply.circleTheoremCalculation();
+        supply.getIntValueOfChar();
+        supply.separateDigitsFromUser();
+        supply.displayTableOfSquaresAndCubes();
+        supply.getNegativePositiveAndZero();
+        supply.calculateBMI();
     }
 }
