@@ -138,6 +138,15 @@ public void displayAdjacentNumbers() {
         System.out.printf("The diameter of the circle is %d%nThe circumference is %.2f%nThe area of the circle is %.2f%n%n", (2 * radius), (2 * PI * radius), (PI * (radius * radius)));
     }
 
+
+    public void getIntValueOfChar() {
+        System.out.println("Question 2.29");
+        System.out.printf("Integer value of the following characters %c, %c, %c are %d, %d, %d%n", 'A', 'B', 'C',((int) 'A'), ((int) 'B'), ((int) 'C'));
+        System.out.printf("Integer value of the following characters %c, %c, %c are %d, %d, %d%n", 'a', 'b', 'c',((int) 'a'), ((int) 'b'), ((int) 'c'));
+        System.out.printf("Integer value of the following characters %c, %c, %c are %d, %d, %d%n", '0', '1', '2',((int) '0'), ((int) '1'), ((int) '2'));
+        System.out.printf("Integer value of the following characters %c, %c, %c, %c are %d, %d, %d %d%n", '*', '+', '/',' ', ((int) '*'), ((int) '+'), ((int) '/'), ((int) ' '));
+    }
+
     public static void main(String... args) {
         ExerciseTwoPrograms supply = new ExerciseTwoPrograms();
 //        supply.displayEnterAnInteger();
@@ -149,8 +158,8 @@ public void displayAdjacentNumbers() {
 //        supply.isNumberDivisibleByThree();
 //        supply.isTripleOfFirstNumberDivisibleBySecondNumber();
 //        supply.displayCheckerBoard();
-        supply.circleTheoremCalculation();
-
+//        supply.circleTheoremCalculation();
+        supply.getIntValueOfChar();
 
 
 //
