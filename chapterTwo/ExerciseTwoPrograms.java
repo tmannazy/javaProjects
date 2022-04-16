@@ -4,6 +4,7 @@ public class ExerciseTwoPrograms {
     Scanner userInput = new Scanner(System.in);
     int firstNumber;
     int secondNumber;
+    int thirdNumber;
 
     public void displayEnterAnInteger(){
         System.out.println("Question 2.8a");
@@ -61,12 +62,27 @@ public void displayAdjacentNumbers(){
         if(firstNumber < 100)
             System.out.printf("%d is less than 100%n", firstNumber);
         if(squareOfFirstNumber < 100)
-            System.out.printf("The square of %d (%d) is less than 100%n", firstNumber, squareOfFirstNumber);
+            System.out.printf("The square of %d (%d) is less than 100%n%n", firstNumber, squareOfFirstNumber);
     }
 
-//public void x%(){
-//
-//    }
+    public void findSumAverageProductSmallestAndLarget(){
+        System.out.println("Question 2.17");
+        System.out.println("Please enter two whole numbers of your choice below");
+        firstNumber = userInput.nextInt();
+        System.out.print("Enter second number: ");
+        secondNumber = userInput.nextInt();
+        System.out.print("Enter third number: ");
+        thirdNumber = userInput.nextInt();
+
+//        if((firstNumber < secondNumber) < thirdNumber)
+//            System.out.printf("The smallest number is %d", firstNumber);
+            
+
+        System.out.printf("The sum of the numbers is: %d%n", (firstNumber + secondNumber + thirdNumber));
+        System.out.printf("The average of the numbers is: %d%n", ((firstNumber + secondNumber + thirdNumber) / 3));
+        System.out.printf("The product of the numbers is: %d%n", (firstNumber * secondNumber * thirdNumber));
+    }
+
 
 
     public static void main(String... args){
@@ -75,6 +91,8 @@ public void displayAdjacentNumbers(){
         supply.displayAdjacentNumbers();
         supply.doSomeArithmeticWithUserInput();
         supply.doSomeComparisonFromUserInputWithHundred();
+        supply.findSumAverageProductSmallestAndLarget();
+
 
 
 
