@@ -67,20 +67,18 @@ public void displayAdjacentNumbers() {
 
     public void findSumAverageProductSmallestAndLarget() {
         System.out.println("Question 2.17");
-        System.out.println("Please enter two whole numbers of your choice below");
+        System.out.println("Please enter three whole numbers of your choice below");
         firstNumber = userInput.nextInt();
         System.out.print("Enter second number: ");
         secondNumber = userInput.nextInt();
         System.out.print("Enter third number: ");
         thirdNumber = userInput.nextInt();
 
-//        if((firstNumber < secondNumber) < thirdNumber)
-//            System.out.printf("The smallest number is %d", firstNumber);
-            
-
         System.out.printf("The sum of the numbers is: %d%n", (firstNumber + secondNumber + thirdNumber));
         System.out.printf("The average of the numbers is: %d%n", ((firstNumber + secondNumber + thirdNumber) / 3));
         System.out.printf("The product of the numbers is: %d%n", (firstNumber * secondNumber * thirdNumber));
+        System.out.printf("The smallest number is: %d%n", Math.min(firstNumber,Math.min(secondNumber, thirdNumber)));
+        System.out.printf("The largest number is: %d%n%n", Math.max(firstNumber,Math.max(secondNumber, thirdNumber)));
     }
 
     public void displayShapes() {
@@ -144,9 +142,22 @@ public void displayAdjacentNumbers() {
         System.out.printf("Integer value of the following characters %c, %c, %c are %d, %d, %d%n", 'A', 'B', 'C',((int) 'A'), ((int) 'B'), ((int) 'C'));
         System.out.printf("Integer value of the following characters %c, %c, %c are %d, %d, %d%n", 'a', 'b', 'c',((int) 'a'), ((int) 'b'), ((int) 'c'));
         System.out.printf("Integer value of the following characters %c, %c, %c are %d, %d, %d%n", '0', '1', '2',((int) '0'), ((int) '1'), ((int) '2'));
-        System.out.printf("Integer value of the following characters %c, %c, %c, %c are %d, %d, %d %d%n", '*', '+', '/',' ', ((int) '*'), ((int) '+'), ((int) '/'), ((int) ' '));
+        System.out.printf("Integer value of the following characters %c, %c, %c, %c are %d, %d, %d %d%n%n", '*', '+', '/',' ', ((int) '*'), ((int) '+'), ((int) '/'), ((int) ' '));
     }
 
+    public void separateDigitsFromUser() {
+        System.out.println("Question 2.30");
+        System.out.print("Enter a whole number:");
+        firstNumber = userInput.nextInt();
+        recursion(firstNumber);
+    }
+
+    private void recursion(int receivedNumber) {
+        if(receivedNumber > 0) {
+            recursion(receivedNumber/10);
+            System.out.printf("%d   ", (receivedNumber%10));
+        }
+    }
     public static void main(String... args) {
         ExerciseTwoPrograms supply = new ExerciseTwoPrograms();
 //        supply.displayEnterAnInteger();
@@ -159,7 +170,10 @@ public void displayAdjacentNumbers() {
 //        supply.isTripleOfFirstNumberDivisibleBySecondNumber();
 //        supply.displayCheckerBoard();
 //        supply.circleTheoremCalculation();
-        supply.getIntValueOfChar();
+//        supply.getIntValueOfChar();
+//        supply.separateDigitsFromUser();
+
+
 
 
 //
