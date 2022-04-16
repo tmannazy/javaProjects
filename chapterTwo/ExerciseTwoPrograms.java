@@ -84,19 +84,49 @@ public void displayAdjacentNumbers(){
     }
 
     public void displayShapes(){
+        System.out.println("Question 2.18");
         System.out.println("*********     ***       *        *    \n*       *   *     *    ***      * *   \n*       *  *       *  *****    *   *  ");
         System.out.println("*       *  *       *    *     *     * \n*       *  *       *    *    *       *\n*       *  *       *    *     *     * ");
-        System.out.println("*       *  *       *    *      *   *  \n*       *   *     *     *       * *    \n*********     ***       *        *    ");
+        System.out.println("*       *  *       *    *      *   *  \n*       *   *     *     *       * *    \n*********     ***       *        *    \n");
+    }
+
+    public void isNumberDivisibleByThree(){
+        System.out.println("Question 2.25");
+        System.out.println("Enter a whole number: ");
+        firstNumber = userInput.nextInt();
+        if(firstNumber % 3 == 0)
+            System.out.printf("The number %d is divisible by 3%n%n", firstNumber);
+        else
+            System.out.printf("The number %d is not divisible by 3%n%n", firstNumber);
+    }
+
+
+    public void isTripleOfFirstNumberDivisibleBySecondNumber(){
+        System.out.println("Question 2.26");
+        System.out.print("Enter the first whole number: ");
+        firstNumber = userInput.nextInt();
+        System.out.print("Enter the second whole number: ");
+        secondNumber = userInput.nextInt();
+        int tripleValueOfFirstNumber = firstNumber * firstNumber * firstNumber;
+        int doubleValueOfSecondNumber = secondNumber * secondNumber;
+
+        if(tripleValueOfFirstNumber % doubleValueOfSecondNumber == 0)
+            System.out.printf("%d to power 3 is a multiple of %d power 2%n%n", firstNumber, secondNumber);
+        else
+            System.out.printf("%d to power 3 is not a multiple of %d to power 2%n%n", firstNumber, secondNumber);
     }
 
     public static void main(String... args){
         ExerciseTwoPrograms supply = new ExerciseTwoPrograms();
-        supply.displayEnterAnInteger();
-        supply.displayAdjacentNumbers();
-        supply.doSomeArithmeticWithUserInput();
-        supply.doSomeComparisonFromUserInputWithHundred();
-        supply.findSumAverageProductSmallestAndLarget();
-        supply.displayShapes();
+//        supply.displayEnterAnInteger();
+//        supply.displayAdjacentNumbers();
+//        supply.doSomeArithmeticWithUserInput();
+//        supply.doSomeComparisonFromUserInputWithHundred();
+//        supply.findSumAverageProductSmallestAndLarget();
+//        supply.displayShapes();
+//        supply.isNumberDivisibleByThree();
+        supply.isTripleOfFirstNumberDivisibleBySecondNumber();
+
 
 
 //
