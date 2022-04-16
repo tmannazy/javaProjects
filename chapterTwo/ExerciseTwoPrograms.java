@@ -126,6 +126,18 @@ public void displayAdjacentNumbers() {
         System.out.println("* * * * * * * * \n * * * * * * * *\n* * * * * * * * \n * * * * * * * *\n\n");
     }
 
+    public void circleTheoremCalculation() {
+        System.out.println("Question 2.28");
+        System.out.print("Enter the radius of the circle: ");
+        int radius = userInput.nextInt();
+        double PI = Math.PI;
+
+//        int diameter = 2 * radius;
+//        double circumference = 2 * PI * radius;
+//        double area = PI * (radius * radius);
+        System.out.printf("The diameter of the circle is %d%nThe circumference is %.2f%nThe area of the circle is %.2f%n%n", (2 * radius), (2 * PI * radius), (PI * (radius * radius)));
+    }
+
     public static void main(String... args) {
         ExerciseTwoPrograms supply = new ExerciseTwoPrograms();
 //        supply.displayEnterAnInteger();
@@ -136,7 +148,8 @@ public void displayAdjacentNumbers() {
 //        supply.displayShapes();
 //        supply.isNumberDivisibleByThree();
 //        supply.isTripleOfFirstNumberDivisibleBySecondNumber();
-        supply.displayCheckerBoard();
+//        supply.displayCheckerBoard();
+        supply.circleTheoremCalculation();
 
 
 
