@@ -83,7 +83,11 @@ public void displayAdjacentNumbers(){
         System.out.printf("The product of the numbers is: %d%n", (firstNumber * secondNumber * thirdNumber));
     }
 
-
+    public void displayShapes(){
+        System.out.println("*********     ***       *        *    \n*       *   *     *    ***      * *   \n*       *  *       *  *****    *   *  ");
+        System.out.println("*       *  *       *    *     *     * \n*       *  *       *    *    *       *\n*       *  *       *    *     *     * ");
+        System.out.println("*       *  *       *    *      *   *  \n*       *   *     *     *       * *    \n*********     ***       *        *    ");
+    }
 
     public static void main(String... args){
         ExerciseTwoPrograms supply = new ExerciseTwoPrograms();
@@ -92,9 +96,10 @@ public void displayAdjacentNumbers(){
         supply.doSomeArithmeticWithUserInput();
         supply.doSomeComparisonFromUserInputWithHundred();
         supply.findSumAverageProductSmallestAndLarget();
+        supply.displayShapes();
 
 
-
+//
 
     }
 }
