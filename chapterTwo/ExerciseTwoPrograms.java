@@ -45,14 +45,23 @@ public void displayAdjacentNumbers(){
         System.out.print("Please enter a whole number: ");
         firstNumber = userInput.nextInt();
         int squareOfFirstNumber = firstNumber * firstNumber;
-        if(firstNumber && squareOfFirstNumber > 100)
-            System.out.printf("Number entered %d and its square %d are greater than 100%n", firstNumber, squareOfFirstNumber);
-        if(firstNumber && squareOfFirstNumber == 100)
-            System.out.printf("Number entered %d and its square %d are equal to 100%n", firstNumber, squareOfFirstNumber);
-        if(firstNumber && squareOfFirstNumber != 100)
-            System.out.printf("Number entered %d and its square %d are not equal to 100%n", firstNumber, squareOfFirstNumber);
-        if(firstNumber && squareOfFirstNumber < 100)
-            System.out.printf("Number entered %d and its square %d are less than 100%n%n", firstNumber, squareOfFirstNumber);
+
+        if(firstNumber > 100)
+            System.out.printf("%d is greater than 100%n", firstNumber);
+        if(squareOfFirstNumber > 100)
+            System.out.printf("The square of %d (%d) is greater than 100%n", firstNumber, squareOfFirstNumber);
+        if(firstNumber == 100)
+            System.out.printf("%d is equal to 100%n", firstNumber);
+        if(squareOfFirstNumber == 100)
+            System.out.printf("The square of %d (%d) is equal to 100%n", firstNumber, squareOfFirstNumber);
+        if(firstNumber != 100)
+            System.out.printf("%d is not equal to 100%n", firstNumber);
+        if(squareOfFirstNumber != 100)
+            System.out.printf("The square of %d (%d) is not equal to 100%n", firstNumber, squareOfFirstNumber);
+        if(firstNumber < 100)
+            System.out.printf("%d is less than 100%n", firstNumber);
+        if(squareOfFirstNumber < 100)
+            System.out.printf("The square of %d (%d) is less than 100%n", firstNumber, squareOfFirstNumber);
     }
 
 //public void x%(){
@@ -65,6 +74,7 @@ public void displayAdjacentNumbers(){
         supply.displayEnterAnInteger();
         supply.displayAdjacentNumbers();
         supply.doSomeArithmeticWithUserInput();
+        supply.doSomeComparisonFromUserInputWithHundred();
 
 
 
