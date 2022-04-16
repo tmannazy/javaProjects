@@ -6,7 +6,7 @@ public class ExerciseTwoPrograms {
     int secondNumber;
     int thirdNumber;
 
-    public void displayEnterAnInteger(){
+    public void displayEnterAnInteger() {
         System.out.println("Question 2.8a");
         System.out.print("Enter an integer: \n\n");
     }
@@ -18,7 +18,7 @@ public class ExerciseTwoPrograms {
 // 2.8c
 // This program performs a sample payroll calculation.
 
-public void displayAdjacentNumbers(){
+public void displayAdjacentNumbers() {
         System.out.println("Question 2.14");
         System.out.println("1 2  3 4");
         System.out.print("1 ");
@@ -27,7 +27,7 @@ public void displayAdjacentNumbers(){
         System.out.print(" 4\n");
         System.out.printf("%s %s  %s %s%n%n","1","2","3","4");
 }
-    public void doSomeArithmeticWithUserInput(){
+    public void doSomeArithmeticWithUserInput() {
         System.out.println("Question 2.15");
         System.out.println("Please enter two whole numbers of your choice below");
         firstNumber = userInput.nextInt();
@@ -41,7 +41,7 @@ public void displayAdjacentNumbers(){
         System.out.printf("The difference of numbers when squared = %d%n%n",(squareOfFirstNumber - squareOfSecondNumber));
     }
 
-    public void doSomeComparisonFromUserInputWithHundred(){
+    public void doSomeComparisonFromUserInputWithHundred() {
         System.out.println("Question 2.16");
         System.out.print("Please enter a whole number: ");
         firstNumber = userInput.nextInt();
@@ -65,7 +65,7 @@ public void displayAdjacentNumbers(){
             System.out.printf("The square of %d (%d) is less than 100%n%n", firstNumber, squareOfFirstNumber);
     }
 
-    public void findSumAverageProductSmallestAndLarget(){
+    public void findSumAverageProductSmallestAndLarget() {
         System.out.println("Question 2.17");
         System.out.println("Please enter two whole numbers of your choice below");
         firstNumber = userInput.nextInt();
@@ -83,18 +83,18 @@ public void displayAdjacentNumbers(){
         System.out.printf("The product of the numbers is: %d%n", (firstNumber * secondNumber * thirdNumber));
     }
 
-    public void displayShapes(){
+    public void displayShapes() {
         System.out.println("Question 2.18");
         System.out.println("*********     ***       *        *    \n*       *   *     *    ***      * *   \n*       *  *       *  *****    *   *  ");
         System.out.println("*       *  *       *    *     *     * \n*       *  *       *    *    *       *\n*       *  *       *    *     *     * ");
         System.out.println("*       *  *       *    *      *   *  \n*       *   *     *     *       * *    \n*********     ***       *        *    \n");
     }
 
-    public void findSmallestAndLargestInIntegerOfFive(){
+    public void findSmallestAndLargestInIntegerOfFive() {
         System.out.println("Question 2.24");
     }
 
-    public void isNumberDivisibleByThree(){
+    public void isNumberDivisibleByThree() {
         System.out.println("Question 2.25");
         System.out.println("Enter a whole number: ");
         firstNumber = userInput.nextInt();
@@ -105,7 +105,7 @@ public void displayAdjacentNumbers(){
     }
 
 
-    public void isTripleOfFirstNumberDivisibleBySecondNumber(){
+    public void isTripleOfFirstNumberDivisibleBySecondNumber() {
         System.out.println("Question 2.26");
         System.out.print("Enter the first whole number: ");
         firstNumber = userInput.nextInt();
@@ -120,13 +120,13 @@ public void displayAdjacentNumbers(){
             System.out.printf("%d to power 3 is not a multiple of %d to power 2%n%n", firstNumber, secondNumber);
     }
 
-    public void displayCheckerBoard(){
+    public void displayCheckerBoard() {
         System.out.println("Question 2.27");
         System.out.println("* * * * * * * * \n * * * * * * * *\n* * * * * * * * \n * * * * * * * *");
         System.out.println("* * * * * * * * \n * * * * * * * *\n* * * * * * * * \n * * * * * * * *\n\n");
     }
 
-    public static void main(String... args){
+    public static void main(String... args) {
         ExerciseTwoPrograms supply = new ExerciseTwoPrograms();
 //        supply.displayEnterAnInteger();
 //        supply.displayAdjacentNumbers();
