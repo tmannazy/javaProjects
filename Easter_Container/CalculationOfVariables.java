@@ -66,7 +66,7 @@ public class CalculationOfVariables {
         System.out.printf("Your BMI is %.4f%n%n", BMI);
     }
 
-        public void monthlySavingsCompoundValue() {
+    public void monthlySavingsCompoundValue() {
         System.out.print("Enter the monthly saving amount: ");
         double depositAmount = getUserInput.nextDouble();
         double ANNUALINTEREST = 0.05;
