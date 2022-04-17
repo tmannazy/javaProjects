@@ -27,10 +27,31 @@ public class CalculationOfVariables {
         System.out.printf("The interest is %.4f%n%n", interest);
     }
 
-    public static void main(String... args) {
-        CalculationOfVariables camry = new CalculationOfVariables();
-//        camry.costOfDriving();
-        camry.calculateInterest();
+
+    public void areaOfATriangle() {
+        System.out.println("Enter points  of the triangle in coordinates (x1, y1), (x2, y2), (x3, y3)");
+        System.out.print("Enter three points for the triangle: ");
+        double x1 = getUserInput.nextDouble();
+        double y1 = getUserInput.nextDouble();
+        double x2 = getUserInput.nextDouble();
+        double y2 = getUserInput.nextDouble();
+        double x3 = getUserInput.nextDouble();
+        double y3 = getUserInput.nextDouble();
+
+        double AB = Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+        double BC = Math.sqrt((x2 - x3) * (x2 - x3) + (y2 - y3) * (y2 - y3));
+        double AC = Math.sqrt((x1 - x3) * (x1 - x3) + (y1 - y3) * (y1 - y3));
+
+        double perimeter = (AB + BC + AC) / 2;
+        double area = Math.sqrt(perimeter * (perimeter - AB) * (perimeter - BC) * (perimeter - AC));
+        System.out.printf("The area of the triangle is %.1f%n%n", area);
     }
 
+
+    public static void main(String... args) {
+        CalculationOfVariables display = new CalculationOfVariables();
+//        display.costOfDriving();
+//        display.calculateInterest();
+        display.areaOfATriangle();
+    }
 }
