@@ -83,6 +83,5 @@ public class CalculationOfVariables {
         display.areaOfATriangle();
         display.calculateUserBMI();
         display.monthlySavingsCompoundValue();
-        display.calculateInv(1000.56, 4.25, 1);
     }
 }
