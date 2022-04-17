@@ -38,13 +38,34 @@ public class CalculationOfVariables {
         double x3 = getUserInput.nextDouble();
         double y3 = getUserInput.nextDouble();
 
-        double AB = Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
-        double BC = Math.sqrt((x2 - x3) * (x2 - x3) + (y2 - y3) * (y2 - y3));
-        double AC = Math.sqrt((x1 - x3) * (x1 - x3) + (y1 - y3) * (y1 - y3));
+//        double AB = Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+//        double BC = Math.sqrt((x2 - x3) * (x2 - x3) + (y2 - y3) * (y2 - y3));
+//        double AC = Math.sqrt((x1 - x3) * (x1 - x3) + (y1 - y3) * (y1 - y3));
+
+        double AB = ((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2)) / 2;
+        double BC = ((x2 - x3) * (x2 - x3) + (y2 - y3) * (y2 - y3)) / 2;
+        double AC = ((x1 - x3) * (x1 - x3) + (y1 - y3) * (y1 - y3)) / 2;
 
         double perimeter = (AB + BC + AC) / 2;
         double area = Math.sqrt(perimeter * (perimeter - AB) * (perimeter - BC) * (perimeter - AC));
         System.out.printf("The area of the triangle is %.1f%n%n", area);
+    }
+
+    public void calculateUserBMI() {
+        double onePoundInKg = 0.45359237;
+        double oneInchInMetres = 0.0254;
+        System.out.print("Enter weight in pounds: ");
+        double weightInPounds = getUserInput.nextDouble();
+        System.out.print("Enter height in inches: ");
+        double heightInInches = getUserInput.nextDouble();
+
+        double convertPoundsToKg = weightInPounds * onePoundInKg;
+        double convertInchesToMetres = heightInInches * oneInchInMetres;
+        double BMI = convertPoundsToKg / (convertInchesToMetres * convertInchesToMetres);
+
+        System.out.printf("Your BMI is %.4f%n%n", BMI);
+
+
     }
 
 
@@ -52,6 +73,8 @@ public class CalculationOfVariables {
         CalculationOfVariables display = new CalculationOfVariables();
 //        display.costOfDriving();
 //        display.calculateInterest();
-        display.areaOfATriangle();
+//        display.areaOfATriangle();
+//        display.calculateUserBMI();
     }
+
 }
