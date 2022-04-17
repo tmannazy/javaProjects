@@ -16,7 +16,14 @@ public class CalculationOfVariables {
     }
 
     public void futureInvestmentValue() {
-
+        System.out.print("Enter investment amount: ");
+        double depositedAmount = getUserInput.nextDouble();
+        System.out.print("Enter annual interest rate in percentage: ");
+        double interestRate = getUserInput.nextDouble() / 100;
+        System.out.print("Enter number of years: ");
+        double numOfYears = getUserInput.nextDouble();
+        double accumulatedBalance = (Math.pow((1 + interestRate / 12), numOfYears * 12) * depositedAmount);
+        System.out.printf("Accumulated value is $%.2f%n%n", accumulatedBalance);
     }
 
     public void calculateInterest() {
@@ -26,7 +33,6 @@ public class CalculationOfVariables {
         double interest = balance * (interestRateInPercentage / 1200);
         System.out.printf("The interest is %.4f%n%n", interest);
     }
-
 
     public void areaOfATriangle() {
         System.out.println("Enter points  of the triangle in coordinates (x1, y1), (x2, y2), (x3, y3)");
@@ -59,7 +65,8 @@ public class CalculationOfVariables {
         double BMI = convertPoundsToKg / (convertInchesToMetres * convertInchesToMetres);
         System.out.printf("Your BMI is %.4f%n%n", BMI);
     }
-    public void monthlySavingsCompoundValue() {
+
+        public void monthlySavingsCompoundValue() {
         System.out.print("Enter the monthly saving amount: ");
         double depositAmount = getUserInput.nextDouble();
         double ANNUALINTEREST = 0.05;
@@ -68,13 +75,14 @@ public class CalculationOfVariables {
         System.out.printf("After the sixth month, the account value is $%.2f%n%n", inSixMonths);
     }
 
-
     public static void main(String... args) {
         CalculationOfVariables display = new CalculationOfVariables();
-//        display.costOfDriving();
-//        display.calculateInterest();
-//        display.areaOfATriangle();
-//        display.calculateUserBMI();
+        display.costOfDriving();
+        display.futureInvestmentValue();
+        display.calculateInterest();
+        display.areaOfATriangle();
+        display.calculateUserBMI();
         display.monthlySavingsCompoundValue();
+        display.calculateInv(1000.56, 4.25, 1);
     }
 }
