@@ -67,7 +67,7 @@ public void displayAdjacentNumbers() {
             System.out.printf("The square of %d (%d) is less than 100%n%n", firstNumber, squareOfFirstNumber);
     }
 
-    public void findSumAverageProductSmallestAndLarget() {
+    public void findSumAverageProductSmallestAndLargest() {
         System.out.println("Question 2.17");
         System.out.println("Please enter three whole numbers of your choice below");
         System.out.print("Enter first number: ");
@@ -279,19 +279,19 @@ public void displayAdjacentNumbers() {
       public static void main(String... args) {
         ExerciseTwoPrograms supply = new ExerciseTwoPrograms();
         supply.displayEnterAnInteger();
-        supply.displayAdjacentNumbers();
-        supply.doSomeArithmeticWithUserInput();
-        supply.doSomeComparisonFromUserInputWithHundred();
-        supply.findSumAverageProductSmallestAndLarget();
-        supply.displayShapes();
-        supply.isNumberDivisibleByThree();
-        supply.isTripleOfFirstNumberDivisibleBySecondNumber();
-        supply.displayCheckerBoard();
-        supply.circleTheoremCalculation();
-        supply.getIntValueOfChar();
-        supply.separateDigitsFromUser();
-        supply.displayTableOfSquaresAndCubes();
-        supply.getNegativePositiveAndZeroNumbers();
-        supply.calculateBMI();
+//        supply.displayAdjacentNumbers();
+//        supply.doSomeArithmeticWithUserInput();
+//        supply.doSomeComparisonFromUserInputWithHundred();
+//        supply.findSumAverageProductSmallestAndLargest();
+//        supply.displayShapes();
+//        supply.isNumberDivisibleByThree();
+//        supply.isTripleOfFirstNumberDivisibleBySecondNumber();
+//        supply.displayCheckerBoard();
+//        supply.circleTheoremCalculation();
+//        supply.getIntValueOfChar();
+//        supply.separateDigitsFromUser();
+//        supply.displayTableOfSquaresAndCubes();
+//        supply.getNegativePositiveAndZeroNumbers();
+//        supply.calculateBMI();
     }
 }
