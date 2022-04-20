@@ -1,39 +1,32 @@
 public class Account {
-		
 	private String name;
 	private double balance;
 	
 	public Account(String name, double balance) {
-	
 		this.name = name;
-		
-		if (balance > 0.0){
-		
+		if (balance > 0.0) {
 		this.balance = balance;
-		
 		}
-		
 	}
-		
 	
 	public void deposit(double depositAmount) {
 		if (depositAmount > 0.0) {
 			balance = balance + depositAmount;
 		}
-	
 	}
 	
 	public void withdraw(double withdrawAmount) {
 		if (withdrawAmount > balance) {
-		System.out.println("Withdrawal amount exceeded balance: ");
+		System.out.printf("%s the withdrawal amount you entered exceed your balance.%n%n", name);
 		}
 		if (withdrawAmount < balance) {
 			balance = balance - withdrawAmount;
 		}
-		//System.out.printf("Your balance is: $%.2f%n%n", balance);
+		if (withdrawAmount == balance){
+			balance = 0;
+		}
 	}
-	
-	
+
 	public double getBalance() {
 		return balance;
 	}
@@ -45,7 +38,6 @@ public class Account {
 	public String getName () {
 		return name;
 	}
-
 }
 	
 
