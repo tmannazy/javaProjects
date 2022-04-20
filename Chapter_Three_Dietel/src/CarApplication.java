@@ -1,5 +1,3 @@
-//import java.util.Scanner;
-
 public class CarApplication {
     public static void main(String... args) {
         Car toyota = new Car("Camry", "2020", 2_000_000);
