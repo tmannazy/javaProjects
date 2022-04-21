@@ -41,7 +41,6 @@ public class AccountTest {
 		System.out.printf("Adding %.2f to accountOne balance%n%n", depositAmount);
 		accountToDeposit.deposit(depositAmount);
 	}
-
 	public static void userWithdrawal(Account accountToWithdraw, double amountToWithdraw) {
 		System.out.printf("Subtracting %.2f from accountTwo balance%n%n", amountToWithdraw);
 		accountToWithdraw.withdraw(amountToWithdraw);
