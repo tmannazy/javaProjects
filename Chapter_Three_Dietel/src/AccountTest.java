@@ -1,40 +1,49 @@
 import java.util.Scanner;
 
 public class AccountTest {
-	
 	public static void main(String[] args) {
 		Account accountOne = new Account("Garden Eden", 50.00);
 		Account accountTwo = new Account("Umu Obiligbo", -7.53);
 		
-		System.out.printf("%s's initial balance: $%.2f%n", accountOne.getName(), accountOne.getBalance());
-		System.out.printf("%s's initial balance: $%.2f%n%n", accountTwo.getName(), accountTwo.getBalance());
-			
-		Scanner userInput = new Scanner(System.in);
-		System.out.print("Enter deposit amount for accountOne: ");
-		double depositAmount = userInput.nextDouble();
-		System.out.printf("Adding %.2f to accountOne balance%n%n", depositAmount);
-		accountOne.deposit(depositAmount);
+		displayAccount(accountOne);
+		displayAccount(accountTwo);
 
-		System.out.printf("%s balance: $%.2f %n",accountOne.getName(), accountOne.getBalance());
-		System.out.printf("%s balance: $%.2f %n%n",accountTwo.getName(), accountTwo.getBalance());
-		
+		Scanner userInput = new Scanner(System.in);
+		System.out.print("\nEnter deposit amount for accountOne: ");
+		double depositAmount = userInput.nextDouble();
+		depositIntoUserAccount(accountOne, depositAmount);
+
 		System.out.print("Enter deposit amount for accountTwo: ");
 		depositAmount = userInput.nextDouble();
-		System.out.printf("Adding %.2f to accountTwo balance%n%n",depositAmount);
-		accountTwo.deposit(depositAmount);
+		depositIntoUserAccount(accountTwo, depositAmount);
 		
 		System.out.print("Enter amount to withdraw from accountOne: ");
-		double withdrawAmountFromAccountOne = userInput.nextDouble();
-		System.out.printf("%nSubtracting %.2f from accountOne balance%n", withdrawAmountFromAccountOne);
-		accountOne.withdraw(withdrawAmountFromAccountOne);
+		double withdrawAmount = userInput.nextDouble();
+		userWithdrawal(accountOne, withdrawAmount);
 
 		System.out.print("Enter amount to withdraw from accountTwo: ");
-		double withdrawAmountFromAccountTwo = userInput.nextDouble();
-		System.out.printf("%nSubtracting %.2f from accountTwo balance%n%n", withdrawAmountFromAccountTwo);
-		accountTwo.withdraw(withdrawAmountFromAccountTwo);
+		withdrawAmount = userInput.nextDouble();
+		userWithdrawal(accountTwo, withdrawAmount);
 
-		System.out.printf("%s's final balance: $%.2f%n",
-		accountOne.getName(), accountOne.getBalance());
-		System.out.printf("%s's final balance: $%.2f%n%n", accountTwo.getName() , accountTwo.getBalance());
-	}		
+		displayFinalAccount(accountOne);
+		displayFinalAccount(accountTwo);
+	}
+
+	public static void displayAccount(Account accountToDisplay) {
+		System.out.printf("%s's initial balance: $%.2f%n", accountToDisplay.getName(), accountToDisplay.getBalance());
+	}
+
+	public static void displayFinalAccount(Account accountToDisplay) {
+		System.out.printf("%s's final balance: $%.2f%n", accountToDisplay.getName(), accountToDisplay.getBalance());
+	}
+
+	public static void depositIntoUserAccount(Account accountToDeposit, double depositAmount) {
+		System.out.printf("Adding %.2f to accountOne balance%n%n", depositAmount);
+		accountToDeposit.deposit(depositAmount);
+	}
+
+	public static void userWithdrawal(Account accountToWithdraw, double amountToWithdraw) {
+		System.out.printf("Subtracting %.2f from accountTwo balance%n%n", amountToWithdraw);
+		accountToWithdraw.withdraw(amountToWithdraw);
+	}
 }
