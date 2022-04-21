@@ -16,7 +16,7 @@ public class HeartRates {
         this.year = year;
     }
 
-    public void setFirstName(userFirstName) {
+    public void setFirstName(String userFirstName) {
         this.firstName = userFirstName;
     }
 
@@ -24,7 +24,7 @@ public class HeartRates {
         return firstName;
     }
 
-    public void setLastName(userLastName) {
+    public void setLastName(String userLastName) {
         this.lastName = userLastName;
     }
 
@@ -32,7 +32,7 @@ public class HeartRates {
         return lastName;
     }
 
-    public void setDate(userDate) {
+    public void setDate(int userDay) {
         this.day = userDay;
     }
 
@@ -40,7 +40,7 @@ public class HeartRates {
         return day;
     }
 
-    public void setMonth(userMonth) {
+    public void setMonth(int userMonth) {
         this.month = userMonth;
     }
 
@@ -48,7 +48,7 @@ public class HeartRates {
         return month;
     }
 
-    public void setYear(userYear) {
+    public void setYear(int userYear) {
         this.year = userYear;
     }
 
@@ -61,6 +61,11 @@ public class HeartRates {
         LocalDate birthday = LocalDate.of(year, month, day);
         Period getAgeDifference =  Period.between(birthday, today);
         return getAgeDifference.getYears();
+    }
+
+    public int calculateHeartRate() {
+        int u =2;
+return u;
     }
 
 
