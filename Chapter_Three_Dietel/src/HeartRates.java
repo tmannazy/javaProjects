@@ -64,9 +64,12 @@ public class HeartRates {
     }
 
     public int calculateHeartRate() {
-        int u =2;
-return u;
+        return 220 - calculateAge();
     }
 
+    public double targetHeartRate() {
+        double userGetAge = calculateHeartRate();
+        return userGetAge * 0.5;
+    }
 
 }
