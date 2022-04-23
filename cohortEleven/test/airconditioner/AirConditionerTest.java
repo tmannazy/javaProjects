@@ -1,6 +1,5 @@
 package airconditioner;
 
-import airconditoner.AirConditioner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -25,12 +24,48 @@ public class AirConditionerTest {
         assertFalse(mideaRoomTwo.getSwitchStatus());
     }
 
-//    @Test
-//    @DisplayName("Given that AC is on when I increase temperature assert that temperature increases")
-//    public void isTempOfACIncreasedTest() {
-//        AirConditioner mideaRoomThree = new AirConditioner();
-//        mideaRoomThree.increaseTemp();
-//        assertEquals(25, mideaRoomThree.getTemp);
-//
-//    }
+    @Test
+    @DisplayName("Given that AC is on when I increase temperature check that temperature increases")
+    public void isTempOfACIncreasedTest() {
+        AirConditioner mideaRoomThree = new AirConditioner();
+        mideaRoomThree.switchButton(true);
+        assertTrue(mideaRoomThree.getSwitchStatus());
+        mideaRoomThree.increaseTemp(25);
+        int tempLevel = mideaRoomThree.getTempLevel();
+        assertEquals(25, tempLevel);
+    }
+
+    @Test
+    @DisplayName("Given that AC is on when I decrease temperature check that temperature decreases")
+    public void isTempOfACDecreasedTest() {
+        AirConditioner mideaRoomFour = new AirConditioner();
+        mideaRoomFour.switchButton(true);
+        assertTrue(mideaRoomFour.getSwitchStatus());
+        mideaRoomFour.decreaseTemp(20);
+        int tempLevel = mideaRoomFour.getTempLevel();
+        assertEquals(-20, tempLevel);
+    }
+
+    @Test
+    @DisplayName("Given that when AC is on when I increase temp it should not get beyond 30")
+    public void isTempOfACIncreasedBeyondThirtyTest() {
+        AirConditioner mideaRoomFive = new AirConditioner();
+        mideaRoomFive.switchButton(true);
+        assertTrue(mideaRoomFive.getSwitchStatus());
+        mideaRoomFive.increaseTemp(45);
+        int tempLevel = mideaRoomFive.getTempLevel();
+        assertEquals(30, tempLevel);
+    }
+
+    @Test
+    @DisplayName("Given that when AC is on when I increase temp it should not get beyond 30")
+    public void isTempOfACDecreasedBelowSixteenTest() {
+        AirConditioner mideaRoomSix = new AirConditioner();
+        mideaRoomSix.switchButton(true);
+        assertTrue(mideaRoomSix.getSwitchStatus());
+        mideaRoomSix.decreaseTemp(15);
+        int tempLevel = mideaRoomSix.getTempLevel();
+        assertEquals(16, tempLevel);
+    }
+
   }
