@@ -1,4 +1,4 @@
-package tdd;
+package airconditoner;
 
 public class AirConditioner {
     private boolean power;
