@@ -2,6 +2,7 @@ package tdd;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AccountTest {
@@ -23,7 +24,7 @@ public class AccountTest {
     public void withdrawMoneyTest() {
         Account newAccount = new Account();
         newAccount.deposit(1000);
-         newAccount.withdraw(500);
+        newAccount.withdraw(500);
         assertEquals(500, newAccount.getBalance());
     }
 

@@ -9,7 +9,7 @@ public class AirConditioner {
         if (!status) power = false;
     }
 
-    public Boolean getSwitchStatus() {
+    public boolean getSwitchStatus() {
         return power;
     }
 
@@ -24,10 +24,5 @@ public class AirConditioner {
 
     public int getTempLevel() {
         return tempLevel;
-    }
-
-    public void setTemp(int level) {
-        if (level >=16 && level <= 30)
-            tempLevel = level;
     }
 }

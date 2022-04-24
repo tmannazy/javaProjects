@@ -63,5 +63,4 @@ public class AirConditionerTest {
         int tempLevel = mideaRoomSix.getTempLevel();
         assertEquals(16, tempLevel);
     }
-
-  }
+}

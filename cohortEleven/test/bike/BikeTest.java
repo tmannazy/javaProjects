@@ -2,7 +2,6 @@ package bike;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -26,124 +25,123 @@ public class BikeTest {
     @Test
     @DisplayName("The Bike can be accelerated")
     public void theBikeCanBeAccelerated() {
-        Bike powerBike = new Bike();
-        powerBike.startBike(true);
-        assertTrue(powerBike.isBikeAccelerating());
+        Bike yamaha = new Bike();
+        yamaha.startBike(true);
+        yamaha.accelerate(true, 5);
+        assertTrue(yamaha.isBikeAccelerating());
     }
 
     @Test
     @DisplayName("Increment bike gear one in sequence of ones")
     public void acceleratesGearOneInIncrementOfOnesTest() {
-        Bike powerBikeOne = new Bike();
-        powerBikeOne.gearOne(1);
-        powerBikeOne.accelerate(true, 15);
-        assertEquals(16, powerBikeOne.getGearSpeed());
+        Bike kawasaki = new Bike();
+        kawasaki.gearSelection(1);
+        kawasaki.accelerate(true, 15);
+        assertEquals(16, kawasaki.getSpeedIncrease());
     }
 
     @Test
     @DisplayName("Increment bike gear two in sequence of twos")
     public void acceleratesGearTwoInIncrementOfTwosTest() {
-        Bike powerBikeTwo = new Bike();
-        powerBikeTwo.startBike(true);
-        powerBikeTwo.gearTwo(2);
-        powerBikeTwo.accelerate(true, 24);
-        assertEquals(26, powerBikeTwo.getGearSpeed());
+        Bike honda = new Bike();
+        honda.startBike(true);
+        honda.gearSelection(2);
+        honda.accelerate(true, 24);
+        assertEquals(26, honda.getSpeedIncrease());
     }
 
     @Test
     @DisplayName("Increment bike gear three in sequence of threes")
     public void acceleratesGearThreeInIncrementOfThreesTest() {
-        Bike powerBikeThree = new Bike();
-        powerBikeThree.startBike(true);
-        powerBikeThree.gearThree(3);
-        powerBikeThree.accelerate(true, 35);
-        assertEquals(38, powerBikeThree.getGearSpeed());
+        Bike harleyDavidson = new Bike();
+        harleyDavidson.startBike(true);
+        harleyDavidson.gearSelection(3);
+        harleyDavidson.accelerate(true, 35);
+        assertEquals(38, harleyDavidson.getSpeedIncrease());
     }
 
     @Test
     @DisplayName("Increment bike gear four in sequence of fours")
     public void acceleratesGearFourInIncrementOfFourTest() {
-        Bike powerBikeFour = new Bike();
-        powerBikeFour.startBike(true);
-        powerBikeFour.gearFour(4);
-        powerBikeFour.accelerate(true, 44);
-        assertEquals(48, powerBikeFour.getGearSpeed());
+        Bike suzuki = new Bike();
+        suzuki.startBike(true);
+        suzuki.gearSelection(4);
+        suzuki.accelerate(true, 44);
+        assertEquals(48, suzuki.getSpeedIncrease());
     }
 
     @Test
     @DisplayName("The Bike can be decelerated")
     public void theBikeCanBeDecelerated() {
-        Bike jianshe = new Bike();
-        jianshe.startBike(true);
-        assertTrue(jianshe.isBikeDecelerating());
+        Bike roadrush = new Bike();
+        roadrush.startBike(true);
+        roadrush.decelerate(true, 1);
+        assertTrue(roadrush.isBikeDecelerating());
     }
 
     @Test
     @DisplayName("Decrement bike gear one in sequence of ones")
     public void deceleratesGearOneInIncrementOfOneTest() {
-        Bike jiansheOne = new Bike();
-        jiansheOne.startBike(true);
-        jiansheOne.gearOne(1);
-        jiansheOne.decelerate(true, 44);
-        assertEquals(43, jiansheOne.getGearSpeedDecrease());
+        Bike tvs = new Bike();
+        tvs.startBike(true);
+        tvs.gearSelection(1);
+        tvs.decelerate(true, 44);
+        assertEquals(43, tvs.getSpeedDecrease());
     }
 
     @Test
     @DisplayName("Decrement bike gear two in sequence of twos")
     public void deceleratesGearTwoInIncrementOfTwoTest() {
-        Bike jiansheTwo = new Bike();
-        jiansheTwo.startBike(true);
-        jiansheTwo.gearTwo(2);
-        jiansheTwo.decelerate(true, 35);
-        assertEquals(33, jiansheTwo.getGearSpeedDecrease());
+        Bike innoson = new Bike();
+        innoson.startBike(true);
+        innoson.gearSelection(2);
+        innoson.decelerate(true, 35);
+        assertEquals(33, innoson.getSpeedDecrease());
     }
 
     @Test
     @DisplayName("Decrement bike gear three in sequence of threes")
     public void deceleratesGearThreeInIncrementOfThreeTest() {
-        Bike jiansheThree = new Bike();
-        jiansheThree.startBike(true);
-        jiansheThree.gearThree(3);
-        jiansheThree.decelerate(true, 24);
-        assertEquals(21, jiansheThree.getGearSpeedDecrease());
+        Bike polaris = new Bike();
+        polaris.startBike(true);
+        polaris.gearSelection(3);
+        polaris.decelerate(true, 24);
+        assertEquals(21, polaris.getSpeedDecrease());
     }
 
     @Test
     @DisplayName("Decrement bike gear four in sequence of fours")
     public void deceleratesGearFourInIncrementOfFourTest() {
-        Bike jiansheFour = new Bike();
-        jiansheFour.startBike(true);
-        jiansheFour.gearFour(4);
-        jiansheFour.decelerate(true, 15);
-        assertEquals(11, jiansheFour.getGearSpeedDecrease());
+        Bike kymco = new Bike();
+        kymco.startBike(true);
+        kymco.gearSelection(4);
+        kymco.decelerate(true, 15);
+        assertEquals(11, kymco.getSpeedDecrease());
     }
-//
-//    @Test
-//    @DisplayName("Speed acceleration gear auto change")
-//    public void autoGearSelectionAccelerationTest() {
-//        Bike bikeyCrush = new Bike();
+
+    @Test
+    @DisplayName("Speed acceleration gear auto change")
+    public void autoGearSelectionAccelerationTest() {
+        Bike bikeyCrush = new Bike();
 //        start at a given gear range
-//        bikeyCrush.gearOne(20);
+        bikeyCrush.startBike(true);
+//        bikeyCrush.accelerate(true,1);
+//        bikeyCrush.accelerate(true,2);
+//        bikeyCrush.accelerate(true,3);
+
+        bikeyCrush.gearSelection(20);
 //        check the starting gear for the gear range it falls under
-//        String getGearRange = bikeyCrush.checkForGearRange();
+        String getGearRange = bikeyCrush.checkForGearRange();
 //        assert the range is expected one
-//        assertEquals("Gear 1", getGearRange);
+        assertEquals("Gear 1", getGearRange);
 //        change gear by more acceleration
-//        bikeyCrush.gearTwo(30);
-//        getGearRange = bikeyCrush.checkForGearRange();
-//        assertEquals("Gear 2", getGearRange);
+        bikeyCrush.gearSelection(30);
+        getGearRange = bikeyCrush.checkForGearRange();
+        assertEquals("Gear 2", getGearRange);
 
 //        bikeyCrush.gear
 //        asserTrue(bikeyCrush.gearRange())
 //        bikeyCrush.autoGearIncrease(15);
 //        bikeyCrush.autoGearIncrease();
-
     }
-//
-//
-//
-//
-//
-//
-
-//}
+}

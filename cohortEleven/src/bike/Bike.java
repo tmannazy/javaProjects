@@ -2,10 +2,10 @@ package bike;
 
 public class Bike {
     private boolean bikePowerCondition;
-    private boolean moves;
-    private int gearLevel;
+    private boolean accelerateBike;
+    private int selectedGearLevel;
     private int gearLevelIncrease;
-    private boolean decelerateMoves;
+    private boolean decelerateBike;
     private int decreaseGearLevel;
 
     public void startBike(boolean status) {
@@ -24,83 +24,71 @@ public class Bike {
         return bikePowerCondition;
     }
 
-    public void accelerate(boolean level, int speed) {
-        moves = level;
-        increaseSpeed(speed);
+    public void accelerate(boolean action, int speedLevel) {
+        accelerateBike = action;
+        increaseSpeed(speedLevel);
+    }
+
+    public void decelerate(boolean action, int speedLevel) {
+        decelerateBike = action;
+        decreaseSpeed(speedLevel);
     }
 
     public boolean isBikeAccelerating() {
-        return moves;
+        return accelerateBike;
     }
 
-    public void gearOne(int gearRange) {
-        gearLevel = gearRange;
+    public void gearSelection(int gearSelected) {
+        if (gearSelected >= 1 && gearSelected <= 4)
+            selectedGearLevel = gearSelected;
     }
 
-    public void gearTwo(int gearRange) {
-        gearLevel = gearRange;
+    private void increaseSpeed(int speedLevelToIncrease) {
+        if (speedLevelToIncrease >= 0 && speedLevelToIncrease <= 20)
+            gearLevelIncrease = selectedGearLevel + speedLevelToIncrease;
+
+        if (speedLevelToIncrease >= 21 && speedLevelToIncrease <= 30)
+            gearLevelIncrease = selectedGearLevel + speedLevelToIncrease;
+
+        if (speedLevelToIncrease >= 31 && speedLevelToIncrease <= 40)
+            gearLevelIncrease = selectedGearLevel + speedLevelToIncrease;
+
+        if (speedLevelToIncrease >= 41)
+            gearLevelIncrease = selectedGearLevel + speedLevelToIncrease;
     }
 
-    public void gearThree(int gearRange) {
-        gearLevel = gearRange;
-    }
-
-    public void gearFour(int gearRange) {
-        gearLevel = gearRange;
-    }
-
-    private void increaseSpeed(int gearIncrease) {
-        if (gearIncrease >= 0 && gearIncrease <= 20)
-            gearLevelIncrease = gearLevel + gearIncrease;
-
-        if (gearIncrease >= 21 && gearIncrease <= 30)
-            gearLevelIncrease = gearLevel + gearIncrease;
-
-        if (gearIncrease >= 31 && gearIncrease <= 40)
-            gearLevelIncrease = gearLevel + gearIncrease;
-
-        if (gearIncrease >= 41)
-            gearLevelIncrease = gearLevel + gearIncrease;
-    }
-
-    public int getGearSpeed() {
+    public int getSpeedIncrease() {
         return gearLevelIncrease;
     }
 
-    public void decelerate(boolean action, int speed) {
-        decelerateMoves = action;
-        decreaseSpeed(speed);
+        public boolean isBikeDecelerating() {
+        return decelerateBike;
     }
 
-    public boolean isBikeDecelerating() {
-        return decelerateMoves;
+    private void decreaseSpeed(int speedLevelToDecrease) {
+        if (speedLevelToDecrease >= 0 && speedLevelToDecrease <= 20)
+            decreaseGearLevel = speedLevelToDecrease - selectedGearLevel;
+
+        if (speedLevelToDecrease >= 21 && speedLevelToDecrease <= 30)
+            decreaseGearLevel = speedLevelToDecrease - selectedGearLevel;
+
+        if (speedLevelToDecrease >= 31 && speedLevelToDecrease <= 40)
+            decreaseGearLevel = speedLevelToDecrease - selectedGearLevel;
+
+        if (speedLevelToDecrease >= 41)
+            decreaseGearLevel = speedLevelToDecrease - selectedGearLevel;
     }
 
-    private void decreaseSpeed(int gearDecrease) {
-        if (gearDecrease >= 0 && gearDecrease <= 20)
-            decreaseGearLevel = gearDecrease - gearLevel;
-
-        if (gearDecrease >= 21 && gearDecrease <= 30)
-            decreaseGearLevel = gearDecrease - gearLevel;
-
-        if (gearDecrease >= 31 && gearDecrease <= 40)
-            decreaseGearLevel = gearDecrease - gearLevel;
-
-        if (gearDecrease >= 41)
-            decreaseGearLevel = gearDecrease - gearLevel;
-
-    }
-
-    public int getGearSpeedDecrease() {
+    public int getSpeedDecrease() {
         return decreaseGearLevel;
     }
 
     public String checkForGearRange() {
         String gearRangeSelected = null;
-        if (gearLevel >= 0 && gearLevel <= 20)
+        if (selectedGearLevel >= 0 && selectedGearLevel <= 20)
             gearRangeSelected = "Gear 1";
 
-        if (gearLevel >= 21 && gearLevel <= 30)
+        if (selectedGearLevel >= 21 && selectedGearLevel <= 30)
             gearRangeSelected = "Gear 2";
 
 
