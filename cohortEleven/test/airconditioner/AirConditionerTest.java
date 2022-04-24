@@ -27,11 +27,11 @@ public class AirConditionerTest {
     @DisplayName("Given that AC is decreased when I increase temperature check that temperature increases")
     public void isTempOfACIncreasedTest() {
         AirConditioner mideaRoomThree = new AirConditioner();
-        mideaRoomThree.setTemp(27);
-        mideaRoomThree.temperatureLevel(12);
-        mideaRoomThree.temperatureLevel(30);
+        mideaRoomThree.switchButton(true);
+        mideaRoomThree.temperatureLevel(19);
+        mideaRoomThree.temperatureLevel(26);
         int tempLevel = mideaRoomThree.getTempLevel();
-        assertEquals(30, tempLevel);
+        assertEquals(26, tempLevel);
     }
 
     @Test
@@ -39,7 +39,6 @@ public class AirConditionerTest {
     public void isTempOfACDecreasedTest() {
         AirConditioner mideaRoomFour = new AirConditioner();
         mideaRoomFour.switchButton(true);
-        assertTrue(mideaRoomFour.getSwitchStatus());
         mideaRoomFour.temperatureLevel(20);
         int tempLevel = mideaRoomFour.getTempLevel();
         assertEquals(20, tempLevel);
@@ -50,7 +49,6 @@ public class AirConditionerTest {
     public void isTempOfACIncreasedBeyondThirtyTest() {
         AirConditioner mideaRoomFive = new AirConditioner();
         mideaRoomFive.switchButton(true);
-        assertTrue(mideaRoomFive.getSwitchStatus());
         mideaRoomFive.temperatureLevel(45);
         int tempLevel = mideaRoomFive.getTempLevel();
         assertEquals(30, tempLevel);
@@ -61,7 +59,6 @@ public class AirConditionerTest {
     public void isTempOfACDecreasedBelowSixteenTest() {
         AirConditioner mideaRoomSix = new AirConditioner();
         mideaRoomSix.switchButton(true);
-        assertTrue(mideaRoomSix.getSwitchStatus());
         mideaRoomSix.temperatureLevel(15);
         int tempLevel = mideaRoomSix.getTempLevel();
         assertEquals(16, tempLevel);
