@@ -28,8 +28,8 @@ public class AirConditionerTest {
     public void isTempOfACIncreasedTest() {
         AirConditioner mideaRoomThree = new AirConditioner();
         mideaRoomThree.setTemp(27);
-        mideaRoomThree.decreaseTemp(12);
-        mideaRoomThree.increaseTemp(30);
+        mideaRoomThree.temperatureLevel(12);
+        mideaRoomThree.temperatureLevel(30);
         int tempLevel = mideaRoomThree.getTempLevel();
         assertEquals(30, tempLevel);
     }
@@ -40,9 +40,9 @@ public class AirConditionerTest {
         AirConditioner mideaRoomFour = new AirConditioner();
         mideaRoomFour.switchButton(true);
         assertTrue(mideaRoomFour.getSwitchStatus());
-        mideaRoomFour.decreaseTemp(20);
+        mideaRoomFour.temperatureLevel(20);
         int tempLevel = mideaRoomFour.getTempLevel();
-        assertEquals(-20, tempLevel);
+        assertEquals(20, tempLevel);
     }
 
     @Test
@@ -51,7 +51,7 @@ public class AirConditionerTest {
         AirConditioner mideaRoomFive = new AirConditioner();
         mideaRoomFive.switchButton(true);
         assertTrue(mideaRoomFive.getSwitchStatus());
-        mideaRoomFive.increaseTemp(45);
+        mideaRoomFive.temperatureLevel(45);
         int tempLevel = mideaRoomFive.getTempLevel();
         assertEquals(30, tempLevel);
     }
@@ -62,7 +62,7 @@ public class AirConditionerTest {
         AirConditioner mideaRoomSix = new AirConditioner();
         mideaRoomSix.switchButton(true);
         assertTrue(mideaRoomSix.getSwitchStatus());
-        mideaRoomSix.decreaseTemp(15);
+        mideaRoomSix.temperatureLevel(15);
         int tempLevel = mideaRoomSix.getTempLevel();
         assertEquals(16, tempLevel);
     }
