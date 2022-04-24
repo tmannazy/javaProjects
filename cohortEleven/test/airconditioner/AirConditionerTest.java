@@ -10,7 +10,6 @@ public class AirConditionerTest {
     @DisplayName("Given that AC is off test for turning on the AC when turned on")
     public void myACIsOffTest() {
         AirConditioner mideaRoomOne = new AirConditioner();
-        mideaRoomOne.getSwitchStatus();
         mideaRoomOne.switchButton(true);
         assertTrue(mideaRoomOne.getSwitchStatus());
     }
