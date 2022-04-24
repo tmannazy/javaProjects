@@ -32,12 +32,34 @@ public class Bike {
     return moves;
     }
 
-    public void gear(int gearRange) {
-        gearLevel = gearRange;
+    public void gearOne(int gearRange) {
+            gearLevel = gearRange;
+    }
+
+    public void gearTwo(int gearRange) {
+            gearLevel = gearRange;
+    }
+
+    public void gearThree(int gearRange) {
+            gearLevel = gearRange;
+    }
+
+    public void gearFour(int gearRange) {
+            gearLevel = gearRange;
     }
 
     public void increaseGear(int gearIncrease) {
-        gearLevelIncrease = gearLevel + gearIncrease;
+        if (gearIncrease >= 0 && gearIncrease <= 20)
+            gearLevelIncrease = gearLevel + gearIncrease;
+
+        if (gearIncrease >= 21 && gearIncrease <= 30)
+            gearLevelIncrease = gearLevel + gearIncrease;
+
+        if (gearIncrease >= 31 && gearIncrease <= 40)
+            gearLevelIncrease = gearLevel + gearIncrease;
+
+        if (gearIncrease >= 41)
+            gearLevelIncrease = gearLevel + gearIncrease;
     }
 
     public int getGearSpeed() {
@@ -53,10 +75,33 @@ public class Bike {
     }
 
     public void decreaseGear(int gearDecrease) {
-        decreaseGearLevel = gearDecrease - gearLevel;
+        if (gearDecrease >= 0 && gearDecrease <= 20)
+            decreaseGearLevel = gearDecrease - gearLevel;
+
+        if (gearDecrease >= 21 && gearDecrease <= 30)
+            decreaseGearLevel = gearDecrease - gearLevel;
+
+        if (gearDecrease >= 31 && gearDecrease <= 40)
+            decreaseGearLevel = gearDecrease - gearLevel;
+
+        if (gearDecrease >= 41)
+            decreaseGearLevel = gearDecrease - gearLevel;
+
     }
 
     public int getGearSpeedDecrease() {
         return decreaseGearLevel;
+    }
+
+    public String checkForGearRange() {
+        String gearRangeSelected = null;
+        if (gearLevel >= 0 && gearLevel <= 20)
+            gearRangeSelected = "Gear 1";
+
+        if (gearLevel >= 21 && gearLevel <= 30)
+            gearRangeSelected = "Gear 2";
+
+
+        return gearRangeSelected;
     }
 }

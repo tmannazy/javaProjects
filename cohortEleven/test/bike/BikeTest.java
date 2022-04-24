@@ -36,7 +36,7 @@ public class BikeTest {
     @DisplayName("Increment bike gear one in sequence of ones")
     public void acceleratesGearOneInIncrementOfOnesTest() {
         Bike powerBikeOne = new Bike();
-        powerBikeOne.gear(1);
+        powerBikeOne.gearOne(1);
         powerBikeOne.increaseGear(3);
         assertEquals(4, powerBikeOne.getGearSpeed());
     }
@@ -45,7 +45,7 @@ public class BikeTest {
     @DisplayName("Increment bike gear two in sequence of twos")
     public void acceleratesGearTwoInIncrementOfTwosTest() {
         Bike powerBikeTwo = new Bike();
-        powerBikeTwo.gear(2);
+        powerBikeTwo.gearTwo(2);
         powerBikeTwo.increaseGear(24);
         assertEquals(26, powerBikeTwo.getGearSpeed());
     }
@@ -54,7 +54,7 @@ public class BikeTest {
     @DisplayName("Increment bike gear three in sequence of threes")
     public void acceleratesGearThreeInIncrementOfThreesTest() {
         Bike powerBikeThree = new Bike();
-        powerBikeThree.gear(3);
+        powerBikeThree.gearThree(3);
         powerBikeThree.increaseGear(35);
         assertEquals(38, powerBikeThree.getGearSpeed());
     }
@@ -63,11 +63,13 @@ public class BikeTest {
     @DisplayName("Increment bike gear four in sequence of fours")
     public void acceleratesGearFourInIncrementOfFourTest() {
         Bike powerBikeFour = new Bike();
-        powerBikeFour.gear(4);
+        powerBikeFour.gearFour(4);
         powerBikeFour.increaseGear(44);
         assertEquals(48, powerBikeFour.getGearSpeed());
     }
 
+
+//
     @Test
     @DisplayName("The Bike can be decelerated")
     public void theBikeCanBeDecelerated() {
@@ -75,12 +77,12 @@ public class BikeTest {
         jianshe.decelerate(true);
         assertTrue(jianshe.isBikeDecelerating());
     }
-
+//
     @Test
     @DisplayName("Decrement bike gear one in sequence of ones")
     public void deceleratesGearOneInIncrementOfOneTest() {
         Bike jiansheOne = new Bike();
-        jiansheOne.gear(1);
+        jiansheOne.gearOne(1);
         jiansheOne.decreaseGear(44);
         assertEquals(43, jiansheOne.getGearSpeedDecrease());
     }
@@ -89,7 +91,7 @@ public class BikeTest {
     @DisplayName("Decrement bike gear two in sequence of twos")
     public void deceleratesGearTwoInIncrementOfTwoTest() {
         Bike jiansheTwo = new Bike();
-        jiansheTwo.gear(2);
+        jiansheTwo.gearTwo(2);
         jiansheTwo.decreaseGear(35);
         assertEquals(33, jiansheTwo.getGearSpeedDecrease());
     }
@@ -98,7 +100,7 @@ public class BikeTest {
     @DisplayName("Decrement bike gear three in sequence of threes")
     public void deceleratesGearThreeInIncrementOfThreeTest() {
         Bike jiansheThree = new Bike();
-        jiansheThree.gear(3);
+        jiansheThree.gearThree(3);
         jiansheThree.decreaseGear(24);
         assertEquals(21, jiansheThree.getGearSpeedDecrease());
     }
@@ -107,25 +109,37 @@ public class BikeTest {
     @DisplayName("Decrement bike gear four in sequence of fours")
     public void deceleratesGearFourInIncrementOfFourTest() {
         Bike jiansheFour = new Bike();
-        jiansheFour.gear(4);
+        jiansheFour.gearFour(4);
         jiansheFour.decreaseGear(15);
         assertEquals(11, jiansheFour.getGearSpeedDecrease());
     }
-
+//
 //    @Test
 //    @DisplayName("Speed acceleration gear auto change")
 //    public void autoGearSelectionAccelerationTest() {
 //        Bike chevrush = new Bike();
+////        start at a given gear range
 //        chevrush.gear(4);
-//        chevrush.autoGearIncrease(15);
-//        chevrush.autoGearIncrease();
+////        check the starting gear for the gear range it falls under
+//        String getGearRange = chevrush.checkForGearRange();
+////        assert the range is expected one
+//        assertEquals("Gear 1", getGearRange);
+////        change gear by more acceleration
+//        chevrush.gear(24);
+//        getGearRange = chevrush.checkForGearRange();
+//        assertEquals("Gear 2", getGearRange);
+//
+////        chevrush.gear
+////        asserTrue(chevrush.gearRange())
+////        chevrush.autoGearIncrease(15);
+////        chevrush.autoGearIncrease();
 //
 //    }
-
-
-
-
-
-
+//
+//
+//
+//
+//
+//
 
 }
