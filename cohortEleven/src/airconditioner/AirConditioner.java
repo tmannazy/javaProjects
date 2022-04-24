@@ -15,7 +15,7 @@ public class AirConditioner {
 
     public void increaseTemp(int level) {
         if (level > 15 && level <= 30)
-            tempLevel += level;
+            tempLevel = level;
         if (level > 30)
             tempLevel = 30;
     }
@@ -25,9 +25,12 @@ public class AirConditioner {
     }
 
     public void decreaseTemp(int level) {
-        if (level > 15 && level <= 30)
-            tempLevel -= level;
-        if (level < 16)
-            tempLevel = 16;
+        if (level >= 16 && level <= 30)
+            tempLevel = level;
+    }
+
+    public void setTemp(int level) {
+        if (level >=16 && level <= 30)
+            tempLevel = level;
     }
 }

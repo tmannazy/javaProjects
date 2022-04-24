@@ -24,14 +24,14 @@ public class AirConditionerTest {
     }
 
     @Test
-    @DisplayName("Given that AC is on when I increase temperature check that temperature increases")
+    @DisplayName("Given that AC is decreased when I increase temperature check that temperature increases")
     public void isTempOfACIncreasedTest() {
         AirConditioner mideaRoomThree = new AirConditioner();
-        mideaRoomThree.switchButton(true);
-        assertTrue(mideaRoomThree.getSwitchStatus());
-        mideaRoomThree.increaseTemp(25);
+        mideaRoomThree.setTemp(27);
+        mideaRoomThree.decreaseTemp(12);
+        mideaRoomThree.increaseTemp(30);
         int tempLevel = mideaRoomThree.getTempLevel();
-        assertEquals(25, tempLevel);
+        assertEquals(30, tempLevel);
     }
 
     @Test
