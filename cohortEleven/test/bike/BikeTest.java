@@ -37,7 +37,7 @@ public class BikeTest {
     public void acceleratesGearOneInIncrementOfOnesTest() {
         Bike kawasaki = new Bike();
         kawasaki.accelerate(true, 15);
-        assertEquals(16, kawasaki.getSpeedIncrease());
+        assertEquals(16, kawasaki.getSpeedIncrease(), "Gear " + kawasaki.displaySelectedGear());
     }
 
     @Test
@@ -46,7 +46,7 @@ public class BikeTest {
         Bike honda = new Bike();
         honda.startBike(true);
         honda.accelerate(true, 24);
-        assertEquals(26, honda.getSpeedIncrease());
+        assertEquals(26, honda.getSpeedIncrease(), "Gear " + honda.displaySelectedGear());
     }
 
     @Test
@@ -55,7 +55,7 @@ public class BikeTest {
         Bike harleyDavidson = new Bike();
         harleyDavidson.startBike(true);
         harleyDavidson.accelerate(true, 35);
-        assertEquals(38, harleyDavidson.getSpeedIncrease());
+        assertEquals(38, harleyDavidson.getSpeedIncrease(), "Gear " + harleyDavidson.displaySelectedGear());
     }
 
     @Test
@@ -64,7 +64,7 @@ public class BikeTest {
         Bike suzuki = new Bike();
         suzuki.startBike(true);
         suzuki.accelerate(true, 44);
-        assertEquals(48, suzuki.getSpeedIncrease());
+        assertEquals(48, suzuki.getSpeedIncrease(), "Gear " + suzuki.displaySelectedGear());
     }
 
     @Test
@@ -82,7 +82,7 @@ public class BikeTest {
         Bike tvs = new Bike();
         tvs.startBike(true);
         tvs.decelerate(true, 13);
-        assertEquals(12, tvs.getSpeedDecrease());
+        assertEquals(12, tvs.getSpeedDecrease(), "Gear " + tvs.displaySelectedGear());
     }
 
     @Test
@@ -91,7 +91,7 @@ public class BikeTest {
         Bike innoson = new Bike();
         innoson.startBike(true);
         innoson.decelerate(true, 27);
-        assertEquals(25, innoson.getSpeedDecrease());
+        assertEquals(25, innoson.getSpeedDecrease(), "Gear " + innoson.displaySelectedGear());
     }
 
     @Test
@@ -100,7 +100,7 @@ public class BikeTest {
         Bike polaris = new Bike();
         polaris.startBike(true);
         polaris.decelerate(true, 39);
-        assertEquals(36, polaris.getSpeedDecrease());
+        assertEquals( 36, polaris.getSpeedDecrease(), "Gear " + polaris.displaySelectedGear());
     }
 
     @Test
@@ -109,6 +109,6 @@ public class BikeTest {
         Bike kymco = new Bike();
         kymco.startBike(true);
         kymco.decelerate(true, 48);
-        assertEquals(44, kymco.getSpeedDecrease());
+        assertEquals(44, kymco.getSpeedDecrease(), "Gear " + kymco.displaySelectedGear());
     }
 }

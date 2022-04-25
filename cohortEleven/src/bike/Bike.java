@@ -54,8 +54,8 @@ public class Bike {
         return decreaseGearLevel;
     }
 
-    public String displaySelectedGear() {
-        return "Gear " +  selectedGearLevel;
+    public int displaySelectedGear() {
+        return selectedGearLevel;
     }
 
     private void decreaseSpeed(int speedLevelToDecrease) {
