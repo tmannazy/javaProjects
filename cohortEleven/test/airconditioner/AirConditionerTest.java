@@ -55,7 +55,7 @@ public class AirConditionerTest {
     }
 
     @Test
-    @DisplayName("Given that when AC is on when I increase temp it should not get beyond 30")
+    @DisplayName("Given that when AC is on when I increase temp it should not get beyond 16")
     public void isTempOfACDecreasedBelowSixteenTest() {
         AirConditioner mideaRoomSix = new AirConditioner();
         mideaRoomSix.switchButton(true);
