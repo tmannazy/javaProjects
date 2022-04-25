@@ -11,23 +11,23 @@ public class BikeTest {
     @DisplayName("The Bike can be turned on")
     public void bikeCanBeTurnedOnTest() {
         Bike bajaj = new Bike();
-        bajaj.startBike(true);
-        assertTrue(bajaj.isBikeStarted());
+        bajaj.startAndStopBike(true);
+        assertTrue(bajaj.isBikeStartedOrStopped());
     }
 
     @Test
     @DisplayName("The Bike can be turned off")
     public void bikeCanBeTurnedOffTest() {
         Bike ogbuawaSpecial = new Bike();
-        ogbuawaSpecial.stopBike(true);
-        assertTrue(ogbuawaSpecial.isBikeStopped());
+        ogbuawaSpecial.startAndStopBike(true);
+        assertTrue(ogbuawaSpecial.isBikeStartedOrStopped());
     }
 
     @Test
     @DisplayName("The Bike can be accelerated")
     public void theBikeCanBeAccelerated() {
         Bike yamaha = new Bike();
-        yamaha.startBike(true);
+        yamaha.startAndStopBike(true);
         yamaha.accelerate(true, 5);
         assertTrue(yamaha.isBikeAccelerating());
     }
@@ -46,7 +46,7 @@ public class BikeTest {
     @DisplayName("Increment bike gear two in sequence of twos")
     public void acceleratesGearTwoInIncrementOfTwosTest() {
         Bike honda = new Bike();
-        honda.startBike(true);
+        honda.startAndStopBike(true);
         honda.accelerate(true, 24);
         int getGearInUse = honda.displaySelectedGear();
         assertEquals(26, honda.getSpeedIncrease());
@@ -57,7 +57,7 @@ public class BikeTest {
     @DisplayName("Increment bike gear three in sequence of threes")
     public void acceleratesGearThreeInIncrementOfThreesTest() {
         Bike harleyDavidson = new Bike();
-        harleyDavidson.startBike(true);
+        harleyDavidson.startAndStopBike(true);
         harleyDavidson.accelerate(true, 35);
         int getGearInUse = harleyDavidson.displaySelectedGear();
         assertEquals(38, harleyDavidson.getSpeedIncrease());
@@ -68,7 +68,7 @@ public class BikeTest {
     @DisplayName("Increment bike gear four in sequence of fours")
     public void acceleratesGearFourInIncrementOfFourTest() {
         Bike suzuki = new Bike();
-        suzuki.startBike(true);
+        suzuki.startAndStopBike(true);
         suzuki.accelerate(true, 44);
         int getGearInUse = suzuki.displaySelectedGear();
         assertEquals(48, suzuki.getSpeedIncrease());
@@ -79,7 +79,7 @@ public class BikeTest {
     @DisplayName("The Bike can be decelerated")
     public void theBikeCanBeDecelerated() {
         Bike roadrush = new Bike();
-        roadrush.startBike(true);
+        roadrush.startAndStopBike(true);
         roadrush.decelerate(true, 1);
         assertTrue(roadrush.isBikeDecelerating());
     }
@@ -88,7 +88,7 @@ public class BikeTest {
     @DisplayName("Decrement bike gear one in sequence of ones")
     public void deceleratesGearOneInIncrementOfOneTest() {
         Bike tvs = new Bike();
-        tvs.startBike(true);
+        tvs.startAndStopBike(true);
         tvs.decelerate(true, 13);
         int getGearInUse = tvs.displaySelectedGear();
         assertEquals(12, tvs.getSpeedDecrease());
@@ -99,7 +99,7 @@ public class BikeTest {
     @DisplayName("Decrement bike gear two in sequence of twos")
     public void deceleratesGearTwoInIncrementOfTwoTest() {
         Bike innoson = new Bike();
-        innoson.startBike(true);
+        innoson.startAndStopBike(true);
         innoson.decelerate(true, 27);
         int getGearInUse = innoson.displaySelectedGear();
         assertEquals(25, innoson.getSpeedDecrease());
@@ -110,7 +110,7 @@ public class BikeTest {
     @DisplayName("Decrement bike gear three in sequence of threes")
     public void deceleratesGearThreeInIncrementOfThreeTest() {
         Bike polaris = new Bike();
-        polaris.startBike(true);
+        polaris.startAndStopBike(true);
         polaris.decelerate(true, 39);
         int getGearInUse = polaris.displaySelectedGear();
         assertEquals( 36, polaris.getSpeedDecrease());
@@ -121,7 +121,7 @@ public class BikeTest {
     @DisplayName("Decrement bike gear four in sequence of fours")
     public void deceleratesGearFourInIncrementOfFourTest() {
         Bike kymco = new Bike();
-        kymco.startBike(true);
+        kymco.startAndStopBike(true);
         kymco.decelerate(true, 48);
         int getGearInUse = kymco.displaySelectedGear();
         assertEquals(44, kymco.getSpeedDecrease());

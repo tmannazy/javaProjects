@@ -6,21 +6,13 @@ public class Bike {
     private int selectedGearLevel;
     private int speedLevelIncrease;
     private boolean decelerateBike;
-    private int decreaseGearLevel;
+    private int speedLevelDecrease;
 
-    public void startBike(boolean status) {
+    public void startAndStopBike(boolean status) {
         bikePowerCondition = status;
     }
 
-    public boolean isBikeStarted() {
-        return bikePowerCondition;
-    }
-
-    public void stopBike(boolean action) {
-        bikePowerCondition = action;
-    }
-
-    public boolean isBikeStopped() {
+    public boolean isBikeStartedOrStopped() {
         return bikePowerCondition;
     }
 
@@ -51,7 +43,7 @@ public class Bike {
     }
 
     public int getSpeedDecrease() {
-        return decreaseGearLevel;
+        return speedLevelDecrease;
     }
 
     public int displaySelectedGear() {
@@ -61,44 +53,44 @@ public class Bike {
     private void decreaseSpeed(int speedLevelToDecrease) {
         if (speedLevelToDecrease >= 0 && speedLevelToDecrease <= 20) {
             gearSelection(1);
-            decreaseGearLevel = speedLevelToDecrease - selectedGearLevel;
+            speedLevelDecrease = speedLevelToDecrease - selectedGearLevel;
         }
 
         if (speedLevelToDecrease >= 21 && speedLevelToDecrease <= 30) {
             gearSelection(2);
-            decreaseGearLevel = speedLevelToDecrease - selectedGearLevel;
+            speedLevelDecrease = speedLevelToDecrease - selectedGearLevel;
         }
 
         if (speedLevelToDecrease >= 31 && speedLevelToDecrease <= 40) {
             gearSelection(3);
-            decreaseGearLevel = speedLevelToDecrease - selectedGearLevel;
+            speedLevelDecrease = speedLevelToDecrease - selectedGearLevel;
         }
 
         if (speedLevelToDecrease >= 41) {
             gearSelection(4);
-            decreaseGearLevel = speedLevelToDecrease - selectedGearLevel;
+            speedLevelDecrease = speedLevelToDecrease - selectedGearLevel;
         }
     }
 
     private void increaseSpeed(int speedLevelToIncrease) {
         if (speedLevelToIncrease >= 0 && speedLevelToIncrease <= 20) {
             gearSelection(1);
-            speedLevelIncrease = selectedGearLevel + speedLevelToIncrease;
+            speedLevelIncrease = speedLevelToIncrease + selectedGearLevel;
         }
 
         if (speedLevelToIncrease >= 21 && speedLevelToIncrease <= 30) {
             gearSelection(2);
-            speedLevelIncrease = selectedGearLevel + speedLevelToIncrease;
+            speedLevelIncrease = speedLevelToIncrease + selectedGearLevel;
         }
 
         if (speedLevelToIncrease >= 31 && speedLevelToIncrease <= 40) {
             gearSelection(3);
-            speedLevelIncrease = selectedGearLevel + speedLevelToIncrease;
+            speedLevelIncrease = speedLevelToIncrease + selectedGearLevel;
         }
 
         if (speedLevelToIncrease >= 41) {
             gearSelection(4);
-            speedLevelIncrease = selectedGearLevel + speedLevelToIncrease;
+            speedLevelIncrease = speedLevelToIncrease + selectedGearLevel;
         }
     }
 
