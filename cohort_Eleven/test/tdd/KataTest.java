@@ -229,6 +229,56 @@ public class KataTest {
     }
 
     @Test
+    public void flipNumber1Test() {
+        Kata flipper = new Kata();
+        int number = 1;
+        assertEquals(0, flipper.flipNumber(number));
+    }
+
+    @Test
+    public void flipNumber0Test() {
+        Kata flipper = new Kata();
+        int number = 0;
+        assertEquals(1, flipper.flipNumber(number));
+    }
+
+    @Test
+    public void evenNumberTest() {
+        Kata even = new Kata();
+        int number = 8950;
+        assertEquals("Even", even.isNumberEvenOrOdd(number));
+    }
+
+    @Test
+    public void oddNumberTest() {
+        Kata odd = new Kata();
+        int number = 77;
+        assertEquals("Odd", odd.isNumberEvenOrOdd(number));
+    }
+
+    @Test
+    public void highMysteryNumberTest() {
+        Kata guessNumber = new Kata();
+        int number = 54;
+        assertEquals("Your guess is too high, try again!", guessNumber.mysteryNumber(number));
+    }
+
+    @Test
+    public void lowMysteryNumberTest() {
+        Kata guessNumber = new Kata();
+        int number = 24;
+        assertEquals("Your guess is too low, try again!", guessNumber.mysteryNumber(number));
+    }
+
+    @Test
+    public void correctMysteryNumberTest() {
+        Kata guessNumber = new Kata();
+        int number = 47;
+        assertEquals("Correct!!! You guessed is right!", guessNumber.mysteryNumber(number));
+    }
+
+
+    @Test
     public void loopForEvenNumbersTest() {
         Kata getEvenNumbers = new Kata();
         assertEquals(21, getEvenNumbers.evenNumbersLoop());

@@ -114,7 +114,7 @@ public class Kata {
     public double calculateYear(int minutes) {
         int numOfMinutesInAYear = 525600;
         int numOfMinutesInADay = 1440;
-        int numOfDaysRemaining = 0;
+        int numOfDaysRemaining;
         int numOfYear = 0;
         System.out.println("Enter the number of minutes: " + minutes);
         if (minutes > numOfMinutesInAYear) {
@@ -160,6 +160,32 @@ public class Kata {
         if (score >= 60 && score < 70) grade = "D";
         if (score < 60) grade = "F";
         return grade;
+    }
+
+    public int flipNumber(int number) {
+        System.out.print("Enter number 1 or 0: " + number);
+        int numFlipped = 0;
+        if (number == 1) numFlipped = 0;
+        if (number == 0) numFlipped = 1;
+        return numFlipped;
+    }
+
+    public String isNumberEvenOrOdd(int number) {
+        String numStatusCheck = null;
+        System.out.print("Enter a number: " + number);
+        if (number % 2 == 0) numStatusCheck = "Even";
+        if (number % 2 != 0) numStatusCheck = "Odd";
+        return numStatusCheck;
+    }
+
+    public String mysteryNumber(int guessedNumber) {
+        int mysteryNumber = 47;
+        String guess = null;
+        System.out.print("Guess my mystery number: " + guessedNumber);
+        if (guessedNumber > mysteryNumber) guess = "Your guess is too high, try again!";
+        if (guessedNumber < mysteryNumber) guess = "Your guess is too low, try again!";
+        if (guessedNumber == mysteryNumber) guess = "Correct!!! You guessed is right!";
+        return guess;
     }
 
     public int evenNumbersLoop() {
