@@ -184,7 +184,7 @@ public class Kata {
         System.out.print("Guess my mystery number: " + guessedNumber);
         if (guessedNumber > mysteryNumber) guess = "Your guess is too high, try again!";
         if (guessedNumber < mysteryNumber) guess = "Your guess is too low, try again!";
-        if (guessedNumber == mysteryNumber) guess = "Correct!!! You guessed is right!";
+        if (guessedNumber == mysteryNumber) guess = "Correct!!! Your guess is right!";
         return guess;
     }
 

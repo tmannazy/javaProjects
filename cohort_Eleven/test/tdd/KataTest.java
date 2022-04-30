@@ -274,7 +274,7 @@ public class KataTest {
     public void correctMysteryNumberTest() {
         Kata guessNumber = new Kata();
         int number = 47;
-        assertEquals("Correct!!! You guessed is right!", guessNumber.mysteryNumber(number));
+        assertEquals("Correct!!! Your guess is right!", guessNumber.mysteryNumber(number));
     }
 
 
