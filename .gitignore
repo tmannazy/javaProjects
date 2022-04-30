@@ -4,3 +4,5 @@ Chapter_Two_Dietel/.idea/misc.xml, ./chapterTwo/.idea/modules.xml, ./chapterTwo/
 Chapter_Two_Dietel/.idea/workspace.xml
 Chapter_Two_Dietel/src/
 Chapter_Two_Dietel/.idea/
+*.idea
+bookstoread/
