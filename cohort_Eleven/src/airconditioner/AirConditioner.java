@@ -3,6 +3,7 @@ package airconditioner;
 public class AirConditioner {
     private boolean power;
     private int tempLevel;
+
     public void switchButton(boolean status) {
         if (status) power = true;
 

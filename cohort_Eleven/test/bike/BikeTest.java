@@ -3,8 +3,7 @@ package bike;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BikeTest {
     @Test
@@ -28,7 +27,7 @@ public class BikeTest {
     public void theBikeCanBeAccelerated() {
         Bike yamaha = new Bike();
         yamaha.startAndStopBike(true);
-        yamaha.accelerate(true, 5);
+        yamaha.accelerate(true);
         assertTrue(yamaha.isBikeAccelerating());
     }
 
@@ -36,10 +35,12 @@ public class BikeTest {
     @DisplayName("Increment bike gear one in sequence of ones")
     public void acceleratesGearOneInIncrementOfOnesTest() {
         Bike kawasaki = new Bike();
-        kawasaki.accelerate(true, 15);
+        kawasaki.startAndStopBike(true);
+        kawasaki.accelerate(true);
         int getGearInUse = kawasaki.displaySelectedGear();
-        assertEquals(16, kawasaki.getSpeedIncrease());
+        assertEquals(20,kawasaki.getSpeedIncrease());
         assertEquals(1, getGearInUse);
+        assertFalse(kawasaki.isBikeDecelerating());
     }
 
     @Test
@@ -47,9 +48,9 @@ public class BikeTest {
     public void acceleratesGearTwoInIncrementOfTwosTest() {
         Bike honda = new Bike();
         honda.startAndStopBike(true);
-        honda.accelerate(true, 24);
+        honda.accelerate(true);
         int getGearInUse = honda.displaySelectedGear();
-        assertEquals(26, honda.getSpeedIncrease());
+        assertEquals(31, honda.getSpeedIncrease());
         assertEquals(2, getGearInUse);
     }
 
@@ -58,10 +59,10 @@ public class BikeTest {
     public void acceleratesGearThreeInIncrementOfThreesTest() {
         Bike harleyDavidson = new Bike();
         harleyDavidson.startAndStopBike(true);
-        harleyDavidson.accelerate(true, 35);
+        harleyDavidson.accelerate(true);
         int getGearInUse = harleyDavidson.displaySelectedGear();
-        assertEquals(38, harleyDavidson.getSpeedIncrease());
-        assertEquals(3, harleyDavidson.displaySelectedGear());
+        assertEquals(41, harleyDavidson.getSpeedIncrease());
+        assertEquals(3, getGearInUse);
     }
 
     @Test
@@ -69,9 +70,9 @@ public class BikeTest {
     public void acceleratesGearFourInIncrementOfFourTest() {
         Bike suzuki = new Bike();
         suzuki.startAndStopBike(true);
-        suzuki.accelerate(true, 44);
+        suzuki.accelerate(true);
         int getGearInUse = suzuki.displaySelectedGear();
-        assertEquals(48, suzuki.getSpeedIncrease());
+        assertEquals(54, suzuki.getSpeedIncrease());
         assertEquals(4, getGearInUse);
     }
 
