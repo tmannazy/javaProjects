@@ -30,122 +30,143 @@ public class BikeTest {
         int speedCount = 0;
         yamaha.accelerate(true, speedCount);
         assertTrue(yamaha.isBikeAccelerating());
+        assertFalse(yamaha.isBikeDecelerating());
     }
 
     @Test
     @DisplayName("Increment bike gear one in sequence of ones")
-    public void acceleratesGearOneInIncrementOfOnesTest() {
+    public void acceleratesSpeedInGearOneTest() {
         Bike kawasaki = new Bike();
         kawasaki.startAndStopBike(true);
         assertFalse(kawasaki.isBikeDecelerating());
-        int counter = 0;
-        while (counter <= 19) {
-            kawasaki.accelerate(true, counter);
-            counter++;
+        int speedCount = 0;
+        while (speedCount <= 19) {
+            kawasaki.accelerate(true, speedCount);
+            speedCount++;
         }
         int getGearInUse = kawasaki.displaySelectedGear();
-        assertEquals(20, kawasaki.getGearMaxSpeed());
+        assertEquals(20, kawasaki.getGearMaxOrMinSpeed());
         assertEquals(1, getGearInUse);
     }
 
     @Test
     @DisplayName("Increment bike gear two in sequence of twos")
-    public void acceleratesGearTwoInIncrementOfTwosTest() {
+    public void acceleratesSpeedInGearTwoTest() {
         Bike honda = new Bike();
         honda.startAndStopBike(true);
         assertFalse(honda.isBikeDecelerating());
-        int counter = 0;
-        while (counter < 29) {
-            honda.accelerate(true, counter);
-            counter++;
+        int speedCount = 20;
+        while (speedCount < 30) {
+            honda.accelerate(true, speedCount);
+            speedCount = speedCount + 2;
         }
         int getGearInUse = honda.displaySelectedGear();
-        assertEquals(30, honda.getGearMaxSpeed());
+        assertEquals(30, honda.getGearMaxOrMinSpeed());
         assertEquals(2, getGearInUse);
     }
 
     @Test
     @DisplayName("Increment bike gear three in sequence of threes")
-    public void acceleratesGearThreeInIncrementOfThreesTest() {
+    public void acceleratesSpeedInGearThreeTest() {
         Bike harleyDavidson = new Bike();
         harleyDavidson.startAndStopBike(true);
         assertFalse(harleyDavidson.isBikeDecelerating());
-        int counter = 0;
-        while (counter < 39) {
-            harleyDavidson.accelerate(true, counter);
-            counter++;
+        int speedCount = 31;
+        while (speedCount < 40) {
+            harleyDavidson.accelerate(true, speedCount);
+            speedCount = speedCount + 3;
         }
         int getGearInUse = harleyDavidson.displaySelectedGear();
-        assertEquals(41, harleyDavidson.getGearMaxSpeed());
+        assertEquals(40, harleyDavidson.getGearMaxOrMinSpeed());
         assertEquals(3, getGearInUse);
     }
 
     @Test
     @DisplayName("Increment bike gear four in sequence of fours")
-    public void acceleratesGearFourInIncrementOfFourTest() {
+    public void acceleratesSpeedInGearFourTest() {
         Bike suzuki = new Bike();
         suzuki.startAndStopBike(true);
         assertFalse(suzuki.isBikeDecelerating());
-        int counter = 0;
-        while (counter < 49) {
-            suzuki.accelerate(true, counter);
-            counter++;
+        int speedCount = 41;
+        while (speedCount <= 52) {
+            suzuki.accelerate(true, speedCount);
+            speedCount = speedCount + 4;
         }
         int getGearInUse = suzuki.displaySelectedGear();
-        assertEquals(52, suzuki.getGearMaxSpeed());
+        assertEquals(53, suzuki.getGearMaxOrMinSpeed());
         assertEquals(4, getGearInUse);
     }
 
-//    @Test
-//    @DisplayName("The Bike can be decelerated")
-//    public void theBikeCanBeDecelerated() {
-//        Bike roadrush = new Bike();
-//        roadrush.startAndStopBike(true);
-//        roadrush.decelerate(true, 1);
-//        assertTrue(roadrush.isBikeDecelerating());
-//    }
-//
-//    @Test
-//    @DisplayName("Decrement bike gear one in sequence of ones")
-//    public void deceleratesGearOneInIncrementOfOneTest() {
-//        Bike tvs = new Bike();
-//        tvs.startAndStopBike(true);
-//        tvs.decelerate(true, 13);
-//        int getGearInUse = tvs.displaySelectedGear();
-//        assertEquals(12, tvs.getSpeedDecrease());
-//        assertEquals(1, getGearInUse);
-//    }
-//
-//    @Test
-//    @DisplayName("Decrement bike gear two in sequence of twos")
-//    public void deceleratesGearTwoInIncrementOfTwoTest() {
-//        Bike innoson = new Bike();
-//        innoson.startAndStopBike(true);
-//        innoson.decelerate(true, 27);
-//        int getGearInUse = innoson.displaySelectedGear();
-//        assertEquals(25, innoson.getSpeedDecrease());
-//        assertEquals(2, getGearInUse);
-//    }
-//
-//    @Test
-//    @DisplayName("Decrement bike gear three in sequence of threes")
-//    public void deceleratesGearThreeInIncrementOfThreeTest() {
-//        Bike polaris = new Bike();
-//        polaris.startAndStopBike(true);
-//        polaris.decelerate(true, 39);
-//        int getGearInUse = polaris.displaySelectedGear();
-//        assertEquals( 36, polaris.getSpeedDecrease());
-//        assertEquals(3, getGearInUse);
-//    }
-//
-//    @Test
-//    @DisplayName("Decrement bike gear four in sequence of fours")
-//    public void deceleratesGearFourInIncrementOfFourTest() {
-//        Bike kymco = new Bike();
-//        kymco.startAndStopBike(true);
-//        kymco.decelerate(true, 48);
-//        int getGearInUse = kymco.displaySelectedGear();
-//        assertEquals(44, kymco.getSpeedDecrease());
-//        assertEquals(4, getGearInUse);
-//    }
+    @Test
+    @DisplayName("The Bike can be decelerated")
+    public void theBikeCanBeDecelerated() {
+        Bike roadRush = new Bike();
+        roadRush.startAndStopBike(true);
+        roadRush.decelerate(true, 0);
+        assertTrue(roadRush.isBikeDecelerating());
+    }
+
+    @Test
+    @DisplayName("Decrement bike gear one in sequence of ones")
+    public void deceleratesSpeedInGearOneTest() {
+        Bike tvs = new Bike();
+        tvs.startAndStopBike(true);
+        assertFalse(tvs.isBikeAccelerating());
+        int speedCount = 19;
+        while (speedCount >= 0) {
+            tvs.decelerate(true, speedCount);
+            speedCount--;
+        }
+        int getGearInUse = tvs.displaySelectedGear();
+        assertEquals(0, tvs.getGearMaxOrMinSpeed());
+        assertEquals(1, getGearInUse);
+    }
+
+    @Test
+    @DisplayName("Decrement bike gear two in sequence of twos")
+    public void deceleratesSpeedInGearTwoTest() {
+        Bike innoson = new Bike();
+        innoson.startAndStopBike(true);
+        assertFalse(innoson.isBikeAccelerating());
+        int speedCount = 30;
+        while (speedCount > 21) {
+            innoson.decelerate(true, speedCount);
+            speedCount = speedCount - 2;
+        }
+        int getGearInUse = innoson.displaySelectedGear();
+        assertEquals(20, innoson.getGearMaxOrMinSpeed());
+        assertEquals(2, getGearInUse);
+    }
+
+    @Test
+    @DisplayName("Decrement bike gear three in sequence of threes")
+    public void deceleratesSpeedInGearThreeTest() {
+        Bike polaris = new Bike();
+        polaris.startAndStopBike(true);
+        assertFalse(polaris.isBikeAccelerating());
+        int speedCount = 40;
+        while (speedCount > 31) {
+            polaris.decelerate(true, speedCount);
+            speedCount = speedCount - 3;
+        }
+        int getGearInUse = polaris.displaySelectedGear();
+        assertEquals(31, polaris.getGearMaxOrMinSpeed());
+        assertEquals(3, getGearInUse);
+    }
+
+    @Test
+    @DisplayName("Decrement bike gear four in sequence of fours")
+    public void deceleratesSpeedInGearFourTest() {
+        Bike kymco = new Bike();
+        kymco.startAndStopBike(true);
+        assertFalse(kymco.isBikeAccelerating());
+        int speedCount = 53;
+        while (speedCount > 41) {
+            kymco.decelerate(true, speedCount);
+            speedCount = speedCount - 4;
+        }
+        int getGearInUse = kymco.displaySelectedGear();
+        assertEquals(41, kymco.getGearMaxOrMinSpeed());
+        assertEquals(4, getGearInUse);
+    }
 }
