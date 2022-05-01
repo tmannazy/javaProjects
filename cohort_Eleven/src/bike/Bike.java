@@ -4,7 +4,7 @@ public class Bike {
     private boolean bikePowerCondition;
     private boolean accelerateBike;
     private int selectedGearLevel;
-    private int speedLevelIncrease;
+    private int gearMaxSpeed;
     private boolean decelerateBike;
     private int speedLevelDecrease;
 
@@ -18,49 +18,83 @@ public class Bike {
     }
 
     public void accelerate(boolean action) {
-        int counter = 0;
+        int counter = 1;
+        int increaseSpeedLevelOne = 0;
         if (!decelerateBike && selectedGearLevel == 0) {
             accelerateBike = action;
-            gearSelection(1);
-            while (counter < 20 && speedLevelIncrease <= 20) {
+            selectedGearLevel = 1;
+            while (counter <= 20 && increaseSpeedLevelOne <= 20) {
                 counter++;
-                speedLevelIncrease += selectedGearLevel;
+                increaseSpeedLevelOne += selectedGearLevel;
             }
+            saveMaxSpeed(increaseSpeedLevelOne);
         }
-        if (counter >= 20) {
-            gearSelection(2);
-            speedLevelIncrease++;
-            while (speedLevelIncrease >= 21 && speedLevelIncrease <= 30) {
-                speedLevelIncrease += selectedGearLevel;
-                counter++;
-            }
-            counter = speedLevelIncrease;
-        }
-
-        if (counter >= 31) {
-            gearSelection(3);
-            speedLevelIncrease++;
-            while (speedLevelIncrease >= 31 && speedLevelIncrease <= 40) {
-                speedLevelIncrease += selectedGearLevel;
-                counter++;
-            }
-            counter = speedLevelIncrease;
-        }
-
-        if (counter >= 41) {
-            gearSelection(4);
-            speedLevelIncrease++;
-            while (speedLevelIncrease >= 41 && speedLevelIncrease <= 50) {
-                speedLevelIncrease += selectedGearLevel;
-                counter++;
-            }
-        }
+        if (counter == 21) accelerateToGearTwo(increaseSpeedLevelOne);
 
     }
 
+    private void accelerateToGearTwo(int increaseSpeedLevelOne) {
+        int counter = increaseSpeedLevelOne;
+        int increaseSpeedLevelTwo = increaseSpeedLevelOne;
+        selectedGearLevel = 2;
+        while (increaseSpeedLevelTwo < 30) {
+            counter++;
+            increaseSpeedLevelTwo += selectedGearLevel;
+        }
+        saveMaxSpeed(increaseSpeedLevelTwo);
+        if (counter < increaseSpeedLevelTwo) {
+            counter = increaseSpeedLevelTwo;
+            accelerateToGearThree(increaseSpeedLevelTwo);
+        }
+    }
+
+    private void accelerateToGearThree(int increaseSpeedLevelTwo) {
+
+    }
+//        if(counter >=20&&!(increaseSpeedLevelTwo ==0))
+//
+//    {
+//        selectedGearLevel = 2;
+//        increaseSpeedLevelTwo = increaseSpeedLevelOne;
+//        increaseSpeedLevelTwo++;
+//        while (increaseSpeedLevelTwo >= 21 && increaseSpeedLevelTwo <= 30) {
+//            counter++;
+//            increaseSpeedLevelTwo += selectedGearLevel;
+//        }
+//        counter = increaseSpeedLevelTwo;
+//        saveMaxSpeed(increaseSpeedLevelTwo);
+//    }
+//
+//        if(counter >=31)
+//
+//    {
+//        selectedGearLevel = 3;
+//        increaseSpeedLevelThree = increaseSpeedLevelTwo;
+//        while (increaseSpeedLevelThree < 40) {
+//            counter++;
+//            increaseSpeedLevelThree += selectedGearLevel;
+//        }
+//        counter = increaseSpeedLevelThree;
+//        saveMaxSpeed(increaseSpeedLevelThree);
+//    }
+//
+//        if(counter >=40)
+//
+//    {
+//        selectedGearLevel = 4;
+//        increaseSpeedLevelFour = increaseSpeedLevelThree;
+//        while (increaseSpeedLevelFour >= 40 && increaseSpeedLevelFour <= 50) {
+//            counter++;
+//            increaseSpeedLevelFour += selectedGearLevel;
+//        }
+//        saveMaxSpeed(increaseSpeedLevelFour);
+//    }
+//}
+//void
+
+
     public void decelerate(boolean action, int speedLevel) {
         decelerateBike = action;
-        decreaseSpeed(speedLevel);
     }
 
     public boolean isBikeAccelerating() {
@@ -75,8 +109,12 @@ public class Bike {
         selectedGearLevel = gearSelected;
     }
 
-    public int getSpeedIncrease() {
-        return speedLevelIncrease;
+    private void saveMaxSpeed(int speed) {
+        gearMaxSpeed = speed;
+    }
+
+    public int getGearMaxSpeed() {
+        return gearMaxSpeed;
     }
 
     public int getSpeedDecrease() {
