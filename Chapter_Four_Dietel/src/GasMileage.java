@@ -30,6 +30,7 @@ public class GasMileage {
 //          Print "No miles or gallons entered"
 
     public static void main(String... args) {
+//        Question 4.17
         Scanner getUserInput = new Scanner(System.in);
         int total = 0;
         int counter = 0;
