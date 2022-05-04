@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class RaiseToPowerN {
+public class RaiseToNthPower {
     public static void main(String... args) {
         System.out.print("Enter the base number: ");
         Scanner scanner = new Scanner(System.in);
