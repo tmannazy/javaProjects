@@ -1,4 +1,4 @@
-public class NumberPyramidPrinter {
+public class NumberHillPattern {
     public static void main(String... args) {
         int space = 5;
         for (int rows = 1; rows <= space; rows++) {
