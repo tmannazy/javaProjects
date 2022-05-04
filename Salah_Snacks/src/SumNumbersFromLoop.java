@@ -7,13 +7,13 @@ public class SumNumbersFromLoop {
         String decision;
 
         do {
-            System.out.println("Enter first number: ");
+            System.out.print("Enter first number: ");
             int firstNumber = scanner.nextInt();
-            System.out.println("Enter second number: ");
+            System.out.print("Enter second number: ");
             int secondNumber = scanner.nextInt();
             int total = firstNumber + secondNumber;
             System.out.format("The sum of the two numbers is %d.%n", total);
-            System.out.println("Do you wish to repeat the operation? -> enter yes or no");
+            System.out.print("Do you wish to repeat the operation? -> enter yes or no: ");
             decision = scanner.next();
         } while (decision.startsWith("y") || decision.startsWith("Y"));
     }
