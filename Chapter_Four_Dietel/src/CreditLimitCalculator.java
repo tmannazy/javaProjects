@@ -5,8 +5,6 @@ public class CreditLimitCalculator {
     private int totalOfCharges;
     private int totalOfCredits;
     private int creditLimit;
-//    private int newBalance;
-
 
     public CreditLimitCalculator(int accountNumber, int balance, int totalOfCharges,
                                  int totalOfCredits, int creditLimit) {
