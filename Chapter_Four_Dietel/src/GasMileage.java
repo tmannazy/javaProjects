@@ -6,25 +6,26 @@ public class GasMileage {
 //    FIRST REFINEMENT
 //    Initialize variables
 //    Input miles driven and gallons used for each trip
-//    Calculate and print total miles per gallon for all trips
+//    Calculate and print totalForEachTrip miles per gallon for all trips
 //
 //    SECOND REFINEMENT
-//    Initialize total to zero
+//    Initialize totalForEachTrip to zero
 //    Initialize counter to zero
 //    Prompt the user to enter the first mile driven
 //    Input the first miles (possibly the sentinel)
 //    Prompt the user to enter the gallons for the trip
 //    Input the gallons
+//    Display the calculation for each trip
 //
 //    While the user has not yet entered the sentinel
-//          Multiply the miles by gallons used for each trip
-//          Add the result to the total
+//          Divide the miles by gallons used for each trip
+//          Add the result to the totalForEachTrip
 //          Add one to the counter
 //          Prompt the user to enter the next miles and gallons
 //          Input the next miles by gallons
 //
 //    If the counter is not equal to zero
-//          Set the average to the total divided by the counter
+//          Set the average to the combinedTotal divided by the counter
 //          Print the average
 //    Else
 //          Print "No miles or gallons entered"
@@ -32,30 +33,29 @@ public class GasMileage {
     public static void main(String... args) {
 //        Question 4.17
         Scanner getUserInput = new Scanner(System.in);
-        int total = 0;
-        int counter = 0;
+        int totalForEachTrip = 0;
+        int combinedTotal = 0;
+        int counter = 1;
 
-        System.out.println("Enter miles driven or -1 to quit: ");
+        System.out.print("Enter miles driven for this trip: ");
         int miles = getUserInput.nextInt();
+        System.out.print("Enter the gallons used for this trip: ");
+        int gallons = getUserInput.nextInt();
 
         while (miles != -1) {
-        System.out.println("Enter number of gallons used: ");
-        int gallons = getUserInput.nextInt();
-            int calcTrip = miles * gallons;
-            total = calcTrip + total;
-            counter++;
-            System.out.println("Enter miles driven or -1 to quit: ");
+            totalForEachTrip = miles / gallons;
+            combinedTotal += totalForEachTrip;
+            System.out.format("The miles per gallon for this trip is %d%n", totalForEachTrip);
+            System.out.print("Enter miles driven or -1 to quit: ");
             miles = getUserInput.nextInt();
-            System.out.println("Enter number of gallons used: ");
+            if (miles == -1) break;
+            System.out.print("Enter number of gallons used: ");
             gallons = getUserInput.nextInt();
+            counter++;
         }
 
-        if (counter != 0) {
-            double average = (double) total / counter;
-            System.out.format("%nTotal of the combined trips %d by driver entered is %d%n", counter, total);
-            System.out.format("Average is %.2f%n", average);
-        } else {
-            System.out.println("No miles or gallons entered");
-        }
+        double average = (double) combinedTotal / counter;
+        System.out.format("%nThe miles per gallon for %d trip(s) driven is %d.%n", counter, combinedTotal);
+        System.out.format("Average miles per gallon for all trips is %.2f%n", average);
     }
 }
