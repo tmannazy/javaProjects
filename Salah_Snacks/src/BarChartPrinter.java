@@ -22,7 +22,7 @@ public class BarChartPrinter {
 
     private static void printBarChart(int[] listOfNumbers) {
         for (int listOfNumber : listOfNumbers) {
-            System.out.printf("%d: ", listOfNumber);
+            System.out.printf("%d:\t", listOfNumber);
             for (int column = 0; column < listOfNumber; column++) {
                 System.out.print("*");
             }
