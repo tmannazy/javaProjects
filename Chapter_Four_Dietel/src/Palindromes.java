@@ -21,16 +21,15 @@ public class Palindromes {
 
         int checkedNum = concatenateNum;
         int reversedNum = 0;
-        int non = 0;
+        int storedModValue = 0;
 
         while (checkedNum > 0) {
-            non = checkedNum % 10;
+            storedModValue = checkedNum % 10;
             checkedNum = checkedNum / 10;
-            reversedNum = reversedNum * 10 + non;
+            reversedNum = reversedNum * 10 + storedModValue;
         }
 
-        if (concatenateNum == reversedNum) {
-            System.out.println(concatenateNum + " is a palindrome.");
-        } else System.out.println(concatenateNum + " is not a palindrome.");
+        if (concatenateNum == reversedNum) System.out.println(concatenateNum + " is a palindrome.");
+        else System.out.println(concatenateNum + " is not a palindrome.");
     }
 }
