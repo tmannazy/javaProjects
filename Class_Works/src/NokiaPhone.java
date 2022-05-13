@@ -329,9 +329,14 @@ public class NokiaPhone {
                 7 -> Send b'card
                 8 -> Options
                 9 -> Speed dials
-                10 -> Voice tags
+                10-> Voice tags
+                0 -> Back
                 """;
         displayMessage(phoneBookPrompt);
+        phoneBookMenuGroup();
+    }
+
+    private static void phoneBookMenuGroup() {
         switch (getUserInput()) {
             case 1 -> displayMessage("Search");
             case 2 -> displayMessage("Service Nos.");
@@ -344,16 +349,22 @@ public class NokiaPhone {
                 String subMenu = """
                         1 -> Type of view
                         2 -> Memory status
+                        0 -> Back
                         """;
                 displayMessage(subMenu);
                 switch (getUserInput()) {
                     case 1 -> displayMessage("Type of view");
                     case 2 -> displayMessage("Memory Status");
+                    case 0 -> showPhoneBookMenu();
                 }
             }
             case 9 -> displayMessage("Speed dials");
             case 10 -> displayMessage("Voice tags");
+            case 0 -> goBackToMainMenu();
         }
     }
-}
 
+    private static void goBackToMainMenu() {
+        main();
+    }
+}
