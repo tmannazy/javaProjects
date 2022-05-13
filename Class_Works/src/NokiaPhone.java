@@ -57,10 +57,12 @@ public class NokiaPhone {
 
     private static void displaySIMServices() {
         displayMessage("SIM services");
+        singleMenuMethods();
     }
 
     private static void displayProfiles() {
         displayMessage("Profiles");
+        singleMenuMethods();
     }
 
     private static void showClockMenu() {
@@ -85,18 +87,22 @@ public class NokiaPhone {
 
     private static void displayReminders() {
         displayMessage("Reminders");
+        singleMenuMethods();
     }
 
     private static void displayCalculator() {
         displayMessage("Calculator");
+        singleMenuMethods();
     }
 
     private static void showGamesMenu() {
         displayMessage("Games");
+        singleMenuMethods();
     }
 
     private static void displayCallDivert() {
         displayMessage("Call divert");
+        singleMenuMethods();
     }
 
     private static void showSettingsMenu() {
@@ -259,6 +265,7 @@ public class NokiaPhone {
 
     private static void showChatMenu() {
         displayMessage("Chat");
+        singleMenuMethods();
     }
 
     private static void showMessagesMenu() {
@@ -382,7 +389,9 @@ public class NokiaPhone {
                 displayMessage(backButtonForSingleOptions());
                 commonMenuInnerDisplayMessagesBackMethod();
             }
-            case 0-> {case7MessageSettingGroup();            }
+            case 0 -> {
+                case7MessageSettingGroup();
+            }
         }
     }
 
@@ -541,5 +550,12 @@ public class NokiaPhone {
 
     private static void goBackToMainMenu() {
         main();
+    }
+
+    private static void singleMenuMethods() {
+        displayMessage("0 -> Back");
+        if (getUserInput() == 0) {
+            main();
+        }
     }
 }
