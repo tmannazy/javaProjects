@@ -29,6 +29,7 @@ public class NokiaPhone {
                 11 -> Clock
                 12 -> Profiles
                 13 -> SIM services
+                0 -> Exit
                 """;
         displayMessage(prompt);
 
@@ -46,7 +47,12 @@ public class NokiaPhone {
             case 11 -> showClockMenu();
             case 12 -> displayProfiles();
             case 13 -> displaySIMServices();
+            case 0 -> exitCode();
         }
+    }
+
+    private static void exitCode() {
+        System.exit(0);
     }
 
     private static void displaySIMServices() {
@@ -64,7 +70,7 @@ public class NokiaPhone {
                 3 -> Date setting
                 4 -> Stopwatch
                 5 -> Countdown timer
-                6 -> Auto update of date and time
+                6 -> Auto update of date and time                               
                 """;
         displayMessage(clockMenu);
         switch (getUserInput()) {
@@ -109,7 +115,7 @@ public class NokiaPhone {
                         3 -> Call waiting options
                         4 -> Own number sending
                         5 -> Phone line in use
-                        6 ->Automatic answer
+                        6 -> Automatic answer
                         """;
                 displayMessage(callSettingsMenu);
                 switch (getUserInput()) {
@@ -267,54 +273,164 @@ public class NokiaPhone {
                 8 -> Info service
                 9 -> Voice mailbox number
                 10 -> Service command editor
+                0 -> Back
                 """;
         displayMessage(messagesPrompt);
+        messagesMenuGroup();
+    }
+
+    private static void messagesMenuGroup() {
         switch (getUserInput()) {
-            case 1 -> displayMessage("Write messages");
-            case 2 -> displayMessage("Inbox");
-            case 3 -> displayMessage("Outbox");
-            case 4 -> displayMessage("Picture messages");
-            case 5 -> displayMessage("Templates");
-            case 6 -> displayMessage("Smileys");
-            case 7 -> {
-                String messageSettingsMenu = """
-                        1 -> Set 1
-                        2 -> Common
-                        """;
-                displayMessage(messageSettingsMenu);
-                switch (getUserInput()) {
-                    case 1 -> {
-                        String set_1_Menu = """
-                                1 -> Message centre number
-                                2 -> Message sent as
-                                3 -> Message validity
-                                """;
-                        displayMessage(set_1_Menu);
-                        switch (getUserInput()) {
-                            case 1 -> displayMessage("Message centre number");
-                            case 2 -> displayMessage("Message sent as");
-                            case 3 -> displayMessage("Message validity");
-                        }
-                    }
-                    case 2 -> {
-                        String commonMenu = """
-                                1 -> Delivery reports
-                                2 -> Reply via same centre
-                                3 -> Character support
-                                """;
-                        displayMessage(commonMenu);
-                        switch (getUserInput()) {
-                            case 1 -> displayMessage("Delivery reports");
-                            case 2 -> displayMessage("Reply via same centre");
-                            case 3 -> displayMessage("Character support");
-                        }
-                    }
-                }
-                displayMessage("Message settings");
+            case 1 -> {
+                displayMessage("Write messages");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayMessageBackMethod();
             }
-            case 8 -> displayMessage("Info service");
-            case 9 -> displayMessage("Voice mailbox number");
-            case 10 -> displayMessage("Service command editor");
+            case 2 -> {
+                displayMessage("Inbox");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayMessageBackMethod();
+            }
+            case 3 -> {
+                displayMessage("Outbox");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayMessageBackMethod();
+            }
+            case 4 -> {
+                displayMessage("Picture messages");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayMessageBackMethod();
+            }
+            case 5 -> {
+                displayMessage("Templates");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayMessageBackMethod();
+            }
+            case 6 -> {
+                displayMessage("Smileys");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayMessageBackMethod();
+            }
+            case 7 -> {
+                case7MessageSettingGroup();
+            }
+            case 8 -> {
+                displayMessage("Info service");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayMessageBackMethod();
+            }
+            case 9 -> {
+                displayMessage("Voice mailbox number");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayMessageBackMethod();
+            }
+            case 10 -> {
+                displayMessage("Service command editor");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayMessageBackMethod();
+            }
+            case 0 -> goBackToMainMenu();
+        }
+    }
+
+    private static void singleDisplayMessageBackMethod() {
+        switch (getUserInput()) {
+            case 0 -> showMessagesMenu();
+            case 1 -> goBackToMainMenu();
+        }
+    }
+
+    private static void case7MessageSettingGroup() {
+        String messageSettingsMenu = """
+                1 -> Set 1
+                2 -> Common
+                0 -> Back
+                """;
+        displayMessage(messageSettingsMenu);
+        messageSettingsGroup();
+    }
+
+    private static void messageSettingsGroup() {
+        switch (getUserInput()) {
+            case 1 -> set_1();
+            case 2 -> common();
+            case 0 -> showMessagesMenu();
+        }
+    }
+
+    private static void common() {
+        String commonMenu = """
+                1 -> Delivery reports
+                2 -> Reply via same centre
+                3 -> Character support
+                0 -> Back
+                """;
+        displayMessage(commonMenu);
+        switch (getUserInput()) {
+            case 1 -> {
+                displayMessage("Delivery reports");
+                displayMessage(backButtonForSingleOptions());
+                commonMenuInnerDisplayMessagesBackMethod();
+            }
+            case 2 -> {
+                displayMessage("Reply via same centre");
+                displayMessage(backButtonForSingleOptions());
+                commonMenuInnerDisplayMessagesBackMethod();
+            }
+            case 3 -> {
+                displayMessage("Character support");
+                displayMessage(backButtonForSingleOptions());
+                commonMenuInnerDisplayMessagesBackMethod();
+            }
+            case 0-> {case7MessageSettingGroup();            }
+        }
+    }
+
+    private static void set_1() {
+        String set_1_Menu = """
+                1 -> Message centre number
+                2 -> Message sent as
+                3 -> Message validity
+                0 -> Back
+                """;
+        displayMessage(set_1_Menu);
+        set_1_MenuGroup();
+    }
+
+    private static void set_1_MenuGroup() {
+        switch (getUserInput()) {
+            case 1 -> {
+                displayMessage("Message centre number");
+                displayMessage(backButtonForSingleOptions());
+                set_1_InnerDisplayMessagesBackMethod();
+            }
+            case 2 -> {
+                displayMessage("Message sent as");
+                displayMessage(backButtonForSingleOptions());
+                set_1_InnerDisplayMessagesBackMethod();
+            }
+            case 3 -> {
+                displayMessage("Message validity");
+                displayMessage(backButtonForSingleOptions());
+                set_1_InnerDisplayMessagesBackMethod();
+            }
+            case 0 -> {
+                case7MessageSettingGroup();
+            }
+        }
+    }
+
+    private static void set_1_InnerDisplayMessagesBackMethod() {
+        switch (getUserInput()) {
+            case 0 -> set_1();
+            case 1 -> goBackToMainMenu();
+        }
+    }
+
+    private static void commonMenuInnerDisplayMessagesBackMethod() {
+        switch (getUserInput()) {
+            case 0 -> common();
+            case 1 -> goBackToMainMenu();
         }
     }
 
@@ -338,13 +454,42 @@ public class NokiaPhone {
 
     private static void phoneBookMenuGroup() {
         switch (getUserInput()) {
-            case 1 -> displayMessage("Search");
-            case 2 -> displayMessage("Service Nos.");
-            case 3 -> displayMessage("Add name");
-            case 4 -> displayMessage("Erase");
-            case 5 -> displayMessage("Edit");
-            case 6 -> displayMessage("Assign tone");
-            case 7 -> displayMessage("Send b'card");
+            case 1 -> {
+                displayMessage("Search");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayPhoneBookBackMethod();
+            }
+            case 2 -> {
+                displayMessage("Service Nos.");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayPhoneBookBackMethod();
+            }
+            case 3 -> {
+                displayMessage("Add name");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayPhoneBookBackMethod();
+            }
+            case 4 -> {
+                displayMessage("Erase");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayPhoneBookBackMethod();
+
+            }
+            case 5 -> {
+                displayMessage("Edit");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayPhoneBookBackMethod();
+            }
+            case 6 -> {
+                displayMessage("Assign tone");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayPhoneBookBackMethod();
+            }
+            case 7 -> {
+                displayMessage("Send b'card");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayPhoneBookBackMethod();
+            }
             case 8 -> {
                 String subMenu = """
                         1 -> Type of view
@@ -353,14 +498,44 @@ public class NokiaPhone {
                         """;
                 displayMessage(subMenu);
                 switch (getUserInput()) {
-                    case 1 -> displayMessage("Type of view");
-                    case 2 -> displayMessage("Memory Status");
+                    case 1 -> {
+                        displayMessage("Type of view");
+                        displayMessage(backButtonForSingleOptions());
+                        singleDisplayPhoneBookBackMethod();
+                    }
+                    case 2 -> {
+                        displayMessage("Memory Status");
+                        displayMessage(backButtonForSingleOptions());
+                        singleDisplayPhoneBookBackMethod();
+                    }
                     case 0 -> showPhoneBookMenu();
                 }
             }
-            case 9 -> displayMessage("Speed dials");
-            case 10 -> displayMessage("Voice tags");
+            case 9 -> {
+                displayMessage("Speed dials");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayPhoneBookBackMethod();
+            }
+            case 10 -> {
+                displayMessage("Voice tags");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayPhoneBookBackMethod();
+            }
             case 0 -> goBackToMainMenu();
+        }
+    }
+
+    private static String backButtonForSingleOptions() {
+        return """
+                0 -> Back
+                1 -> Main Menu
+                """;
+    }
+
+    private static void singleDisplayPhoneBookBackMethod() {
+        switch (getUserInput()) {
+            case 0 -> showPhoneBookMenu();
+            case 1 -> goBackToMainMenu();
         }
     }
 
