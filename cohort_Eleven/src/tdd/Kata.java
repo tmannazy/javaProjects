@@ -1,7 +1,17 @@
 package tdd;
 
-
 public class Kata {
+    public static boolean isPrime(int number) {
+        return numberOfFactors(number) == 2;
+    }
+
+    public static int numberOfFactors(int number) {
+        int counter = 0;
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0) counter++;
+        }
+        return counter;
+    }
 
     public int add(int firstNumber, int secondNumber) {
         return firstNumber + secondNumber;
@@ -196,6 +206,4 @@ public class Kata {
         }
         return i;
     }
-
-
 }

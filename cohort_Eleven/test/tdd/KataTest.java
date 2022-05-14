@@ -3,6 +3,7 @@ package tdd;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class KataTest {
     @Test
@@ -72,7 +73,7 @@ public class KataTest {
     public void testDrillerForCopiesBetweenFiftyAndNinetyNineTest() {
         Kata utmeBook = new Kata();
         int priceOfCopies = utmeBook.testDriller(89);
-        assertEquals(1300*89, priceOfCopies);
+        assertEquals(1300 * 89, priceOfCopies);
     }
 
     @Test
@@ -118,20 +119,20 @@ public class KataTest {
     public void calculateInterestTest() {
         Kata interest = new Kata();
         int balance = 1000;
-        double  percentageInterest = 3.5;
+        double percentageInterest = 3.5;
         assertEquals(2.9167, interest.calculateInterest(balance, percentageInterest));
     }
 
     @Test
     public void areaOfTriangleTest() {
-       Kata triangle = new Kata();
-       double x1 = 1.5;
-       double y1 = -3.4;
-       double x2 = 4.6;
-       double y2 = 5;
-       double x3 = 9.5;
-       double y3 = -3.4;
-       assertEquals(33.6, triangle.areaOfATriangle(x1, y1, x2, y2, x3, y3));
+        Kata triangle = new Kata();
+        double x1 = 1.5;
+        double y1 = -3.4;
+        double x2 = 4.6;
+        double y2 = 5;
+        double x3 = 9.5;
+        double y3 = -3.4;
+        assertEquals(33.6, triangle.areaOfATriangle(x1, y1, x2, y2, x3, y3));
     }
 
     @Test
@@ -158,7 +159,7 @@ public class KataTest {
     }
 
     @Test
-    public void convertToPoundsTest(){
+    public void convertToPoundsTest() {
         Kata convertToPounds = new Kata();
         double numberToConvert = 55.5;
         assertEquals(25.197, convertToPounds.conversionToPounds(numberToConvert));
@@ -179,6 +180,7 @@ public class KataTest {
         double finalTemp = 10.5;
         assertEquals(1625484, getWaterEnergy.waterEnergy(waterWeight, initTemp, finalTemp));
     }
+
     @Test
     public void checkScoreForFailTest() {
         Kata newScore = new Kata();
@@ -284,4 +286,16 @@ public class KataTest {
         assertEquals(21, getEvenNumbers.evenNumbersLoop());
     }
 
+    @Test
+    public void factorsOfNumbersTest() {
+        Kata factors = new Kata();
+        int number = 5;
+        assertEquals(2, Kata.numberOfFactors(number));
+    }
+
+    @Test
+    public void primeNumberTest() {
+        boolean isPrime = Kata.isPrime(19);
+        assertTrue(isPrime);
+    }
 }
