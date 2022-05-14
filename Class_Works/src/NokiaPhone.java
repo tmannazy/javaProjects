@@ -14,7 +14,7 @@ public class NokiaPhone {
 
     public static void main(String... args) {
         String prompt = """
-                List of menu functions
+                LIST OF MENU FUNCTIONS
                 Select a number for menu
                 1 -> Phone book
                 2 -> Messages
@@ -73,15 +73,41 @@ public class NokiaPhone {
                 4 -> Stopwatch
                 5 -> Countdown timer
                 6 -> Auto update of date and time
+                0 -> Back
                 """;
         displayMessage(clockMenu);
         switch (getUserInput()) {
-            case 1 -> displayMessage("Alarm clock");
-            case 2 -> displayMessage("Clock settings");
-            case 3 -> displayMessage("Date setting");
-            case 4 -> displayMessage("Stopwatch");
-            case 5 -> displayMessage("Countdown timer");
-            case 6 -> displayMessage("Auto update of date and time");
+            case 1 -> {
+                displayMessage("Alarm clock");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) showClockMenu();
+            }
+            case 2 -> {
+                displayMessage("Clock settings");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) showClockMenu();
+            }
+            case 3 -> {
+                displayMessage("Date setting");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) showClockMenu();
+            }
+            case 4 -> {
+                displayMessage("Stopwatch");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) showClockMenu();
+            }
+            case 5 -> {
+                displayMessage("Countdown timer");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) showClockMenu();
+            }
+            case 6 -> {
+                displayMessage("Auto update of date and time");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) showClockMenu();
+            }
+            case 0 -> goBackToMainMenu();
         }
     }
 
@@ -247,6 +273,7 @@ public class NokiaPhone {
 
     private static void showTonesMenu() {
         String tonesMenu = """
+                TONES
                 1 -> Ringing tone
                 2 -> Ringing volume
                 3 -> Incoming call alert
@@ -256,18 +283,56 @@ public class NokiaPhone {
                 7 -> Warning and game tones
                 8 -> Vibrating alert
                 9 -> Screen saver
+                0 -> Back
                 """;
         displayMessage(tonesMenu);
         switch (getUserInput()) {
-            case 1 -> displayMessage("Ringing tone");
-            case 2 -> displayMessage("Ringing volume");
-            case 3 -> displayMessage("Incoming call alert");
-            case 4 -> displayMessage("Composer");
-            case 5 -> displayMessage("Message alert tone");
-            case 6 -> displayMessage("Keypad tones");
-            case 7 -> displayMessage("Warning and game tones");
-            case 8 -> displayMessage("Vibrating alert");
-            case 9 -> displayMessage("Screen saver");
+            case 1 -> {
+                displayMessage("Ringing tone");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) showTonesMenu();
+            }
+            case 2 -> {
+                displayMessage("Ringing volume");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) showTonesMenu();
+            }
+            case 3 -> {
+                displayMessage("Incoming call alert");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) showTonesMenu();
+            }
+            case 4 -> {
+                displayMessage("Composer");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) showTonesMenu();
+            }
+            case 5 -> {
+                displayMessage("Message alert tone");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) showTonesMenu();
+            }
+            case 6 -> {
+                displayMessage("Keypad tones");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) showTonesMenu();
+            }
+            case 7 -> {
+                displayMessage("Warning and game tones");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) showTonesMenu();
+            }
+            case 8 -> {
+                displayMessage("Vibrating alert");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) showTonesMenu();
+            }
+            case 9 -> {
+                displayMessage("Screen saver");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) showTonesMenu();
+            }
+            case 0 -> goBackToMainMenu();
         }
     }
 
@@ -745,8 +810,6 @@ public class NokiaPhone {
 
     private static void singleMenuMethods() {
         displayMessage("0 -> Back");
-        if (getUserInput() == 0) {
-            main();
-        }
-    }
+        if (getUserInput() == 0) main();
+            }
 }
