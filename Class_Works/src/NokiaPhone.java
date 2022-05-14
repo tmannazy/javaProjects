@@ -211,56 +211,183 @@ public class NokiaPhone {
                 6 -> Show call costs
                 7 -> Call cost settings
                 8 -> Prepaid credit
+                0 -> Back
                 """;
         displayMessage(callRegisterMenu);
+        callRegisterMenu();
+    }
+
+    private static void callRegisterMenu() {
         switch (getUserInput()) {
-            case 1 -> displayMessage("Missed calls");
-            case 2 -> displayMessage("Received calls");
-            case 3 -> displayMessage("Dialled numbers");
-            case 4 -> displayMessage("Erase recent call lists");
+            case 1 -> {
+                displayMessage("Missed calls");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayCallRegisterBackMethod();
+            }
+            case 2 -> {
+                displayMessage("Received calls");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayCallRegisterBackMethod();
+            }
+            case 3 -> {
+                displayMessage("Dialled numbers");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayCallRegisterBackMethod();
+            }
+            case 4 -> {
+                displayMessage("Erase recent call lists");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayCallRegisterBackMethod();
+            }
             case 5 -> {
-                String showCallDurationMenu = """
-                        1 -> Last call duration
-                        2 -> All calls' duration
-                        3 -> Received calls' duration
-                        4 -> Dialled calls' duration
-                        5 -> Clear timers
-                        """;
-                displayMessage(showCallDurationMenu);
-                switch (getUserInput()) {
-                    case 1 -> displayMessage("Last call duration");
-                    case 2 -> displayMessage("All calls' duration");
-                    case 3 -> displayMessage("Received calls' duration");
-                    case 4 -> displayMessage("Dialled calls' duration");
-                    case 5 -> displayMessage("Clear timers");
-                }
+                case5CallRegisterMenu();
+                case5CallRegisterInnerMenu();
             }
             case 6 -> {
-                String callCostMenu = """
-                        1 -> Last call cost
-                        2 -> All calls' cost
-                        3 -> Clear counters
-                        """;
-                displayMessage(callCostMenu);
-                switch (getUserInput()) {
-                    case 1 -> displayMessage("Last call cost");
-                    case 2 -> displayMessage("All calls' cost");
-                    case 3 -> displayMessage("Clear counters");
-                }
+                case6CallCostMenu();
+                case6CallCostInnerMenu();
             }
             case 7 -> {
-                String callCostSettings = """
-                        1 -> Call cost limit
-                        2 -> Show costs in
-                        """;
-                displayMessage(callCostSettings);
-                switch (getUserInput()) {
-                    case 1 -> displayMessage("Call cost limit");
-                    case 2 -> displayMessage("Show costs in");
-                }
+                case7CallCostSettingsMenu();
+                case7CallCostSettingsInnerMenu();
             }
-            case 8 -> displayMessage("Prepaid credit");
+            case 8 -> {
+                displayMessage("Prepaid credit");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayCallRegisterBackMethod();
+            }
+            case 0 -> goBackToMainMenu();
         }
+    }
+
+    private static void singleDisplayCallRegisterBackMethod() {
+        switch (getUserInput()) {
+            case 0 -> showCallMenu();
+            case 1 -> goBackToMainMenu();
+        }
+    }
+
+    private static void case7CallCostSettingsInnerMenu() {
+        switch (getUserInput()) {
+            case 1 -> {
+                displayMessage("Call cost limit");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayCallCostSettingsBackMethod();
+            }
+            case 2 -> {
+                displayMessage("Show costs in");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayCallCostSettingsBackMethod();
+            }
+            case 0 -> showCallMenu();
+        }
+    }
+
+    private static void case6CallCostInnerMenu() {
+        switch (getUserInput()) {
+            case 1 -> {
+                displayMessage("Last call cost");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayCallCostBackMethod();
+            }
+            case 2 -> {
+                displayMessage("All calls' cost");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayCallCostBackMethod();
+            }
+            case 3 -> {
+                displayMessage("Clear counters");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayCallCostBackMethod();
+            }
+            case 0 -> showCallMenu();
+        }
+    }
+
+    private static void singleDisplayCallCostSettingsBackMethod() {
+        switch (getUserInput()) {
+            case 0 -> case7CallCostSettingsMenu();
+            case 1 -> goBackToMainMenu();
+        }
+    }
+    private static void singleDisplayCallCostBackMethod() {
+        switch (getUserInput()) {
+            case 0 -> case6CallCostMenu();
+            case 1 -> goBackToMainMenu();
+        }
+    }
+
+    private static void case5CallRegisterInnerMenu() {
+        switch (getUserInput()) {
+            case 1 -> {
+                displayMessage("Last call duration");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayCallDurationBackMethod();
+            }
+            case 2 -> {
+                displayMessage("All calls' duration");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayCallDurationBackMethod();
+            }
+            case 3 -> {
+                displayMessage("Received calls' duration");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayCallDurationBackMethod();
+            }
+            case 4 -> {
+                displayMessage("Dialled calls' duration");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayCallDurationBackMethod();
+            }
+            case 5 -> {
+                displayMessage("Clear timers");
+                displayMessage(backButtonForSingleOptions());
+                singleDisplayCallDurationBackMethod();
+            }
+            case 0 -> showCallMenu();
+        }
+    }
+
+    private static void singleDisplayCallDurationBackMethod() {
+        switch (getUserInput()) {
+            case 0 -> case5CallRegisterMenu();
+            case 1 -> goBackToMainMenu();
+        }
+    }
+
+    private static void case7CallCostSettingsMenu() {
+        String callCostSettings = """
+                1 -> Call cost limit
+                2 -> Show costs in
+                0 -> Back
+                """;
+        displayMessage(callCostSettings);
+        case7CallCostSettingsInnerMenu();
+    }
+
+    private static void case6CallCostMenu() {
+        String callCostMenu = """
+                1 -> Last call cost
+                2 -> All calls' cost
+                3 -> Clear counters
+                0 -> Back
+                """;
+        displayMessage(callCostMenu);
+        case6CallCostInnerMenu();
+    }
+
+    private static void case5CallRegisterMenu() {
+        String showCallDurationMenu = """
+                SHOW CALL DURATION
+                1 -> Last call duration
+                2 -> All calls' duration
+                3 -> Received calls' duration
+                4 -> Dialled calls' duration
+                5 -> Clear timers
+                0 -> Back
+                """;
+        displayMessage(showCallDurationMenu);
+        case5CallRegisterInnerMenu();
     }
 
     private static void showChatMenu() {
