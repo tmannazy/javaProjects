@@ -72,7 +72,7 @@ public class NokiaPhone {
                 3 -> Date setting
                 4 -> Stopwatch
                 5 -> Countdown timer
-                6 -> Auto update of date and time                               
+                6 -> Auto update of date and time
                 """;
         displayMessage(clockMenu);
         switch (getUserInput()) {
@@ -111,67 +111,137 @@ public class NokiaPhone {
                 2 -> Phone settings
                 3 -> Security settings
                 4 -> Restore factory settings
+                0 -> Back
                 """;
         displayMessage(settingsMenu);
         switch (getUserInput()) {
+            case 1 -> case1CallSettingsMenu();
+            case 2 -> case2CallSettingsMenu();
+            case 3 -> case3CallSettingsMenu();
+            case 4 -> {
+                displayMessage("Restore factory settings");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) showSettingsMenu();
+            }
+            case 0 -> goBackToMainMenu();
+        }
+    }
+
+    private static void case3CallSettingsMenu() {
+        String securitySettingsMenu = """
+                1 -> PIN code request
+                2 -> Call barring service
+                3 -> Fixed dialling
+                4 -> Closed user group
+                5 -> Phone security
+                6 -> Change access codes
+                0 -> Back
+                """;
+        displayMessage(securitySettingsMenu);
+        switch (getUserInput()) {
             case 1 -> {
-                String callSettingsMenu = """
-                        1 -> Automatic redial
-                        2 -> Speed dialling
-                        3 -> Call waiting options
-                        4 -> Own number sending
-                        5 -> Phone line in use
-                        6 -> Automatic answer
-                        """;
-                displayMessage(callSettingsMenu);
-                switch (getUserInput()) {
-                    case 1 -> displayMessage("Automatic redial");
-                    case 2 -> displayMessage("Speed dialling");
-                    case 3 -> displayMessage("Call waiting options");
-                    case 4 -> displayMessage("Own number sending");
-                    case 5 -> displayMessage("Phone line in use");
-                    case 6 -> displayMessage("Automatic answer");
-                }
+                displayMessage("PIN code request");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) case3CallSettingsMenu();
             }
             case 2 -> {
-                String phoneSettingsMenu = """
-                        1 -> Language
-                        2 -> Cell info display
-                        3 -> Welcome note
-                        4 -> Network selection
-                        5 -> Lights
-                        6 -> Confirm SIM service actions
-                        """;
-                displayMessage(phoneSettingsMenu);
-                switch (getUserInput()) {
-                    case 1 -> displayMessage("Language");
-                    case 2 -> displayMessage("Cell info display");
-                    case 3 -> displayMessage("Welcome note");
-                    case 4 -> displayMessage("Network selection");
-                    case 5 -> displayMessage("Lights");
-                    case 6 -> displayMessage("Confirm SIM service actions");
-                }
+                displayMessage("Call barring service");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) case3CallSettingsMenu();
             }
             case 3 -> {
-                String securitySettingsMenu = """
-                        1 -> PIN code request
-                        2 -> Call barring service
-                        3 -> Fixed dialling
-                        4 -> Closed user group
-                        5 -> Phone security
-                        6 -> Change access codes
-                        """;
-                displayMessage(securitySettingsMenu);
-                switch (getUserInput()) {
-                    case 1 -> displayMessage("PIN code request");
-                    case 2 -> displayMessage("Call barring service");
-                    case 3 -> displayMessage("Fixed dialling");
-                    case 4 -> displayMessage("Closed user group");
-                    case 5 -> displayMessage("Phone security");
-                    case 6 -> displayMessage("Change access codes ");
-                }
+                displayMessage("Fixed dialling");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) case3CallSettingsMenu();
             }
-            case 4 -> displayMessage("Restore factory settings");
+            case 4 -> {
+                displayMessage("Closed user group");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) case3CallSettingsMenu();
+            }
+            case 5 -> {
+                displayMessage("Phone security");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) case3CallSettingsMenu();
+            }
+            case 6 -> {
+                displayMessage("Change access codes ");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) case3CallSettingsMenu();
+            }
+            case 0 -> showSettingsMenu();
+        }
+    }
+
+    private static void case2CallSettingsMenu() {
+        String phoneSettingsMenu = """
+                1 -> Language
+                2 -> Cell info display
+                3 -> Welcome note
+                4 -> Network selection
+                5 -> Lights
+                6 -> Confirm SIM service actions
+                0 -> Back
+                """;
+        displayMessage(phoneSettingsMenu);
+        switch (getUserInput()) {
+            case 1 -> {
+                displayMessage("Language");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) case2CallSettingsMenu();
+            }
+            case 2 -> {
+                displayMessage("Cell info display");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) case2CallSettingsMenu();
+            }
+            case 3 -> {
+                displayMessage("Welcome note");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) case2CallSettingsMenu();
+            }
+            case 4 -> {
+                displayMessage("Network selection");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) case2CallSettingsMenu();
+            }
+            case 5 -> {
+                displayMessage("Lights");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) case2CallSettingsMenu();
+            }
+            case 6 -> {
+                displayMessage("Confirm SIM service actions");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) case2CallSettingsMenu();
+            }
+            case 0 -> showSettingsMenu();
+        }
+    }
+
+    private static void case1CallSettingsMenu() {
+        String callSettingsMenu = """
+                1 -> Automatic redial
+                2 -> Speed dialling
+                3 -> Call waiting options
+                4 -> Own number sending
+                5 -> Phone line in use
+                6 -> Automatic answer
+                0 -> Back
+                """;
+        displayMessage(callSettingsMenu);
+        switch (getUserInput()) {
+            case 1 -> {
+                displayMessage("Automatic redial");
+                displayMessage("0 -> Back");
+                if(getUserInput() == 0) case1CallSettingsMenu();
+            }
+            case 2 -> displayMessage("Speed dialling");
+            case 3 -> displayMessage("Call waiting options");
+            case 4 -> displayMessage("Own number sending");
+            case 5 -> displayMessage("Phone line in use");
+            case 6 -> displayMessage("Automatic answer");
+            case 0 -> showSettingsMenu();
         }
     }
 
@@ -445,9 +515,7 @@ public class NokiaPhone {
                 displayMessage(backButtonForSingleOptions());
                 singleDisplayMessageBackMethod();
             }
-            case 7 -> {
-                case7MessageSettingGroup();
-            }
+            case 7 -> case7MessageSettingGroup();
             case 8 -> {
                 displayMessage("Info service");
                 displayMessage(backButtonForSingleOptions());
@@ -516,9 +584,7 @@ public class NokiaPhone {
                 displayMessage(backButtonForSingleOptions());
                 commonMenuInnerDisplayMessagesBackMethod();
             }
-            case 0 -> {
-                case7MessageSettingGroup();
-            }
+            case 0 -> case7MessageSettingGroup();
         }
     }
 
@@ -550,9 +616,7 @@ public class NokiaPhone {
                 displayMessage(backButtonForSingleOptions());
                 set_1_InnerDisplayMessagesBackMethod();
             }
-            case 0 -> {
-                case7MessageSettingGroup();
-            }
+            case 0 -> case7MessageSettingGroup();
         }
     }
 
