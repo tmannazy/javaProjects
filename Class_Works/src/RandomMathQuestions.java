@@ -29,8 +29,8 @@ public class RandomMathQuestions {
             results[counter] = solutionFromRandomQuestion;
             counter++;
         }
-        displayResult();
-        System.out.println("Here are the correct answers -> " + Arrays.toString(results));
+        String arrayResult = Arrays.toString(results);
+        displayResult(arrayResult);
     }
 
     private static void generateQuestions(int firstOperand, int secondOperand, char operator) {
@@ -66,9 +66,10 @@ public class RandomMathQuestions {
         else wrongAnswers++;
     }
 
-    private static void displayResult() {
+    private static void displayResult(String arr) {
         int result = rightAnswers - wrongAnswers;
         System.out.format("Correct answers %d. Wrong answers %d. Your score is %d%n", rightAnswers, wrongAnswers, result);
+        System.out.println("Here are the correct answers -> " + arr);
     }
 }
 
