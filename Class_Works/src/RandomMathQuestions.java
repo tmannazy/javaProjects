@@ -23,7 +23,7 @@ public class RandomMathQuestions {
         int[] results = new int[userRangeOfQuestions];
 
         while (counter != userRangeOfQuestions) {
-            generateQuestions(1 + randomNumber(250), 1 + randomNumber(40), randomOperator());
+            calculateQuestions(1 + randomNumber(250), 1 + randomNumber(40), randomOperator());
             int userAnswer = scanner.nextInt();
             checkUserAnswer(userAnswer, solutionFromRandomQuestion);
             results[counter] = solutionFromRandomQuestion;
@@ -33,7 +33,7 @@ public class RandomMathQuestions {
         displayResult(arrayResult);
     }
 
-    private static void generateQuestions(int firstOperand, int secondOperand, char operator) {
+    private static void calculateQuestions(int firstOperand, int secondOperand, char operator) {
         System.out.print(firstOperand + " " + operator + " " + secondOperand + " = ");
         int solution = 0;
         switch (operator) {
@@ -68,8 +68,8 @@ public class RandomMathQuestions {
 
     private static void displayResult(String arr) {
         int result = rightAnswers - wrongAnswers;
-        System.out.format("Correct answers %d. Wrong answers %d. Your score is %d%n", rightAnswers, wrongAnswers, result);
-        System.out.println("Here are the correct answers -> " + arr);
+        System.out.format("Correct answer(s) %d. Wrong answer(s) %d. Your score is %d%n", rightAnswers, wrongAnswers, result);
+        System.out.println("Here is/are the correct answer(s) -> " + arr);
     }
 }
 
