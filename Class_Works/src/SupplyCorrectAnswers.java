@@ -23,7 +23,7 @@ public class SupplyCorrectAnswers {
         int counter = 0;
 
         while (rightAnswers != userRangeOfQuestions) {
-            generateQuestions(1 + randomNumber(250), 1 + randomNumber(40), randomOperator());
+            calculateQuestions(1 + randomNumber(250), 1 + randomNumber(40), randomOperator());
             int userAnswer = scanner.nextInt();
             checkUserAnswer(userAnswer, solutionFromRandomQuestion);
             if (userAnswer == solutionFromRandomQuestion) {
@@ -31,11 +31,11 @@ public class SupplyCorrectAnswers {
                 counter++;
             }
         }
-        System.out.format("Correct answers %d. Wrong answers %d.%n", rightAnswers, wrongAnswers);
-        System.out.println("Here are the correct answers -> " + Arrays.toString(results));
+        System.out.format("Correct answer(s) %d. Wrong answer(s) %d.%n", rightAnswers, wrongAnswers);
+        System.out.println("Here is/are the correct answer(s) -> " + Arrays.toString(results));
     }
 
-    private static void generateQuestions(int firstOperand, int secondOperand, char operator) {
+    private static void calculateQuestions(int firstOperand, int secondOperand, char operator) {
         System.out.format("%d %s %d = ", firstOperand, operator, secondOperand);
         int solutionFromCalculation = 0;
         switch (operator) {
