@@ -2,7 +2,8 @@ import java.util.Scanner;
 
 public class DecimalEquivalent {
     public static void main(String... args) {
-        System.out.print("Enter five numbers: ");
+        System.out.println("THIS PROGRAM DISPLAY DECIMAL VALUE OF UP TO \n5 BINARY NUMBERS ENTERED");
+        System.out.print("Enter less than or up to five numbers: ");
         Scanner scanner = new Scanner(System.in);
         int userInput = scanner.nextInt();
         int binaryInteger = 0;
