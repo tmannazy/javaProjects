@@ -16,7 +16,7 @@ public class SupplyCorrectAnswers {
 
     public static void main(String... args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("This program only end when you answer the correct number of questions entered");
+        System.out.println("THIS PROGRAM ONLY END WHEN YOU ANSWER THE CORRECT NUMBER OF QUESTIONS ENTERED");
         System.out.print("Enter the number of questions to answer:->) ");
         int userRangeOfQuestions = scanner.nextInt();
         int[] results = new int[userRangeOfQuestions];
