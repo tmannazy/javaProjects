@@ -15,7 +15,6 @@ public class StudentGraderReport {
     private int subjectThreePasses;
     private int studentWithHighestScoreInASubject;
     private int studentWithLowestScoreInASubject;
-    private double percentageScoreForAStudent;
 
     public StudentGraderReport(int rowsOfArray, int columnsOfArray) {
         this.classGrades = new int[rowsOfArray][columnsOfArray];
@@ -57,6 +56,7 @@ public class StudentGraderReport {
     }
 
     public int getTotalSubjectScoresForAStudent(int rowIndex) {
+        if (sumOfStudentSubjects != 0) this.sumOfStudentSubjects = 0;
         for (int i = 0; i < classGrades.length; i++) {
             for (int j = 0; j < classGrades.length; j++) {
                 if (rowIndex == i) {
@@ -153,15 +153,15 @@ public class StudentGraderReport {
 
     public int getNumberOfStudentsThatPassedEachSubject(int columnIndex) {
         int passesCounter = 0;
-        for (int i = 0; i < classGrades.length; i++) {
+        for (int[] classGrade : classGrades) {
             for (int j = 0; j < classGrades.length; j++) {
                 if (columnIndex == j) {
-                    if (classGrades[i][j] > 40) {
+                    if (classGrade[j] > 40) {
                         passesCounter++;
-                        this.studentWithHighestScoreInASubject = classGrades[i][j];
+                        this.studentWithHighestScoreInASubject = classGrade[j];
                     }
-                    if (studentWithHighestScoreInASubject < classGrades[i][j]) {
-                        this.studentWithHighestScoreInASubject = classGrades[i][j];
+                    if (studentWithHighestScoreInASubject < classGrade[j]) {
+                        this.studentWithHighestScoreInASubject = classGrade[j];
                     }
 
                 }
@@ -175,15 +175,15 @@ public class StudentGraderReport {
 
     public int getNumberOfStudentsThatFailedEachSubject(int columnIndex) {
         int failedCounter = 0;
-        for (int i = 0; i < classGrades.length; i++) {
+        for (int[] classGrade : classGrades) {
             for (int j = 0; j < classGrades.length; j++) {
                 if (columnIndex == j) {
-                    if (classGrades[i][j] < 40) {
+                    if (classGrade[j] < 40) {
                         failedCounter++;
-                        this.studentWithLowestScoreInASubject = classGrades[i][j];
+                        this.studentWithLowestScoreInASubject = classGrade[j];
                     }
-                    if (studentWithLowestScoreInASubject > classGrades[i][j]) {
-                        this.studentWithLowestScoreInASubject = classGrades[i][j];
+                    if (studentWithLowestScoreInASubject > classGrade[j]) {
+                        this.studentWithLowestScoreInASubject = classGrade[j];
                     }
                 }
             }
@@ -215,7 +215,6 @@ public class StudentGraderReport {
     public int getStudentWithHighestScore() {
         return studentWithHighestScoreInASubject;
     }
-
 
     public int getStudentWithLowestScore() {
         return studentWithLowestScoreInASubject;
@@ -253,12 +252,11 @@ public class StudentGraderReport {
 
     public double calculateStudentPercentage(int rowIndex) {
         double student = (double) getTotalSubjectScoresForAStudent(rowIndex) / 300;
-        this.percentageScoreForAStudent = student * 100;
-        return percentageScoreForAStudent;
+        return student * 100;
     }
 
     public void saveFinalStudentRecord(int rowIndex) {
-        double studentScore = calculateStudentPercentage(0);
+        double studentScore = calculateStudentPercentage(rowIndex);
         for (int i = 0; i < classGrades.length; i++) {
             if (rowIndex == i) this.positionArray[i] = (int) studentScore;
         }
@@ -268,11 +266,11 @@ public class StudentGraderReport {
         int positionOne = positionArray[0];
         int positionTwo = positionArray[0];
         int positionThree = positionArray[0];
-        for (int i = 0; i < positionArray.length; i++) {
-            if (positionArray[i] > positionOne) {
+        for (int currentPosition : positionArray) {
+            if (currentPosition > positionOne) {
                 positionThree = positionTwo;
                 positionTwo = positionOne;
-                positionOne = positionArray[i];
+                positionOne = currentPosition;
             }
         }
         int position = 0;
