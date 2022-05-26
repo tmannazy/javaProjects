@@ -1,5 +1,7 @@
 package schoolStudentGraderReport;
 
+import java.util.concurrent.TimeUnit;
+
 public class StudentGraderReport {
 
     private final int[][] classGrades;
@@ -13,8 +15,10 @@ public class StudentGraderReport {
     private int subjectOnePasses;
     private int subjectTwoPasses;
     private int subjectThreePasses;
-    private int studentWithHighestScoreInASubject;
+    private int highestStudentScoreInASubject;
     private int studentWithLowestScoreInASubject;
+    private String nameOfStudentWithHighestScore;
+    private String nameOfStudentWithLowestScore;
 
     public StudentGraderReport(int rowsOfArray, int columnsOfArray) {
         this.classGrades = new int[rowsOfArray][columnsOfArray];
@@ -80,6 +84,7 @@ public class StudentGraderReport {
     }
 
     public int getTotalOfEachSubjectScores(int columnIndex) {
+        if (totalOfEachSubject != 0) this.totalOfEachSubject = 0;
         for (int[] student : classGrades) {
             for (int i = 0; i < classGrades.length; i++) {
                 if (columnIndex == i) {
@@ -121,11 +126,14 @@ public class StudentGraderReport {
 
     public int eachSubjectHighestScoringStudent(int columnIndex) {
         int highestStudentScore = 0;
-        for (int[] student : classGrades) {
+        for (int i = 0; i < classGrades.length; i++) {
             for (int j = 0; j < classGrades.length; j++) {
                 if (columnIndex == j) {
-                    if (highestStudentScore < student[j]) {
-                        highestStudentScore = student[j];
+                    if (highestStudentScore < classGrades[i][j]) {
+                        highestStudentScore = classGrades[i][j];
+                        if (i == 0) this.nameOfStudentWithHighestScore = "Student 1";
+                        else if (i == 1) this.nameOfStudentWithHighestScore = "Student 2";
+                        else if (i == 2) this.nameOfStudentWithHighestScore = "Student 3";
                     }
                     break;
                 }
@@ -136,13 +144,16 @@ public class StudentGraderReport {
 
     public int eachSubjectLowestScoringStudent(int columnIndex) {
         int lowestStudentScore = 0;
-        for (int[] student : classGrades) {
+        for (int i = 0; i < classGrades.length; i++) {
             for (int j = 0; j < classGrades.length; j++) {
                 if (columnIndex == j) {
                     if (lowestStudentScore == 0) {
-                        lowestStudentScore = student[j];
-                    } else if (lowestStudentScore > student[j]) {
-                        lowestStudentScore = student[j];
+                        lowestStudentScore = classGrades[i][j];
+                        if (i == 0) this.nameOfStudentWithLowestScore = "Student 1";
+                    } else if (lowestStudentScore > classGrades[i][j]) {
+                        lowestStudentScore = classGrades[i][j];
+                        if (i == 1) this.nameOfStudentWithLowestScore = "Student 2";
+                        else if (i == 2) this.nameOfStudentWithLowestScore = "Student 3";
                     }
                     break;
                 }
@@ -158,10 +169,10 @@ public class StudentGraderReport {
                 if (columnIndex == j) {
                     if (classGrade[j] > 40) {
                         passesCounter++;
-                        this.studentWithHighestScoreInASubject = classGrade[j];
+                        this.highestStudentScoreInASubject = classGrade[j];
                     }
-                    if (studentWithHighestScoreInASubject < classGrade[j]) {
-                        this.studentWithHighestScoreInASubject = classGrade[j];
+                    if (highestStudentScoreInASubject < classGrade[j]) {
+                        this.highestStudentScoreInASubject = classGrade[j];
                     }
 
                 }
@@ -213,7 +224,7 @@ public class StudentGraderReport {
     }
 
     public int getStudentWithHighestScore() {
-        return studentWithHighestScoreInASubject;
+        return highestStudentScoreInASubject;
     }
 
     public int getStudentWithLowestScore() {
@@ -263,22 +274,102 @@ public class StudentGraderReport {
     }
 
     public int getPosition(int indexNum) {
-        int positionOne = positionArray[0];
-        int positionTwo = positionArray[0];
-        int positionThree = positionArray[0];
-        for (int currentPosition : positionArray) {
-            if (currentPosition > positionOne) {
-                positionThree = positionTwo;
-                positionTwo = positionOne;
-                positionOne = currentPosition;
+        int[] result = new int[positionArray.length];
+        for (int i = 0; i < positionArray.length; i++) {
+            int count = 0;
+            for (int k : positionArray) if (k > positionArray[i]) count++;
+            result[i] = count + 1;
+        }
+        for (int i = 0; i < result.length; i++) if(indexNum == i) return result[i];
+        return 0;
+    }
+
+    public void studentsTabularRecord(StudentGraderReport graderReport) {
+        equalLines(0, 65, "=");
+        System.out.println();
+        System.out.printf("%-10s %7s %7s %7s %8s %9s %9s", "STUDENT","SUB1", "SUB2", "SUB3", "TOT", "AVE", "POS");
+        System.out.println();
+        equalLines(0, 65, "=");
+        System.out.println();
+        System.out.printf("%-10s %7s %7s %7s %8s %9.2f %9s", "Student 1",
+                graderReport.getStudentScoreAtSpecifiedIndex(0, 0),
+                graderReport.getStudentScoreAtSpecifiedIndex(0, 1),
+                graderReport.getStudentScoreAtSpecifiedIndex(0, 2),
+                graderReport.getTotalSubjectScoresForAStudent(0),
+                graderReport.getAverageSubjectScoresForAStudent(0),
+                graderReport.getPosition(0));
+        System.out.println();
+        System.out.printf("%-10s %7s %7s %7s %8s %9.2f %9s", "Student 2",
+                graderReport.getStudentScoreAtSpecifiedIndex(1, 0),
+                graderReport.getStudentScoreAtSpecifiedIndex(1, 1),
+                graderReport.getStudentScoreAtSpecifiedIndex(1, 2),
+                graderReport.getTotalSubjectScoresForAStudent(1),
+                graderReport.getAverageSubjectScoresForAStudent(1),
+                graderReport.getPosition(1));
+        System.out.println();
+        System.out.printf("%-10s %7s %7s %7s %8s %9.2f %9s", "Student 3",
+                graderReport.getStudentScoreAtSpecifiedIndex(2, 0),
+                graderReport.getStudentScoreAtSpecifiedIndex(2, 1),
+                graderReport.getStudentScoreAtSpecifiedIndex(2, 2),
+                graderReport.getTotalSubjectScoresForAStudent(2),
+                graderReport.getAverageSubjectScoresForAStudent(2),
+                graderReport.getPosition(2));
+        System.out.println();
+        equalLines(0, 65, "=");
+        System.out.println();
+        System.out.printf("%-10s %7s %7s %7s %18.2f", "SUB Total",
+                graderReport.getTotalOfEachSubjectScores(0),
+                graderReport.getTotalOfEachSubjectScores(1),
+                graderReport.getTotalOfEachSubjectScores(2),
+                graderReport.getAverageFromAllSubjectScores());
+        System.out.println();
+        equalLines(0, 65, "=");
+        System.out.println();
+    }
+
+    public void subjectSummary(String summaryOfSubjectName, int columnIndex) {
+        int highest = eachSubjectHighestScoringStudent(columnIndex);
+        int lowest = eachSubjectLowestScoringStudent(columnIndex);
+        System.out.println("SUBJECT SUMMARY");
+        System.out.println(summaryOfSubjectName);
+        System.out.printf("Highest scoring student is: %s scoring %d.%n", nameOfStudentWithHighestScore,highest );
+        System.out.printf("Lowest scoring student is: %s scoring %d.%n", nameOfStudentWithLowestScore, lowest);
+        System.out.printf("Total Score is: %d%n", getTotalOfEachSubjectScores(columnIndex));
+        System.out.printf("Average Score is: %.2f%n", getAverageOfEachSubjectScores(columnIndex));
+        System.out.printf("Number of passes: %d%n", getNumberOfStudentsThatPassedEachSubject(columnIndex));
+        System.out.printf("Number of fails: %d%n", getNumberOfStudentsThatFailedEachSubject(columnIndex));
+        System.out.println("\n");
+    }
+
+    public void equalLines(int number, int length, String symbol) {
+        for (int j = number ; j < length; j++) {
+            System.out.print(symbol);
+        }
+    }
+
+    public void introAndOutroToNextEntry() {
+        for (int i = 0; i < 55; i++) {
+            System.out.print(">");
+            try {
+                TimeUnit.MILLISECONDS.sleep(25);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         }
-        int position = 0;
-        for (int i = 0; i < positionArray.length; i++) {
-            if (positionArray[i] == positionOne && indexNum == i) position = 1;
-            if (positionArray[i] == positionTwo && indexNum == i) position = 2;
-            if (positionArray[i] == positionThree && indexNum == i) position = 3;
+        System.out.println();
+
+        for (int i = 0; i < 1; i++) {
+            equalLines(0, 55, " ");
+            System.out.println();
+            equalLines(i, 55, "<");
+            try {
+                TimeUnit.MILLISECONDS.sleep(25);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
-        return position;
+        System.out.println();
+        System.out.println();
     }
+
 }

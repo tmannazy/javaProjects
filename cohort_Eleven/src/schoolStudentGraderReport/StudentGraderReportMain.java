@@ -33,7 +33,7 @@ public class StudentGraderReportMain {
                     graderReport.saveFinalStudentRecord(0);
                     subjectCount = 0;
                     studentCount = 1;
-                    introAndOutroToNextEntry();
+                    graderReport.introAndOutroToNextEntry();
                 }
                 case 3 -> {
                     System.out.printf("Enter Student %d score for Subject %d: ", studentCount + 1, subjectCount + 1);
@@ -54,7 +54,7 @@ public class StudentGraderReportMain {
                     graderReport.saveFinalStudentRecord(1);
                     subjectCount = 0;
                     studentCount = 2;
-                    introAndOutroToNextEntry();
+                    graderReport.introAndOutroToNextEntry();
                 }
                 case 6 -> {
                     System.out.printf("Enter Student %d score for Subject %d: ", studentCount + 1, subjectCount + 1);
@@ -75,83 +75,12 @@ public class StudentGraderReportMain {
                     graderReport.saveFinalStudentRecord(2);
                     subjectCount = 0;
                     studentCount = 3;
-                    introAndOutroToNextEntry();
+                    graderReport.introAndOutroToNextEntry();
                 }
             }
             counter++;
         }
-
-        for (int i = 0; i < 65 ; i++) {
-            System.out.print("=");
-        }
-        System.out.println();
-        System.out.printf("%-10s %7s %7s %7s %8s %9s %9s", "STUDENT","SUB1", "SUB2", "SUB3", "TOT", "AVE", "POS");
-        System.out.println();
-        for (int i = 0; i < 65 ; i++) {
-            System.out.print("=");
-        }
-        System.out.println();
-        System.out.printf("%-10s %7s %7s %7s %8s %9.2f %9s", "Student 1",
-                graderReport.getStudentScoreAtSpecifiedIndex(0, 0),
-                graderReport.getStudentScoreAtSpecifiedIndex(0, 1),
-                graderReport.getStudentScoreAtSpecifiedIndex(0, 2),
-                graderReport.getTotalSubjectScoresForAStudent(0),
-                graderReport.getAverageSubjectScoresForAStudent(0),
-                graderReport.getPosition(0));
-        System.out.println();
-        System.out.printf("%-10s %7s %7s %7s %8s %9.2f %9s", "Student 2",
-                graderReport.getStudentScoreAtSpecifiedIndex(1, 0),
-                graderReport.getStudentScoreAtSpecifiedIndex(1, 1),
-                graderReport.getStudentScoreAtSpecifiedIndex(1, 2),
-                graderReport.getTotalSubjectScoresForAStudent(1),
-                graderReport.getAverageSubjectScoresForAStudent(1),
-                graderReport.getPosition(1));
-        System.out.println();
-        System.out.printf("%-10s %7s %7s %7s %8s %9.2f %9s", "Student 3",
-                graderReport.getStudentScoreAtSpecifiedIndex(2, 0),
-                graderReport.getStudentScoreAtSpecifiedIndex(2, 1),
-                graderReport.getStudentScoreAtSpecifiedIndex(2, 2),
-                graderReport.getTotalSubjectScoresForAStudent(2),
-                graderReport.getAverageSubjectScoresForAStudent(2),
-                graderReport.getPosition(2));
-        System.out.println();
-        for (int i = 0; i < 65 ; i++) {
-            System.out.print("=");
-        }
-        System.out.println();
-        for (int i = 0; i < 65 ; i++) {
-            System.out.print("=");
-        }
-    }
-
-    
-    
-
-    private static void introAndOutroToNextEntry() {
-        for (int i = 0; i < 55; i++) {
-            System.out.print(">");
-            try {
-                TimeUnit.MILLISECONDS.sleep(25);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        System.out.println();
-
-        for (int i = 0; i < 1; i++) {
-            for (int j = 0; j < 55; j++) {
-                System.out.print(" ");
-            }
-            for (int j = i; j < 55; j++) {
-                System.out.print("<");
-            }
-            try {
-                TimeUnit.MILLISECONDS.sleep(25);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        System.out.println();
-        System.out.println();
+        graderReport.studentsTabularRecord(graderReport);
+        graderReport.subjectSummary("Subject 1", 0);
     }
 }

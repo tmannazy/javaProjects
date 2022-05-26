@@ -87,7 +87,7 @@ class StudentGraderReportTest {
     @Test
     void numberOfStudentsThatPassedInEachSubject() {
         enterGradesFromStudents();
-        graderReport.eachSubjectLowestScoringStudent(2);
+        graderReport.eachSubjectHighestScoringStudent(2);
         assertEquals(1, graderReport.getNumberOfStudentsThatPassedEachSubject(2));
     }
 
