@@ -41,7 +41,7 @@ class TicTacToeTest {
     @Test
     void testThatNextPlayerPicksTheOtherChoiceAfterFirstPlayer() {
         ticTacToe.chooseFirstPlayer(playerO);
-        ticTacToe.setSecondPlayerAfterFirstPlayerPicks(playerX, playerO);
+        ticTacToe.setSecondPlayerAfterFirstPlayerPicks();
         assertNotNull(ticTacToe.getSecondPlayer());
     }
 
@@ -100,16 +100,15 @@ class TicTacToeTest {
         String[][] board = ticTacToe.getArray();
         ticTacToe.setDefaultValuesForAllCells();
         ticTacToe.chooseFirstPlayer(playerO);
-        ticTacToe.setSecondPlayerAfterFirstPlayerPicks(playerX, playerO);
+        ticTacToe.setSecondPlayerAfterFirstPlayerPicks();
         ticTacToe.setPlayerMarkOnBoard(spaceSeven, playerO, board);
         ticTacToe.setPlayerMarkOnBoard(spaceEight, playerO, board);
         ticTacToe.setPlayerMarkOnBoard(spaceFive, playerO, board);
         ticTacToe.setPlayerMarkOnBoard(spaceThree, playerX, board);
         ticTacToe.setPlayerMarkOnBoard(spaceSix, playerX, board);
         ticTacToe.setPlayerMarkOnBoard(spaceNine, playerX, board);
-        assertEquals("Player two wins the game.", ticTacToe.isGameOver(playerX, board));
+        assertTrue(ticTacToe.isGameOver(playerX, board));
     }
-
 }
 
 

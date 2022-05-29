@@ -40,7 +40,6 @@ public class arrayClass {
             for (int j = 0; j < twodArray.length; j++) {
                 System.out.println(ints[j]);
             }
-
         }
     }
 

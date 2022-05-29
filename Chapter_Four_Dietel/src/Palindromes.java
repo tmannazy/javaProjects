@@ -2,16 +2,17 @@ import java.util.Scanner;
 
 public class Palindromes {
     public static void main(String... args) {
-        System.out.println("This program checks if the numbers entered is a palindrome.");
+        System.out.println("This program checks if the digits entered is a palindrome.");
+        System.out.println("Enter the digits one after another.");
         Scanner scanner = new Scanner(System.in);
         int[] numList = new int[5];
         int counter = 0;
 
         while (counter < 5) {
-            System.out.format("Enter number %d: ", counter + 1);
+            System.out.format("Enter digit %d: ", counter + 1);
             int userInput = scanner.nextInt();
             numList[counter++] = userInput;
-            if (counter != 5) System.out.println("Enter up to five numbers.");
+            if (counter != 5) System.out.println("Must be up to five digits.");
         }
 
         int concatenateNum = 0;

@@ -82,5 +82,7 @@ public class StudentGraderReportMain {
         }
         graderReport.studentsTabularRecord(graderReport);
         graderReport.subjectSummary("Subject 1", 0);
+        graderReport.subjectSummary("Subject 2", 1);
+        graderReport.subjectSummary("Subject 3", 2);
     }
 }

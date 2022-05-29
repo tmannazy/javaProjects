@@ -24,7 +24,7 @@ public class Kata {
         return difference;
     }
 
-    public int divide(int firstNumber, int secondNumber) {
+    public static int divide(int firstNumber, int secondNumber) {
         int division = 0;
         if (secondNumber > 0) division = firstNumber / secondNumber;
         return division;

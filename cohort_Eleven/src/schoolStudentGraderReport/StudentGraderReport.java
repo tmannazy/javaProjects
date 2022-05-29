@@ -4,8 +4,8 @@ import java.util.concurrent.TimeUnit;
 
 public class StudentGraderReport {
 
-    private final int[][] classGrades;
-    private final int[] positionArray = new int[3];
+    private int[][] classGrades;
+    private int[] positionArray = new int[3];
     private int sumOfStudentSubjects;
     private double averageOfStudentSubjects;
     private int totalOfEachSubject;
@@ -167,7 +167,7 @@ public class StudentGraderReport {
         for (int[] classGrade : classGrades) {
             for (int j = 0; j < classGrades.length; j++) {
                 if (columnIndex == j) {
-                    if (classGrade[j] > 40) {
+                    if (classGrade[j] >= 40) {
                         passesCounter++;
                         this.highestStudentScoreInASubject = classGrade[j];
                     }
@@ -335,10 +335,34 @@ public class StudentGraderReport {
         System.out.printf("Highest scoring student is: %s scoring %d.%n", nameOfStudentWithHighestScore,highest );
         System.out.printf("Lowest scoring student is: %s scoring %d.%n", nameOfStudentWithLowestScore, lowest);
         System.out.printf("Total Score is: %d%n", getTotalOfEachSubjectScores(columnIndex));
-        System.out.printf("Average Score is: %.2f%n", getAverageOfEachSubjectScores(columnIndex));
+        System.out.printf("Subject Average Score is: %.2f%n", getAverageOfEachSubjectScores(columnIndex));
         System.out.printf("Number of passes: %d%n", getNumberOfStudentsThatPassedEachSubject(columnIndex));
         System.out.printf("Number of fails: %d%n", getNumberOfStudentsThatFailedEachSubject(columnIndex));
         System.out.println("\n");
+    }
+
+    public void fullSummary(){
+        System.out.printf("The hardest subject have %d failures", getTheHardestSubject());
+        System.out.printf("The easiest subject have %d failures", getTheEasiestSubject());
+        System.out.println("The overall highest score is scored by %s in %s scoring %d");
+        System.out.println("The overall lowest score is scored by %s in %s scoring %d");
+        System.out.println("\n");
+        System.out.println("\n");
+        System.out.println("CLASS SUMMARY");
+        equalLines(0, 65, "=");
+        System.out.println("\n");
+        System.out.printf("Best Graduating Student is: %s scoring %d");
+        equalLines(0,65,"=");
+        System.out.println("\n");
+        equalLines(0, 65, "!");
+        System.out.println("\n");
+        System.out.println("Best Graduating  Student is: %s scoring %d");
+        equalLines(0,65,"!");
+        System.out.println("\n");
+        equalLines(0, 65, "=");
+        System.out.println("\n");
+        System.out.println("Class Total score is: %d");
+        System.out.println("Class Average score is %d");
     }
 
     public void equalLines(int number, int length, String symbol) {
