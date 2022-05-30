@@ -22,6 +22,7 @@ public class TicTacToe {
     }
 
     public void displayBoard(String[][] board) {
+        System.out.println();
         System.out.print(board[0][0]);
         System.out.print(" | ");
         System.out.print(board[0][1]);
@@ -162,6 +163,7 @@ public class TicTacToe {
         } else if (!Objects.equals(playerOne, playerMark)) {
             this.availableSpaceStatusMessage = "This space is already filled, choose another number ";
             System.out.print(availableSpaceStatusMessage);
+            System.out.println();
             Random random = new Random();
             int playerTwoPosition = random.nextInt(10);
             setPlayerMarkOnBoard(playerTwoPosition, playerMark, board);
@@ -217,7 +219,7 @@ public class TicTacToe {
         setPlayerMarkOnBoard(cellNumToPlaceMark, playerMark, board);
         displayBoard(getArray());
         if (isGameOver(playerMark, board)) {
-            this.secondPlayerWinMessage = "Player two wins the game.";
+            this.secondPlayerWinMessage = "Computer wins the game.";
             System.out.println(secondPlayerWinMessage);
             System.exit(0);
         }

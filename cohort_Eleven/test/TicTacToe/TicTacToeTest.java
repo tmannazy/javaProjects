@@ -72,7 +72,7 @@ class TicTacToeTest {
         ticTacToe.chooseFirstPlayer(playerO);
         ticTacToe.setPlayerMarkOnBoard(spaceSix, playerO, board);
         ticTacToe.setPlayerMarkOnBoard(sameSpaceSix, playerX, board);
-        assertEquals("This space is already filled", ticTacToe.getReturnMessage());
+        assertEquals("This space is already filled, choose another number ", ticTacToe.getReturnMessage());
     }
 
     @Test

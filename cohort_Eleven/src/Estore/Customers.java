@@ -1,2 +1,6 @@
-package Estore;public class Customers {
+package Estore;
+
+public class Customers extends Users{
+    BillingInformation billingInformation;
+    ShoppingCart shoppingCart;
 }
