@@ -3,16 +3,17 @@ package MyDiary;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class EntryTest {
     Entry entry;
 
     @BeforeEach
     void setUp() {
-        entry = new Entry(2, "Call Mum", "I need to speak to mum about the feeding and accommodation in Juno",
-                "01 June 2022");
+        entry = new Entry("Call Mum", "I need to speak to mum about the feeding and accommodation in Juno");
     }
 
     @Test
@@ -26,27 +27,31 @@ class EntryTest {
     }
 
     @Test
-    void testThatIdIsSet() {
-        assertEquals(2, entry.getId());
-    }
-
-    @Test
     void testThatDateIsSet() {
-        assertEquals("01 June 2022", entry.getDateCreated());
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+        LocalDate date = LocalDate.now();
+        String currentDate = date.format(dateFormat);
+        assertEquals(currentDate, entry.getDateCreated());
     }
 
     @Test
     void testThatIdSetIsUnique() {
-        entry = new Entry(3, "Call Dad", "Dad is one person that always cares about his kids big time",
-                "01 June 2022");
-        assertEquals(3, entry.getId());
+        assertNotNull(entry.getId());
     }
 
     @Test
-    void testThatExceptionIsThrownWhenIllegalValueProvided() {
-        IllegalArgumentException valueEntered = assertThrows(IllegalArgumentException.class,
-                () ->entry = new Entry(3, "Call Dad", "Dad is one person that always cares about his kids big time",
-                        "01 Junne 2022"));
-        assertEquals("Enter date in format: dd MM yyyy", valueEntered.getMessage());
+    void testThatExceptionIsThrownWhenTitleAndBodyIsEmpty() {
+        IllegalArgumentException emptyTitleSupplied = assertThrows(IllegalArgumentException.class,
+                () -> entry = new Entry( "", "Dad is one person that always cares about his kids big time"));
+        assertEquals("Title Must Not Be Empty", emptyTitleSupplied.getMessage());
+
+        IllegalArgumentException emptyBodySupplied = assertThrows(IllegalArgumentException.class,
+                () -> new Entry("Dad is back", ""));
+        assertEquals("Body Must Not Be Empty", emptyBodySupplied.getMessage());
+    }
+
+    @Test
+    void testThatUserValuesToStringAreReturned(){
+        assertNotNull(entry.toString());
     }
 }

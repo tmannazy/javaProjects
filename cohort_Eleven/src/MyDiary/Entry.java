@@ -1,24 +1,31 @@
 package MyDiary;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 public class Entry {
-    Date date = new Date();
-    SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
-    String currentDate = dateFormat.format(date);
-    private int id;
+    DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+    LocalDate date = LocalDate.now();
+    String dateCreated = date.format(dateFormat);
+    private final String id;
     private String title;
     private String body;
-    private String dateCreated = currentDate;
 
 
-    public Entry(int id, String title, String body, String dateCreated) {
+    public Entry(String id, String title, String body) {
+        if (title.isEmpty())
+            throw new IllegalArgumentException("Title Must Not Be Empty");
+        if (body.length() == 0)
+            throw new IllegalArgumentException("Body Must Not Be Empty");
+
         this.id = id;
         this.title = title;
         this.body = body;
-        if (dateCreated.equals(this.dateCreated)) this.dateCreated = dateCreated;
-        else throw new IllegalArgumentException("Enter date in format: dd MM yyyy");
+    }
+
+    public Entry(String title, String body) {
+        this(UUID.randomUUID().toString(), title, body);
     }
 
     public String getTitle() {
@@ -29,11 +36,20 @@ public class Entry {
         return body;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
     public String getDateCreated() {
         return dateCreated;
+    }
+
+    @Override
+    public String toString() {
+        return ("Title: " + getTitle() +
+                "\nBody: " + getBody() +
+                "\nDate: " + getDateCreated() +
+                "\n" + "\n"
+        );
     }
 }

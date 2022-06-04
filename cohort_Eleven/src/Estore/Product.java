@@ -1,12 +1,11 @@
 package Estore;
 
 public class Product {
+    ProductCategory productCategory;
     private int productID;
     private String productName;
-    private int price;
+    private double price;
     private String productDescription;
-
-    ProductCategory productCategory;
 
     public int getProductID() {
         return productID;
@@ -24,11 +23,11 @@ public class Product {
         this.productName = productName;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -39,4 +38,10 @@ public class Product {
     public void setProductDescription(String productDescription) {
         this.productDescription = productDescription;
     }
+
+    public String toString() {
+        return ("Product name: " + getProductName() + " Price: " + getPrice() +
+                " with ProductID: " + getProductID() + " in Description " + getProductDescription());
+    }
+
 }

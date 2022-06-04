@@ -6,7 +6,7 @@ class Users {
     private String homeAddress;
     private String name;
     private String password;
-    private String phoneNumber;
+    private int phoneNumber;
 
     public int age() {
         return age;
@@ -49,11 +49,11 @@ class Users {
         return this;
     }
 
-    public String phoneNumber() {
+    public int phoneNumber() {
         return phoneNumber;
     }
 
-    public Users setPhoneNumber(String phoneNumber) {
+    public Users setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }

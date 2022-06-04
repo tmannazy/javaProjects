@@ -5,7 +5,12 @@ import java.util.Scanner;
 
 
 public class ShopInvoiceMain {
+
     public static void main(String... args) {
+        shopMain();
+    }
+
+    private static void shopMain() {
         ShopInvoice getPurchaseData = new ShopInvoice();
         Scanner scanner = new Scanner(System.in);
         String userResponseStringValue;
@@ -58,7 +63,7 @@ public class ShopInvoiceMain {
         } catch (InputMismatchException error) {
             System.out.println("Kindly enter correct value");
             System.out.println("\n");
-            main();
+            shopMain();
         }
     }
 }
