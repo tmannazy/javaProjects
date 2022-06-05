@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>Estore</OriginalElement>
+  <nodes>
+    <node x="102.05264316348936" y="642.784043232961">Estore.Customers</node>
+    <node x="670.64209339697" y="392.18361486301785">Estore.BillingInformation</node>
+    <node x="-61.02477024185957" y="54.75282362102823">Estore.ProductCategory</node>
+    <node x="363.17939890449026" y="38.87213127467132">Estore.Product</node>
+    <node x="-50.00564783723465" y="415.1172507088552">Estore.ShoppingCart</node>
+    <node x="395.48897343862905" y="444.8630680268814">Estore.Items</node>
+    <node x="1332.6179940093416" y="1.1552331627795382">Estore.CreditCardInformation</node>
+    <node x="735.38356805084" y="-19.75003882071985">Estore.Addresses</node>
+    <node x="1115.7714950219845" y="356.18618077291944">Estore.Users</node>
+    <node x="1016.1127007854623" y="23.160391897329376">Estore.CardType</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="Estore.CreditCardInformation" target="Estore.CardType" relationship="TO_ONE">
+      <point x="-146.0" y="11.43956301835172" />
+      <point x="1302.3653473974018" y="139.59479618113127" />
+      <point x="1302.3653473974018" y="97.66039189732938" />
+      <point x="128.0" y="0.0" />
+    </edge>
+    <edge source="Estore.Customers" target="Estore.BillingInformation" relationship="TO_ONE">
+      <point x="0.0" y="39.0" />
+      <point x="188.55264316348936" y="576.3630680268814" />
+      <point x="814.64209339697" y="576.3630680268814" />
+      <point x="0.0" y="74.5" />
+    </edge>
+    <edge source="Estore.ShoppingCart" target="Estore.Items" relationship="TO_MANY">
+      <point x="123.0" y="-44.75418268197376" />
+      <point x="502.98897343862905" y="427.3630680268814" />
+      <point x="0.0" y="-57.0" />
+    </edge>
+    <edge source="Estore.Items" target="Estore.Product" relationship="TO_ONE">
+      <point x="15.0" y="-57.0" />
+      <point x="23.80957453413879" y="109.5" />
+    </edge>
+    <edge source="Estore.Customers" target="Estore.Users" relationship="GENERALIZATION">
+      <point x="-15.0" y="39.0" />
+      <point x="173.55264316348936" y="669.2412474110849" />
+      <point x="-119.5" y="80.55506663816544" />
+    </edge>
+    <edge source="Estore.BillingInformation" target="Estore.CreditCardInformation" relationship="TO_ONE">
+      <point x="144.0" y="0.0" />
+      <point x="991.14209339697" y="466.68361486301785" />
+      <point x="991.14209339697" y="231.59479618113124" />
+      <point x="-146.0" y="103.4395630183517" />
+    </edge>
+    <edge source="Estore.Product" target="Estore.ProductCategory" relationship="TO_ONE">
+      <point x="-131.0" y="-19.11930765364309" />
+      <point x="157.0" y="0.0" />
+    </edge>
+    <edge source="Estore.BillingInformation" target="Estore.Addresses" relationship="TO_ONE">
+      <point x="30.74147465387" y="-74.5" />
+      <point x="0.0" y="127.0" />
+    </edge>
+    <edge source="Estore.Customers" target="Estore.ShoppingCart" relationship="TO_ONE">
+      <point x="-86.5" y="-14.372281145257034" />
+      <point x="131.6506730312666" y="667.411762087704" />
+      <point x="131.6506730312666" y="472.1172507088552" />
+      <point x="123.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.8346368715083798" showDependencies="true" x="809.7878179384204" y="396.90562248995985" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
