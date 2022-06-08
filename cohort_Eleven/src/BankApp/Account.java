@@ -51,9 +51,14 @@ public class Account {
             this.accountType = String.valueOf(AccountTypes.CURRENT);
     }
 
-    public String getCustomerName(){
+    public String getCustomerName() {
         return customer;
     }
 
-
+    @Override
+    public String toString(){
+        return ("Customer - " + getCustomerName() + " with " +
+                "Account type: " + getAccountType() +
+                "Balance is: " + getBalance(pin));
+    }
 }

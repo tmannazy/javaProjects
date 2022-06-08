@@ -54,16 +54,45 @@ public class Customer {
         return phoneNumber;
     }
 
-    public void depositMoney(Account newAccount) {
-        this.accounts.add(newAccount);
+    public void depositMoney(String customerName, int amount) {
+        Account depositAccount = getAccountInfo(customerName);
+        depositAccount.deposit(amount);
+    }
+
+    public void withdrawMoney(String customerName, int amount, String pin) {
+        Account withdrawAccount = getAccountInfo(customerName);
+        withdrawAccount.withdraw(amount, pin);
+    }
+
+    public double checkBalance(String customerName, String pin){
+        Account checkBal = getAccountInfo(customerName);
+        return checkBal.getBalance(pin);
     }
 
     public Account getAccountInfo(String customerName) {
-        for (Account account : accounts) {
-            if (account.getCustomerName().equals(customerName)) {
-                return account;
+        int accountIndex = -1;
+        for (int i = 0; i < accounts.size(); i++) {
+            if (accounts.get(i).getCustomerName().equalsIgnoreCase(customerName)) {
+                accountIndex = i;
+                break;
             }
         }
-        return null;
+
+        if (accountIndex == -1)
+            throw new IllegalArgumentException("Account with customer name '" + customerName + "' not found");
+        return accounts.get(accountIndex);
+    }
+
+    public ArrayList<Account> getAccounts(){
+        return accounts;
+    }
+
+    public void addNewAccount(Account newAccount) {
+        for (Account account : accounts) {
+            if (account.getCustomerName().equalsIgnoreCase(newAccount.getCustomerName())) {
+                throw new IllegalArgumentException("A customer with these details already exists");
+            }
+        }
+        this.accounts.add(newAccount);
     }
 }
