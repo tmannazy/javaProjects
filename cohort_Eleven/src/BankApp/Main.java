@@ -3,10 +3,9 @@ package BankApp;
 import java.util.Scanner;
 
 public class Main {
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
     private static Bank bank;
     private static Customer customer;
-    private static Account account;
 
     public static void main(String... args) {
         bank = new Bank();
@@ -72,7 +71,7 @@ public class Main {
             System.out.println("Account successfully created.");
             System.out.println();
             customer = new Customer(firstName, lastName, day, month, year, gender, email, pin, phoneNumber);
-            account = new Account(AccountTypes.SAVINGS, customer, pin);
+            Account account = new Account(AccountTypes.SAVINGS, customer, pin);
             customer.addNewAccount(account);
             bank.addNewCustomer(customer);
         }

@@ -8,13 +8,12 @@ public class Customer {
     private final String firstName;
     private final String lastName;
     private final Gender gender;
-    private final String pin;
     private final int day;
     private final int month;
     private final int year;
     protected ArrayList<Account> accounts = new ArrayList<>();
-    private String email;
-    private String phoneNumber;
+    private final String email;
+    private final String phoneNumber;
 
 
     public Customer(String firstName, String lastName, int day, int month, int year, Gender gender, String email,
@@ -26,7 +25,6 @@ public class Customer {
         this.year = year;
         this.email = email;
         this.gender = gender;
-        this.pin = pin;
         if (phoneNumber.length() == 11) this.phoneNumber = phoneNumber;
         else throw new IllegalArgumentException("Phone number must be 11 digits");
     }

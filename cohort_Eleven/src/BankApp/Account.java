@@ -7,12 +7,12 @@ public class Account {
     private final String pin;
     private final String accountID;
     protected double balance;
-    private String customer;
+    private final String customer;
     private String accountType;
 
 
     public Account(AccountTypes accountType, Customer customer, String pin) {
-        this.customer = customer.getNames();
+        this.customer = customer.getNames().toLowerCase();
         this.pin = pin;
         this.accountType = String.valueOf(accountType);
         this.accountID = UUID.randomUUID().toString();
