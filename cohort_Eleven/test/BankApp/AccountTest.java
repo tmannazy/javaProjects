@@ -12,11 +12,9 @@ class AccountTest {
 
     @BeforeEach
     void setUp() {
-//        account = new Account("Tman Nazy","1234");
-        account = new Account(AccountTypes.CURRENT,
-                new Customer("Tmann", "Nazy", 20, 12, 2000,
-                        Gender.MALE, "t@tman.com", "1234", "12345678901"),
-                "1234");
+        customer = new Customer("Tmann", "Nazy", 20, 12, 2000,
+                Gender.MALE, "t@tman.com", "1234", "12345678901");
+        account = new Account(AccountTypes.CURRENT, customer, "1234");
     }
 
     @Test
@@ -72,7 +70,7 @@ class AccountTest {
         account.deposit(2000);
         IllegalArgumentException err = assertThrows(IllegalArgumentException.class,
                 () -> account.withdraw(3000, "1234"));
-        assertEquals("Amount exceeded balance", err.getMessage());
+        assertEquals("Withdrawal amount exceeds balance", err.getMessage());
     }
 
     @Test

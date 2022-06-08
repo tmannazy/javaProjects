@@ -6,16 +6,12 @@ import java.util.UUID;
 public class Account {
     private final String pin;
     private final String accountID;
+    protected double balance;
     private String customer;
-    private double balance;
     private String accountType;
 
 
-//    public Account(Customer customer, String pin) {
-//        this(accountTypes accountType, Customer customer, String, pin);
-//    }
-
-    public Account(AccountTypes accountType, Customer customer, String pin){
+    public Account(AccountTypes accountType, Customer customer, String pin) {
         this.customer = customer.getNames();
         this.pin = pin;
         this.accountType = String.valueOf(accountType);
@@ -42,8 +38,8 @@ public class Account {
             throw new IllegalArgumentException("Incorrect pin");
         else if (this.pin.equals(pin) && amountToWithdraw <= balance)
             this.balance -= amountToWithdraw;
-         else
-            throw new IllegalArgumentException("Amount exceeded balance");
+        else
+            throw new IllegalArgumentException("Withdrawal amount exceeds balance");
     }
 
     public String getAccountType() {
@@ -53,6 +49,10 @@ public class Account {
     public void migrateAccountType(String accountType) {
         if (accountType.equalsIgnoreCase("current"))
             this.accountType = String.valueOf(AccountTypes.CURRENT);
+    }
+
+    public String getCustomerName(){
+        return customer;
     }
 
 

@@ -2,6 +2,7 @@ package BankApp;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 
 public class Customer {
     private final String firstName;
@@ -11,9 +12,9 @@ public class Customer {
     private final int day;
     private final int month;
     private final int year;
+    protected ArrayList<Account> accounts = new ArrayList<>();
     private String email;
     private String phoneNumber;
-
 
 
     public Customer(String firstName, String lastName, int day, int month, int year, Gender gender, String email,
@@ -51,5 +52,18 @@ public class Customer {
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public void depositMoney(Account newAccount) {
+        this.accounts.add(newAccount);
+    }
+
+    public Account getAccountInfo(String customerName) {
+        for (Account account : accounts) {
+            if (account.getCustomerName().equals(customerName)) {
+                return account;
+            }
+        }
+        return null;
     }
 }
