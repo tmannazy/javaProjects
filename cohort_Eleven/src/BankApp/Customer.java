@@ -11,9 +11,9 @@ public class Customer {
     private final int day;
     private final int month;
     private final int year;
-    protected ArrayList<Account> accounts = new ArrayList<>();
     private final String email;
     private final String phoneNumber;
+    protected ArrayList<Account> accounts = new ArrayList<>();
 
 
     public Customer(String firstName, String lastName, int day, int month, int year, Gender gender, String email,
@@ -27,6 +27,16 @@ public class Customer {
         this.gender = gender;
         if (phoneNumber.length() == 11) this.phoneNumber = phoneNumber;
         else throw new IllegalArgumentException("Phone number must be 11 digits. New account not created.\n");
+    }
+
+    public void removeAccount(Customer customerToBeDeleted) {
+        Account accountToBeDeleted = null;
+        for(Account account : accounts){
+            if (account.getCustomerName().equalsIgnoreCase(customerToBeDeleted.getNames())) {
+               accountToBeDeleted = account;
+            }
+        }
+        accounts.remove(accountToBeDeleted);
     }
 
     public String getNames() {
@@ -62,26 +72,38 @@ public class Customer {
         withdrawAccount.withdraw(amount, pin);
     }
 
-    public double checkBalance(String customerName, String pin){
+    public double checkBalance(String customerName, String pin) {
         Account checkBal = getAccountInfo(customerName);
         return checkBal.getBalance(pin);
     }
 
     public Account getAccountInfo(String customerName) {
-        int accountIndex = -1;
-        for (int i = 0; i < accounts.size(); i++) {
-            if (accounts.get(i).getCustomerName().equalsIgnoreCase(customerName)) {
-                accountIndex = i;
-                break;
+//        Account returnAccount = null;
+        for (Account account : accounts) {
+            if (account.getCustomerName().equalsIgnoreCase(customerName)) {
+                return account;
             }
         }
+        throw new IllegalArgumentException("Account with customer name '" + customerName + "' not found");
+//        if (returnAccount == null) {
+//        }
+//        return null;
 
-        if (accountIndex == -1)
-            throw new IllegalArgumentException("Account with customer name '" + customerName + "' not found");
-        return accounts.get(accountIndex);
+
+//        int accountIndex = -1;
+//        for (int i = 0; i < accounts.size(); i++) {
+//            if (accounts.get(i).getCustomerName().equalsIgnoreCase(customerName)) {
+//                accountIndex = i;
+//                break;
+//            }
+//        }
+//
+//        if (accountIndex == -1)
+//            throw new IllegalArgumentException("Account with customer name '" + customerName + "' not found");
+//        return accounts.get(accountIndex);
     }
 
-    public ArrayList<Account> getAccounts(){
+    public ArrayList<Account> getAccounts() {
         return accounts;
     }
 
@@ -96,16 +118,11 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" +
-               "last name first Name='" + getNames() + '\'' +
-               ", lastName='" + lastName + '\'' +
-               ", gender=" + gender +
-               ", day=" + day +
-               ", month=" + month +
-               ", year=" + year +
-//               ", accounts=" + accounts +
-               ", email='" + email + '\'' +
-               ", phoneNumber='" + phoneNumber + '\'' +
+        return "Customer: " + getNames().toUpperCase() + '\'' +
+               "\n gender: " + getGender() +
+               "\n age: " + getAge() +
+               "\n email: " + getEmail() +
+               "\n phoneNumber: '" + getPhoneNumber() + '\'' +
                '}';
     }
 }

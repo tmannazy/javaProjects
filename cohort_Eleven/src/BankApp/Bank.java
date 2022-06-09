@@ -8,8 +8,8 @@ public class Bank {
 
     public void addNewCustomer(Customer newCustomer) {
         for (Customer customer : customers) {
-            if (customer.getPhoneNumber().equals(newCustomer.getPhoneNumber())) {
-                throw new IllegalArgumentException("A customer with these details already exists");
+            if (customer.getNames().equals(newCustomer.getNames())) {
+                throw new IllegalArgumentException("A customer with these details already exists.\n");
             }
         }
         this.customers.add(newCustomer);
@@ -26,23 +26,28 @@ public class Bank {
         return customers;
     }
 
-//c
     @Override
     public String toString() {
-        String listOfCustomers = "";
+        StringBuilder listOfCustomers = new StringBuilder();
         int count = 1;
         for (Customer customer : customers) {
-//            if (account.getCustomerName().equalsIgnoreCase(customer.getNames()))
-//            for (Customer cust: customer) {
-//
-//            }
-           listOfCustomers += customer.getAccounts().toString();
-            }
-//                listOfCustomers += (account.toString());
-//            listOfCustomers += ("Customer " + count + ": " + customer.getNames().toUpperCase() + "\n");
-//            count++;
-//        }
-        return listOfCustomers;
+            listOfCustomers.append("Customer ").append(count).append(customer.getAccounts().toString());
+            count++;
+        }
+        return listOfCustomers.toString();
 
+    }
+
+    public void removeCustomer(String customerName) {
+        Customer customerToBeDeleted = null;
+        for (Customer customer : customers) {
+            if (customer.getNames().equalsIgnoreCase(customerName)) {
+                customerToBeDeleted = customer;
+                customer.removeAccount(customerToBeDeleted);
+            }
+        }
+        if (customerToBeDeleted == null)
+            throw new IllegalArgumentException("Account with customer name '" + customerName.toUpperCase() + "' not found.\n");
+        customers.remove(customerToBeDeleted);
     }
 }

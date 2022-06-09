@@ -6,8 +6,8 @@ import java.util.UUID;
 public class Account {
     private final String pin;
     private final String accountID;
-    protected double balance;
     private final String customer;
+    protected double balance;
     private String accountType;
 
 
@@ -36,6 +36,8 @@ public class Account {
     public void withdraw(int amountToWithdraw, String pin) {
         if (!Objects.equals(this.pin, pin))
             throw new IllegalArgumentException("Incorrect pin");
+        else if (amountToWithdraw <= 0)
+            throw new IllegalArgumentException("You entered an invalid amount");
         else if (this.pin.equals(pin) && amountToWithdraw <= balance)
             this.balance -= amountToWithdraw;
         else
@@ -56,8 +58,8 @@ public class Account {
     }
 
     @Override
-    public String toString(){
-        return ("Customer - " + getCustomerName() + " with " +
+    public String toString() {
+        return ("Customer - " + getCustomerName().toUpperCase() + " with " +
                 "\nAccount type: " + getAccountType() +
                 "\nBalance is: " + getBalance(pin) +
                 "\n");

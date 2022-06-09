@@ -1,5 +1,6 @@
 package BankApp;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class BankAppMain {
@@ -26,35 +27,45 @@ public class BankAppMain {
                 if (promptResponse == 0) sentinel = 0;
                 else {
                     switch (promptResponse) {
-                        case 1 -> newUserMenu();
+                        case 1 -> newUserMenu(promptResponse);
                         case 2 -> userDataMenu();
                         case 3 -> viewAllAccounts();
                         case 4 -> closeAccount();
                     }
                 }
             } catch (IllegalArgumentException err) {
-                System.out.println(err.getMessage() +
-                                   " wrong entry received. Enter a number.");
+                System.out.println(err.getMessage() + " wrong entry received. Enter a number.");
             }
         }
     }
 
     private static void closeAccount() {
-
+        try {
+            System.out.print("\nEnter your first name: ");
+            String firstName = scanner.nextLine();
+            System.out.print("\nEnter your last name: ");
+            String lastName = scanner.nextLine();
+            try{
+                bank.removeCustomer(lastName + " " + firstName);
+                System.out.println("Account of " + lastName.toUpperCase() + " " + firstName.toUpperCase() +
+                                   " successfully closed.\n");
+            }catch (IllegalArgumentException | NullPointerException err){
+                System.out.println(err.getMessage());
+            }
+        } catch(IllegalArgumentException err){
+            System.out.println(err.getMessage());
+        } catch (InputMismatchException inputMismatchException){
+            System.out.println(inputMismatchException);
+        }
     }
 
     private static void viewAllAccounts() {
         System.out.println(bank.toString());
     }
 
-    private static void newUserMenu() {
+    private static void newUserMenu(int response) {
         Gender gender;
-        String createAccountMenu = """
-                1 -> Enter 1 to Create New Account
-                """;
-        System.out.println(createAccountMenu);
-        int promptResponse = Integer.parseInt(scanner.nextLine());
-        if (promptResponse == 1) {
+        if (response == 1) {
             try {
                 System.out.print("\nEnter your first name: ");
                 String firstName = scanner.nextLine();
@@ -89,8 +100,12 @@ public class BankAppMain {
                     customer = new Customer(firstName, lastName, day, month, year, gender, email, pin, phoneNumber);
                     Account account = new Account(AccountTypes.SAVINGS, customer, pin);
                     customer.addNewAccount(account);
-                    bank.addNewCustomer(customer);
-                    System.out.println("New Account successfully created.\n");
+                    try {
+                        bank.addNewCustomer(customer);
+                        System.out.println("New Account successfully created.\n");
+                    } catch (IllegalArgumentException err) {
+                        System.out.println(err.getMessage());
+                    }
                 } catch (IllegalArgumentException err) {
                     System.out.println(err.getMessage());
                 }
@@ -120,7 +135,7 @@ public class BankAppMain {
                     System.out.println(customer.checkBalance(userResponse, pin));
                     System.out.println();
                 } catch (IllegalArgumentException err) {
-                    err.getMessage();
+                    System.out.println(err.getMessage());
                 } catch (NullPointerException err) {
                     System.out.println("Incorrect entry. Kindly enter correct name or pin!");
                     System.out.println();
@@ -153,13 +168,18 @@ public class BankAppMain {
                     int amount = Integer.parseInt(scanner.nextLine());
                     System.out.print("Enter your pin: ");
                     String pin = scanner.nextLine();
-                    customer.withdrawMoney(userResponse, amount, pin);
-                    String withdrawFeedback = """
+                    try {
+                        customer.withdrawMoney(userResponse, amount, pin);
+                        String withdrawFeedback = """
                             The sum of %d was successfully withdrawn.
                             Thank you for banking with us. Do have a nice day.
                             """;
-                    System.out.printf(withdrawFeedback, amount);
-                    System.out.println();
+                        System.out.printf(withdrawFeedback, amount);
+                        System.out.println();
+                    } catch (IllegalArgumentException err) {
+                        System.out.println(err.getMessage());
+                        System.out.println();
+                    }
                 } catch (IllegalArgumentException err) {
                     System.out.println(err.getMessage());
                     System.out.println();
@@ -167,7 +187,6 @@ public class BankAppMain {
                     System.out.println("Customer not found. Kindly enter correct customer details.");
                     System.out.println();
                 }
-
             }
         }
     }
