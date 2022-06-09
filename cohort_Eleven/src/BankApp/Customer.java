@@ -26,7 +26,7 @@ public class Customer {
         this.email = email;
         this.gender = gender;
         if (phoneNumber.length() == 11) this.phoneNumber = phoneNumber;
-        else throw new IllegalArgumentException("Phone number must be 11 digits");
+        else throw new IllegalArgumentException("Phone number must be 11 digits. New account not created.\n");
     }
 
     public String getNames() {
@@ -97,7 +97,7 @@ public class Customer {
     @Override
     public String toString() {
         return "Customer{" +
-               "firstName='" + firstName + '\'' +
+               "last name first Name='" + getNames() + '\'' +
                ", lastName='" + lastName + '\'' +
                ", gender=" + gender +
                ", day=" + day +
@@ -108,8 +108,4 @@ public class Customer {
                ", phoneNumber='" + phoneNumber + '\'' +
                '}';
     }
-//    @Override
-//    public String toString(){
-//
-//    }
 }

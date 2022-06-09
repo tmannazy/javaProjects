@@ -40,7 +40,7 @@ public class BankAppMain {
     }
 
     private static void closeAccount() {
-        
+
     }
 
     private static void viewAllAccounts() {
@@ -84,12 +84,16 @@ public class BankAppMain {
                 String pin = scanner.nextLine();
                 System.out.print("\nEnter your phone number: ");
                 String phoneNumber = scanner.nextLine();
-                System.out.println("Account successfully created.");
                 System.out.println();
-                customer = new Customer(firstName, lastName, day, month, year, gender, email, pin, phoneNumber);
-                Account account = new Account(AccountTypes.SAVINGS, customer, pin);
-                customer.addNewAccount(account);
-                bank.addNewCustomer(customer);
+                try {
+                    customer = new Customer(firstName, lastName, day, month, year, gender, email, pin, phoneNumber);
+                    Account account = new Account(AccountTypes.SAVINGS, customer, pin);
+                    customer.addNewAccount(account);
+                    bank.addNewCustomer(customer);
+                    System.out.println("New Account successfully created.\n");
+                } catch (IllegalArgumentException err) {
+                    System.out.println(err.getMessage());
+                }
             } catch (IllegalArgumentException err) {
                 System.out.println("Wrong input entered. Kindly supply the correct format.");
             }
