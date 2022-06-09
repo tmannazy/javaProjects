@@ -22,7 +22,7 @@ public class Account {
         if (amount > 0) {
             this.balance += amount;
         } else if (amount < 0) {
-            throw new IllegalArgumentException("You can't deposit negative amount");
+            throw new IllegalArgumentException("You can't deposit a negative amount");
         }
     }
 
@@ -30,7 +30,7 @@ public class Account {
         if (this.pin.equals(pin))
             return balance;
         else
-            throw new IllegalArgumentException("Enter correct pin!!");
+            throw new IllegalArgumentException("Enter correct pin!!!");
     }
 
     public void withdraw(int amountToWithdraw, String pin) {
@@ -58,7 +58,8 @@ public class Account {
     @Override
     public String toString(){
         return ("Customer - " + getCustomerName() + " with " +
-                "Account type: " + getAccountType() +
-                "Balance is: " + getBalance(pin));
+                "\nAccount type: " + getAccountType() +
+                "\nBalance is: " + getBalance(pin) +
+                "\n");
     }
 }

@@ -93,4 +93,23 @@ public class Customer {
         }
         this.accounts.add(newAccount);
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+               "firstName='" + firstName + '\'' +
+               ", lastName='" + lastName + '\'' +
+               ", gender=" + gender +
+               ", day=" + day +
+               ", month=" + month +
+               ", year=" + year +
+//               ", accounts=" + accounts +
+               ", email='" + email + '\'' +
+               ", phoneNumber='" + phoneNumber + '\'' +
+               '}';
+    }
+//    @Override
+//    public String toString(){
+//
+//    }
 }

@@ -277,17 +277,21 @@ public class StudentGraderReport {
         int[] result = new int[positionArray.length];
         for (int i = 0; i < positionArray.length; i++) {
             int count = 0;
-            for (int k : positionArray) if (k > positionArray[i]) count++;
+            for (int k : positionArray) {
+                if (k > positionArray[i]) count++;
+            }
             result[i] = count + 1;
         }
-        for (int i = 0; i < result.length; i++) if(indexNum == i) return result[i];
+        for (int i = 0; i < result.length; i++) {
+            if (indexNum == i) return result[i];
+        }
         return 0;
     }
 
     public void studentsTabularRecord(StudentGraderReport graderReport) {
         equalLines(0, 65, "=");
         System.out.println();
-        System.out.printf("%-10s %7s %7s %7s %8s %9s %9s", "STUDENT","SUB1", "SUB2", "SUB3", "TOT", "AVE", "POS");
+        System.out.printf("%-10s %7s %7s %7s %8s %9s %9s", "STUDENT", "SUB1", "SUB2", "SUB3", "TOT", "AVE", "POS");
         System.out.println();
         equalLines(0, 65, "=");
         System.out.println();
@@ -332,7 +336,7 @@ public class StudentGraderReport {
         int lowest = eachSubjectLowestScoringStudent(columnIndex);
         System.out.println("SUBJECT SUMMARY");
         System.out.println(summaryOfSubjectName);
-        System.out.printf("Highest scoring student is: %s scoring %d.%n", nameOfStudentWithHighestScore,highest );
+        System.out.printf("Highest scoring student is: %s scoring %d.%n", nameOfStudentWithHighestScore, highest);
         System.out.printf("Lowest scoring student is: %s scoring %d.%n", nameOfStudentWithLowestScore, lowest);
         System.out.printf("Total Score is: %d%n", getTotalOfEachSubjectScores(columnIndex));
         System.out.printf("Subject Average Score is: %.2f%n", getAverageOfEachSubjectScores(columnIndex));
@@ -341,7 +345,7 @@ public class StudentGraderReport {
         System.out.println("\n");
     }
 
-    public void fullSummary(){
+    public void fullSummary() {
         System.out.printf("The hardest subject have %d failures", getTheHardestSubject());
         System.out.printf("The easiest subject have %d failures", getTheEasiestSubject());
         System.out.println("The overall highest score is scored by %s in %s scoring %d");
@@ -352,12 +356,12 @@ public class StudentGraderReport {
         equalLines(0, 65, "=");
         System.out.println("\n");
         System.out.printf("Best Graduating Student is: %s scoring %d");
-        equalLines(0,65,"=");
+        equalLines(0, 65, "=");
         System.out.println("\n");
         equalLines(0, 65, "!");
         System.out.println("\n");
         System.out.println("Best Graduating  Student is: %s scoring %d");
-        equalLines(0,65,"!");
+        equalLines(0, 65, "!");
         System.out.println("\n");
         equalLines(0, 65, "=");
         System.out.println("\n");
@@ -366,7 +370,7 @@ public class StudentGraderReport {
     }
 
     public void equalLines(int number, int length, String symbol) {
-        for (int j = number ; j < length; j++) {
+        for (int j = number; j < length; j++) {
             System.out.print(symbol);
         }
     }

@@ -38,11 +38,6 @@ public class Savings extends Account {
 
     }
 
-//    @Override
-//    public void deposit(int amount) {
-//        super.deposit(amount);
-//
-//    }
 }
 
 
