@@ -51,16 +51,23 @@ public class Student {
         }
     }
 
-    public String isCourseRegistered(String courseName) throws Exception {
+    String isCourseRegistered(String courseID) throws Exception {
         for (Course courseOffered : listOfStudentCourses) {
-            if (courseOffered.getCourseName().equalsIgnoreCase(courseName)) {
-                return courseName;
+            if (courseOffered.getCourseCode().equalsIgnoreCase(courseID)) {
+                return courseOffered.getCourseName();
             }
         }
         throw new Exception("Course not yet registered.");
     }
 
-    public ArrayList<Course> getAllRegisteredCourses() {
-        return listOfStudentCourses;
+    ArrayList<Course> getAllRegisteredCourses() throws Exception {
+        if (listOfStudentCourses != null)
+            return listOfStudentCourses;
+        throw new Exception("You offer no course. You are not a bona-fide student.");
+    }
+
+    void deleteCourse(String courseID) {
+        if(listOfStudentCourses.removeIf(courseOffered -> courseOffered.getCourseCode().equalsIgnoreCase(courseID)));
+        else throw new IllegalArgumentException("You don't offer this course at the moment");
     }
 }

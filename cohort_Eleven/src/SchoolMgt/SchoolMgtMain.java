@@ -22,17 +22,19 @@ public class SchoolMgtMain {
 
     private static void schoolMainMenu(int sentinel) throws Exception {
         System.out.print("""
+                                
                 1 -> Admins Page
                 2 -> Students Page
                 0 -> Exit App
                 -> """);
+        int userResponse = Integer.parseInt(scanner.nextLine());
         while (sentinel != 0) {
-            int userResponse = Integer.parseInt(scanner.nextLine());
             if (userResponse == 0) sentinel = 0;
             else {
                 switch (userResponse) {
                     case 1 -> adminsPage();
                     case 2 -> studentsPage();
+                    case 0 -> System.exit(1);
                 }
             }
         }
@@ -46,13 +48,13 @@ public class SchoolMgtMain {
     }
 
     private static void studentSubmenu(Student verifiedStudent) throws Exception {
-        System.out.println("""
+        System.out.print("""
                                 
                 1 -> Select courses
                 2 -> View courses offered
                 3 -> Remove a course
                 0 -> Main menu
-                """);
+                ->""");
         int userResponse = Integer.parseInt(scanner.nextLine());
         switch (userResponse) {
             case 1 -> {
@@ -72,24 +74,47 @@ public class SchoolMgtMain {
                 studentSubmenu(verifiedStudent);
             }
             case 2 -> {
-                for (Course course : verifiedStudent.getAllRegisteredCourses()) {
-                    String courseName = course.getCourseName();
-                    String courseId = course.getCourseCode();
-                    System.out.printf("""
-                            Course Name: %s
-                            Course Code: %s
-                            """, courseName, courseId);
+                try {
+                    for (Course course : verifiedStudent.getAllRegisteredCourses()) {
+                        String courseName = course.getCourseName();
+                        String courseId = course.getCourseCode();
+                        String star = ">";
+                        String reverseStar = "<";
+                        System.out.printf("""
+                                %sSEMESTER COURSES%s
+                                Course Name: %s
+                                Course Code: %s
+                                """, star.repeat(5), reverseStar.repeat(5), courseName, courseId);
+                    }
+                } catch (Exception err) {
+                    System.out.println(err.getMessage());
                 }
                 studentSubmenu(verifiedStudent);
             }
-            case 3 ->
+            case 3 -> {
+                System.out.print("Enter course code to remove: ");
+                String courseID = scanner.nextLine();
+                try {
+                    String courseToRemove = "";
+                    try {
+                        courseToRemove = verifiedStudent.isCourseRegistered(courseID);
+                    } catch (Exception err) {
+                        System.out.println("Course doesn't exist");
+                    }
+                    verifiedStudent.deleteCourse(courseID);
+                    System.out.println("You don't offer '" + courseToRemove.toUpperCase() + "' anymore.");
+                } catch (IllegalArgumentException err) {
+                    System.out.println(err.getMessage());
+                }
+                studentSubmenu(verifiedStudent);
+            }
             case 0 -> schoolMainMenu(-1);
         }
     }
 
     private static void adminsPage() throws Exception {
         System.out.println();
-        System.out.println("""
+        System.out.print("""
                 1 -> Admit new student
                 2 -> Create a new course
                 3 -> View course list
@@ -97,7 +122,7 @@ public class SchoolMgtMain {
                 5 -> Expel a student
                 6 -> Course student list
                 0 -> Main menu
-                """);
+                ->""");
         int userResponse = Integer.parseInt(scanner.nextLine());
         switch (userResponse) {
             case 1 -> {
@@ -110,7 +135,7 @@ public class SchoolMgtMain {
                         Choose your gender:
                         1 -> MALE
                         2 -> FEMALE
-                        """);
+                        ->""");
                 int genderChoice = Integer.parseInt(scanner.nextLine());
                 if (genderChoice == 1) gender = String.valueOf(Gender.MALE);
                 else gender = String.valueOf(Gender.FEMALE);
@@ -133,11 +158,11 @@ public class SchoolMgtMain {
                 String courseName = scanner.nextLine();
                 System.out.print("Enter course code: ");
                 String courseID = scanner.nextLine();
-                System.out.println("""
+                System.out.print("""
                         Choose course activation status
                         1 -> True
                         2 -> False
-                        """);
+                        ->""");
                 int status = Integer.parseInt(scanner.nextLine());
                 boolean courseStatus;
                 if (status == 1) courseStatus = true;
@@ -193,10 +218,13 @@ public class SchoolMgtMain {
         for (Course course : School.returnCourses()) {
             String courseName = course.getCourseName();
             String courseId = course.getCourseCode();
+            String star = ">";
+            String reverseStar = "<";
             System.out.printf("""
+                    %sSEMESTER COURSES%s
                     Course Name: %s
                     Course Code: %s
-                    """, courseName, courseId);
+                    """, star.repeat(5), reverseStar.repeat(5), courseName, courseId);
         }
     }
 }
