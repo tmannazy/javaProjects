@@ -34,6 +34,10 @@ public class Account {
     }
 
     public void withdraw(int amountToWithdraw, String pin) {
+        if (Objects.equals(getAccountType(), "SAVINGS")){
+//            Savings savings = new Savings(Customer )
+
+        }
         if (!Objects.equals(this.pin, pin))
             throw new IllegalArgumentException("Incorrect pin");
         else if (amountToWithdraw <= 0)

@@ -78,29 +78,10 @@ public class Customer {
     }
 
     public Account getAccountInfo(String customerName) {
-//        Account returnAccount = null;
         for (Account account : accounts) {
-            if (account.getCustomerName().equalsIgnoreCase(customerName)) {
-                return account;
-            }
+            if (account.getCustomerName().equalsIgnoreCase(customerName)) return account;
         }
         throw new IllegalArgumentException("Account with customer name '" + customerName + "' not found");
-//        if (returnAccount == null) {
-//        }
-//        return null;
-
-
-//        int accountIndex = -1;
-//        for (int i = 0; i < accounts.size(); i++) {
-//            if (accounts.get(i).getCustomerName().equalsIgnoreCase(customerName)) {
-//                accountIndex = i;
-//                break;
-//            }
-//        }
-//
-//        if (accountIndex == -1)
-//            throw new IllegalArgumentException("Account with customer name '" + customerName + "' not found");
-//        return accounts.get(accountIndex);
     }
 
     public ArrayList<Account> getAccounts() {
