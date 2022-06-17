@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class SchoolMgtMain {
     static Scanner scanner = new Scanner(System.in);
     static School school;
-    static Student student;
+
 
     public static void main(String... args) throws Exception {
         school = new School("Everlasting");
@@ -94,13 +94,13 @@ public class SchoolMgtMain {
             case 3 -> {
                 System.out.print("Enter course code to remove: ");
                 String courseID = scanner.nextLine();
+                String courseToRemove = "";
                 try {
-                    String courseToRemove = "";
-                    try {
-                        courseToRemove = verifiedStudent.isCourseRegistered(courseID);
-                    } catch (Exception err) {
-                        System.out.println("Course doesn't exist");
-                    }
+                    courseToRemove = verifiedStudent.isCourseRegistered(courseID);
+                } catch (Exception err) {
+                    System.out.println("Course doesn't exist");
+                }
+                try {
                     verifiedStudent.deleteCourse(courseID);
                     System.out.println("You don't offer '" + courseToRemove.toUpperCase() + "' anymore.");
                 } catch (IllegalArgumentException err) {
