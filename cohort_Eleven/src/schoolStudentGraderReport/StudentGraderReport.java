@@ -355,7 +355,7 @@ public class StudentGraderReport {
         System.out.println("CLASS SUMMARY");
         equalLines(0, 65, "=");
         System.out.println("\n");
-        System.out.printf("Best Graduating Student is: %s scoring %d");
+        System.out.print("Best Graduating Student is: %s scoring %d");
         equalLines(0, 65, "=");
         System.out.println("\n");
         equalLines(0, 65, "!");

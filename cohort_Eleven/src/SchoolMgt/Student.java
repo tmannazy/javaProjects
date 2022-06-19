@@ -1,6 +1,7 @@
 package SchoolMgt;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Student {
     private static int uuidCount = 0;
@@ -37,23 +38,22 @@ public class Student {
     void selectCourse(String courseCode) throws Exception {
         ArrayList<Course> courseList = School.returnCourses();
         for (Course course : courseList) {
-            if (course.getCourseCode().equalsIgnoreCase(courseCode)) {
-                if (listOfStudentCourses.size() == 0) listOfStudentCourses.add(course);
-                else {
+            if (Objects.equals(course.getCourseCode(), courseCode)) {
+                if (listOfStudentCourses.size() != 0) {
                     for (Course studentCourse : listOfStudentCourses) {
-                        if (!studentCourse.getCourseCode().equalsIgnoreCase(courseCode))
-                            listOfStudentCourses.add(course);
+                        if (Objects.equals(studentCourse.getCourseCode(), courseCode)) {
+                            throw new Exception("This course already exist");
+                        }
                     }
                 }
-            } else {
-                throw new Exception("This course already exist");
+                listOfStudentCourses.add(course);
             }
         }
     }
 
-    String isCourseRegistered(String courseID) throws Exception {
+    String isCourseRegistered(String courseName) throws Exception {
         for (Course courseOffered : listOfStudentCourses) {
-            if (courseOffered.getCourseCode().equalsIgnoreCase(courseID)) {
+            if (courseOffered.getCourseName().equalsIgnoreCase(courseName)) {
                 return courseOffered.getCourseName();
             }
         }
@@ -67,7 +67,7 @@ public class Student {
     }
 
     void deleteCourse(String courseID) {
-        if(listOfStudentCourses.removeIf(courseOffered -> courseOffered.getCourseCode().equalsIgnoreCase(courseID)));
+        if (listOfStudentCourses.removeIf(courseOffered -> courseOffered.getCourseCode().equalsIgnoreCase(courseID))) ;
         else throw new IllegalArgumentException("You don't offer this course at the moment");
     }
 }
