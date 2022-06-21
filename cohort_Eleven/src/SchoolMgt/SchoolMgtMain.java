@@ -10,13 +10,15 @@ public class SchoolMgtMain {
 
 
     public static void main(String... args) throws Exception {
-        school = new School("Everlasting");
         int sentinel = -1;
         String star = "*";
         System.out.printf("""
                 %s
                      Welcome To Your School Manager
                 %s%n""", star.repeat(40), star.repeat(40));
+        System.out.print("Enter the name of your School: ");
+        String schoolName = scanner.nextLine();
+        school = new School(schoolName);
         schoolMainMenu(sentinel);
     }
 
@@ -113,8 +115,8 @@ public class SchoolMgtMain {
     }
 
     private static void adminsPage() throws Exception {
-        System.out.println();
         System.out.print("""
+        
                 1 -> Admit new student
                 2 -> Create a new course
                 3 -> View course list
