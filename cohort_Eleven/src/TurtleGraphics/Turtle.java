@@ -1,2 +1,4 @@
-package TurtleGraphics;public class Turtle {
+package TurtleGraphics;
+
+public class Turtle {
 }
