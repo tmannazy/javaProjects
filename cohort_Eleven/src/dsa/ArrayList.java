@@ -18,11 +18,11 @@ public class ArrayList implements List {
     }
 
     @Override
-    public void remove(String item) {
+    public void remove(Object item) {
         String[] tempArr = new String[elements.length];
         int i = 0;
         for (String element : elements) {
-            if (!Objects.equals(element, item)) {
+            if (element != item) {
                 tempArr[i] = element;
                 i++;
             }
@@ -44,7 +44,7 @@ public class ArrayList implements List {
     @Override
     public int capacity() {
         if (elements.length == size) {
-            String[] newArray = new String[elements.length +elements.length];
+            String[] newArray = new String[elements.length + elements.length];
             System.arraycopy(elements, 0, newArray, 0, elements.length);
             elements = newArray;
         }
@@ -53,11 +53,25 @@ public class ArrayList implements List {
 
     @Override
     public boolean contains(String item) {
-        for (String listItem: elements) {
+        for (String listItem : elements) {
             if (Objects.equals(listItem, item)) {
                 return true;
             }
         }
         return false;
+    }
+
+    @Override
+    public void set(int index, Object item) {
+        for (int i = 0; i < elements.length; i++) {
+            if (i == index) {
+                elements[i] = (String) item;
+            }
+        }
+    }
+
+    public void setSize() {
+        size = 0;
+        elements = new String[5];
     }
 }

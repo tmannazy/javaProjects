@@ -5,7 +5,7 @@ public interface List {
 
     void add(String item);
 
-    void remove(String item);
+    void remove(Object item);
 
     int size();
 
@@ -14,4 +14,6 @@ public interface List {
     int capacity();
 
     boolean contains(String item);
+
+    void set(int index, Object item);
 }

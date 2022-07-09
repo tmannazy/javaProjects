@@ -1,7 +1,5 @@
 package dsa;
 
-import java.util.Objects;
-
 public class SetImplementation implements Set {
     private ArrayList setArr = new ArrayList();
 
@@ -15,19 +13,9 @@ public class SetImplementation implements Set {
 
     @Override
     public void add(String item) {
-//        if (setArr.size() == 0) {
-//            setArr.add(item);
-//        } else {
-//            for (int i = 0; i < setArr.size(); i++) {
-//                if (Objects.equals(setArr.get(i), item)) {
-//                    break;
-//                } else {
-//                    setArr.add(item);
-//                }
-//            }
-//        }
-
-
+        if (!setArr.contains(item)) {
+            setArr.add(item);
+        }
     }
 
     public int size() {

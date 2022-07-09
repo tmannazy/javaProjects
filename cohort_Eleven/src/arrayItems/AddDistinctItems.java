@@ -9,9 +9,9 @@ public class AddDistinctItems {
 //        int[] setTwo = {2, 4, 1, 9, 3};
 //        int sum = 0;
 //        List<Integer> setOneList = new ArrayList<>(Arrays.asList(3, 1, 7, 9));
-//        Set<Integer> setOneSet = new HashSet<>(setOneList);
+//        SetImplementation<Integer> setOneSet = new HashSet<>(setOneList);
 //        List<Integer> setTwoList = new ArrayList<>(Arrays.asList(2, 4, 1, 9, 3));
-//        Set<Integer> setTwoSet = new HashSet<>(setTwoList);
+//        SetImplementation<Integer> setTwoSet = new HashSet<>(setTwoList);
 //
 //        setOneSet.retainAll(setTwoSet);
 //        setOneList.removeAll(setOneSet);
