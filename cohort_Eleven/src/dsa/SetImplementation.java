@@ -21,4 +21,17 @@ public class SetImplementation implements Set {
     public int size() {
         return setArr.size();
     }
+
+    @Override
+    public String toString() {
+        String setArrContent = "";
+        for (int i = 0; i < setArr.size(); i++) {
+            if (i == setArr.size() - 1) {
+                setArrContent = setArrContent + setArr.get(i);
+            }else {
+                setArrContent = setArrContent + setArr.get(i) + ", ";
+            }
+        }
+        return setArrContent;
+    }
 }
