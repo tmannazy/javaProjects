@@ -69,15 +69,25 @@ public class Phonebook {
         return listOfContacts;
     }
 
-    public void editContactName(String firstName, String lastName, String newFirstName, String newLastName) {
+    public void editContactInfo(String firstName, String lastName, String oldEmail, String oldNum, String address,
+                                String newFirstName, String newLastName, String newEmail, String newNum, String newAddress) {
         for (Contact listOfContact : listOfContacts) {
-            if (Objects.equals(listOfContact.getFirstName(), firstName) ||
-                Objects.equals(listOfContact.getLastName(), lastName)) {
+            if (listOfContact.getFirstName().equalsIgnoreCase(firstName) ||
+                listOfContact.getLastName().equalsIgnoreCase(lastName) ||
+                listOfContact.getEmail().equalsIgnoreCase(oldEmail) ||
+                listOfContact.getPhoneNumber().equalsIgnoreCase(oldNum)||
+                listOfContact.getAddress().equalsIgnoreCase(address)) {
                 if (!newFirstName.isEmpty()) {
                     listOfContact.setFirstName(newFirstName);
                 }
                 if (!newLastName.isEmpty()) {
                     listOfContact.setLastName(newLastName);
+                }
+                if (!newEmail.isEmpty()) {
+                    listOfContact.setEmail(newEmail);
+                }
+                if (!newNum.isEmpty()) {
+                    listOfContact.setPhoneNumber(newNum);
                 }
                 break;
             }
@@ -87,8 +97,10 @@ public class Phonebook {
     public void editEmail(String oldEmail, String newEmail) {
         for (Contact listOfContact : listOfContacts) {
             if (Objects.equals(listOfContact.getEmail(), oldEmail)) {
-                listOfContact.setEmail(newEmail);
-                break;
+                if (!newEmail.isEmpty()) {
+                    listOfContact.setEmail(newEmail);
+                    break;
+                }
             }
         }
     }
@@ -96,7 +108,10 @@ public class Phonebook {
     public void editPhoneNumber(String oldNum, String newNum) {
         for (Contact listOfContact : listOfContacts) {
             if (Objects.equals(listOfContact.getPhoneNumber(), oldNum)) {
-                listOfContact.setPhoneNumber(newNum);
+                if (!newNum.isEmpty()) {
+                    listOfContact.setPhoneNumber(newNum);
+                    break;
+                }
             }
         }
     }

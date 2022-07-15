@@ -1,7 +1,6 @@
 package PhonebookStorage;
 
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -49,16 +48,17 @@ public class Main {
         String firstName = scanner.nextLine();
         System.out.println("Enter your pin");
         String pin = scanner.nextLine();
-        try {
-            for (User listOfUser : listOfUsers) {
+        for (User listOfUser : listOfUsers) {
+            try {
                 if (listOfUser.isPinCorrect(firstName, pin)) {
                     System.out.println("Logged in successfully");
                     userMenu(listOfUser);
                 }
+            } catch (IllegalArgumentException err) {
+                System.out.println(err.getMessage());
             }
-        } catch (IllegalArgumentException err) {
-            System.out.println(err.getMessage());
         }
+        userLogin();
     }
 
     private static void userMenu(User user) {
@@ -66,9 +66,9 @@ public class Main {
                                 
                 1 -> Create New Contact
                 2 -> View Contacts
-                3 -> Edit Contact
-                4 -> Edit Contact Email
-                5 -> Edit Contact Phone Number
+                3 -> Edit Contact Info
+                4 -> Delete Contact
+                0 -> Go back
                 >""");
 
         int userResponse = Integer.parseInt(scanner.nextLine());
@@ -89,35 +89,81 @@ public class Main {
                 System.out.println("Contact successfully saved to Phonebook");
                 userMenu(user);
             }
+
             case 2 -> {
-                int counter = 0;
                 int link = 0;
-                System.out.printf("%n%s'S CONTACT LIST = %d%n", user.getFirstName().toUpperCase(),
+                System.out.printf("%n%s'S CONTACT LIST = %d%n",
+                        user.getFirstName().toUpperCase(),
                         user.getPhonebookContactList().get(link).getListOfContacts().size());
-                for (Phonebook phonebook : user.getPhonebookContactList()) {
-                    for (int i = 0; i < phonebook.getListOfContacts().size(); i++) {
-                        link = i;
-                        System.out.printf("""
-                                                                                    
-                                        Contact %d
-                                        First Name: %s
-                                        Last Name: %s
-                                        Phone Number: %s
-                                        Address: %s
-                                        Email: %s
-                                                                        
-                                        """,
-                                ++counter,
-                                phonebook.getListOfContacts().get(i).getFirstName(),
-                                phonebook.getListOfContacts().get(i).getLastName(),
-                                phonebook.getListOfContacts().get(i).getPhoneNumber(),
-                                phonebook.getListOfContacts().get(i).getAddress(),
-                                phonebook.getListOfContacts().get(i).getEmail());
-                    }
-                    break;
-                }
+                displayAllContacts(user);
                 userMenu(user);
             }
+
+            case 3 -> {
+                displayAllContacts(user);
+                System.out.println("Enter the contact serial number to edit");
+                int num = Integer.parseInt(scanner.nextLine());
+                System.out.println("Enter first name to change or leave empty");
+                String firstName = scanner.nextLine();
+                System.out.println("Enter last name to change or leave empty");
+                String lastName = scanner.nextLine();
+                System.out.println("Enter email address to change or leave empty");
+                String email = scanner.nextLine();
+                System.out.println("Enter phone number to change or leave empty");
+                String phnNum = scanner.nextLine();
+                System.out.println("Enter location address to change or leave empty");
+                String location = scanner.nextLine();
+                for (Phonebook phonebook : user.getPhonebookContactList()) {
+                    for (int i = 0; i < phonebook.getListOfContacts().size(); i++) {
+                        phonebook.editContactInfo(
+                                phonebook.getListOfContacts().get(num - 1).getFirstName(),
+                                phonebook.getListOfContacts().get(num - 1).getLastName(),
+                                phonebook.getListOfContacts().get(num - 1).getEmail(),
+                                phonebook.getListOfContacts().get(num - 1).getPhoneNumber(),
+                                phonebook.getListOfContacts().get(num - 1).getAddress(),
+                                firstName, lastName, email, phnNum, location);
+                    }
+                }
+                System.out.println("Contact " + num + " info successfully edited.");
+                userMenu(user);
+            }
+
+            case 4 -> {
+                System.out.println("Enter the contact serial number to remove");
+                int num = Integer.parseInt(scanner.nextLine());
+                user.removeContact(num);
+                System.out.println("Contact " + user.getPhonebookContactList().get(num).
+                        getListOfContacts().get(num).getFirstName() + " successfully removed from phonebook");
+                userMenu(user);
+            }
+            case 0 -> enterMenu();
+        }
+    }
+
+    private static void displayAllContacts(User user) {
+        int counter = 0;
+        int link;
+        for (Phonebook phonebook : user.getPhonebookContactList()) {
+            for (int i = 0; i < phonebook.getListOfContacts().size(); i++) {
+                link = i;
+                System.out.printf("""
+                                                                            
+                                Contact %d
+                                First Name: %s
+                                Last Name: %s
+                                Phone Number: %s
+                                Address: %s
+                                Email: %s
+                                                                
+                                """,
+                        ++counter,
+                        phonebook.getListOfContacts().get(i).getFirstName(),
+                        phonebook.getListOfContacts().get(i).getLastName(),
+                        phonebook.getListOfContacts().get(i).getPhoneNumber(),
+                        phonebook.getListOfContacts().get(i).getAddress(),
+                        phonebook.getListOfContacts().get(i).getEmail());
+            }
+            break;
         }
     }
 
@@ -149,16 +195,12 @@ public class Main {
                 displayUsers();
                 System.out.println("Enter user's name to remove");
                 String userToRemove = scanner.nextLine();
-                System.out.println("Enter User pin");
-                String userPinToRemove = scanner.nextLine();
-                removeUser(userToRemove, userPinToRemove);
+                removeUser(userToRemove);
                 System.out.println("User " + userToRemove.toUpperCase() + " successfully removed.");
             }
-
             case 3 -> displayUsers();
             case 0 -> enterMenu();
         }
-
     }
 
     private static void displayUsers() {
@@ -179,13 +221,12 @@ public class Main {
 
     }
 
-    public static void removeUser(String name, String pin) {
+    public static void removeUser(String name) {
         for (int i = 0; i < listOfUsers.size(); i++) {
-            if (listOfUsers.get(i).isPinCorrect(name, pin) && Objects.equals(listOfUsers.get(i).getFirstName(), name)) {
+            if (listOfUsers.get(i).getFirstName().equalsIgnoreCase(name)) {
                 listOfUsers.remove(listOfUsers.get(i));
                 break;
             }
-
         }
     }
 }

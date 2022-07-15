@@ -1,4 +1,4 @@
-package Phonebook;
+package PhonebookStorage;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -59,7 +59,7 @@ class PhonebookTest {
     @Test
     void testThatContactNamesCanBeEdited() {
         phone.addNewContact(contact2);
-        phone.editContactName("Delta", "Force", "Alpha", "Team");
+        phone.editContactInfo("Delta", "Force", "Alpha", "Team");
         assertEquals("Alpha", contact2.getFirstName());
         assertEquals("Team", contact2.getLastName());
     }

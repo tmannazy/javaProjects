@@ -1,7 +1,6 @@
 package PhonebookStorage;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class User {
     private final String lastName;
@@ -27,7 +26,7 @@ public class User {
     }
 
     public boolean isPinCorrect(String name, String pin) {
-        if (this.pin.equalsIgnoreCase(pin) && firstName.equalsIgnoreCase(name)) {
+        if (this.pin.equalsIgnoreCase(pin) && this.firstName.equalsIgnoreCase(name)) {
             return true;
         }
         throw new IllegalArgumentException("Pin is not correct!");
@@ -42,9 +41,9 @@ public class User {
         return userContacts;
     }
 
-    public void removeContact(Contact contact) {
+    public void removeContact(int contact) {
         for (int j = 0; j < phonebook.getListOfContacts().size(); j++) {
-            if (Objects.equals(phonebook.getListOfContacts().get(j).getPhoneNumber(), contact.getPhoneNumber())) {
+            if (j == contact - 1) {
                 phonebook.getListOfContacts().remove(j);
                 userContacts.remove(userContacts.get(j));
                 break;

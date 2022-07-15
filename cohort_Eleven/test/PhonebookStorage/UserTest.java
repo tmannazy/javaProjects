@@ -1,7 +1,9 @@
-package Phonebook;
+package PhonebookStorage;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,12 +11,14 @@ class UserTest {
     User user;
     User user2;
     User user3;
+    private ArrayList<User> listOfUsers;
 
     @BeforeEach
     void setUp() {
         user = new User("Tunde", "Oloye", "1234");
         user2 = new User("Odogwu", "Nwoke", "7890");
         user3 = new User("Peter", "Datti", "2023");
+        listOfUsers = new ArrayList<>();
     }
 
     @Test
@@ -24,33 +28,19 @@ class UserTest {
 
     @Test
     void testThatUserLastNameIsSet() {
-        assertEquals("Datti", user3.getlastName());
+        assertEquals("Datti", user3.getLastName());
     }
 
     @Test
     void testThatPinIsTrue() {
-        assertTrue(user3.isPinCorrect("2023"));
-    }
-
-    @Test
-    void testThatNewUserIsAdded() {
-        user.addNewUser(user);
-        assertNotNull(user.getArrOfUsers());
-    }
-
-    @Test
-    void testUserSize() {
-        user.addNewUser(user);
-        user.addNewUser(user2);
-        user.addNewUser(user3);
-        assertEquals(3, user.getSize());
+        assertTrue(user3.isPinCorrect("Datti","2023"));
     }
 
     @Test
     void testThatUserCanAddContact() {
         Contact contact = new Contact("Boyo", "Ace", "12345678900", "Sabo, Yaba", "ace@boyo.com");
         user.addNewContact(contact);
-        assertNotNull(user.getContactList());
+        assertNotNull(user.getPhonebookContactList());
     }
 
     @Test
@@ -61,7 +51,11 @@ class UserTest {
         user.addNewContact(contact);
         user.addNewContact(contact2);
         user.addNewContact(contact3);
-        user.removeContact(contact2);
+        user.removeContact(2);
         assertEquals(2, user.getContactSize());
     }
+
+//    @Test
+//    void userCanEditContact
+
 }
