@@ -1,4 +1,4 @@
-package Phonebook;
+package PhonebookStorage;
 
 public class Contact {
     private String lastName;

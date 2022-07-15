@@ -1,4 +1,4 @@
-package Phonebook;
+package PhonebookStorage;
 
 
 import org.jetbrains.annotations.Nullable;

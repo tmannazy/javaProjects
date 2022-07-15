@@ -1,4 +1,4 @@
-package Phonebook;
+package PhonebookStorage;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -8,7 +8,6 @@ public class User {
     private final String pin;
     private final String firstName;
     Phonebook phonebook;
-    private ArrayList<User> listOfUsers;
     private ArrayList<Phonebook> userContacts;
 
     public User(String firstName, String lastName, String pin) {
@@ -16,7 +15,6 @@ public class User {
         this.lastName = lastName;
         this.pin = pin;
         phonebook = new Phonebook();
-        listOfUsers = new ArrayList<>();
         userContacts = new ArrayList<>();
     }
 
@@ -24,27 +22,15 @@ public class User {
         return firstName;
     }
 
-    public String getlastName() {
+    public String getLastName() {
         return lastName;
     }
 
-    public boolean isPinCorrect(String pin) {
-        if (Objects.equals(pin, this.pin)) {
+    public boolean isPinCorrect(String name, String pin) {
+        if (this.pin.equalsIgnoreCase(pin) && firstName.equalsIgnoreCase(name)) {
             return true;
         }
-        return false;
-    }
-
-    public int getSize() {
-        return listOfUsers.size();
-    }
-
-    public ArrayList<User> getArrOfUsers() {
-        return listOfUsers;
-    }
-
-    public void addNewUser(User newUser) {
-        listOfUsers.add(newUser);
+        throw new IllegalArgumentException("Pin is not correct!");
     }
 
     public void addNewContact(Contact newContact) {
@@ -52,7 +38,7 @@ public class User {
         userContacts.add(phonebook);
     }
 
-    public ArrayList<Phonebook> getContactList() {
+    public ArrayList<Phonebook> getPhonebookContactList() {
         return userContacts;
     }
 
@@ -69,4 +55,10 @@ public class User {
     public int getContactSize() {
         return userContacts.size();
     }
+
+//    public String toString() {
+//
+//    }
+
+
 }
