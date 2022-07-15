@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     static User user;
-
     static private ArrayList<User> listOfUsers = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -44,7 +43,7 @@ public class Main {
     }
 
     private static void userLogin() {
-        System.out.println("Enter your first name");
+        System.out.println("\nEnter your first name");
         String firstName = scanner.nextLine();
         System.out.println("Enter your pin");
         String pin = scanner.nextLine();
@@ -132,8 +131,7 @@ public class Main {
                 System.out.println("Enter the contact serial number to remove");
                 int num = Integer.parseInt(scanner.nextLine());
                 user.removeContact(num);
-                System.out.println("Contact " + user.getPhonebookContactList().get(num).
-                        getListOfContacts().get(num).getFirstName() + " successfully removed from phonebook");
+                System.out.println("Contact successfully removed from phonebook");
                 userMenu(user);
             }
             case 0 -> enterMenu();

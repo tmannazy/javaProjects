@@ -59,9 +59,11 @@ class PhonebookTest {
     @Test
     void testThatContactNamesCanBeEdited() {
         phone.addNewContact(contact2);
-        phone.editContactInfo("Delta", "Force", "Alpha", "Team");
+        phone.editContactInfo("Delta", "Force", "force@quarters.com","01234567890",
+                "Force Quarters", "Alpha","Team", "","","");
         assertEquals("Alpha", contact2.getFirstName());
         assertEquals("Team", contact2.getLastName());
+        assertEquals("force@quarters.com", contact2.getEmail());
     }
 
     @Test
@@ -77,8 +79,5 @@ class PhonebookTest {
         phone.editPhoneNumber("12345678900", "98761234160");
         assertEquals("98761234160", contact.getPhoneNumber());
     }
-
-
-
 
 }
