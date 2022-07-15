@@ -7,12 +7,10 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Phonebook {
-    Contact contact;
     private final ArrayList<Contact> listOfContacts;
 
     public Phonebook() {
         listOfContacts = new ArrayList<>();
-        contact = new Contact();
     }
 
     public void addNewContact(Contact contact) {
@@ -83,7 +81,6 @@ public class Phonebook {
                 }
                 break;
             }
-
         }
     }
 
