@@ -1,11 +1,11 @@
 package Phonebook;
 
 public class Contact {
-    private final String lastName;
-    private final String phoneNumber;
-    private final String address;
-    private final String email;
-    private final String firstName;
+    private String lastName;
+    private String phoneNumber;
+    private String address;
+    private String email;
+    private String firstName;
 
     public Contact(String firstName, String lastName, String phoneNumber, String address, String email) {
         this.firstName = firstName;
@@ -13,7 +13,9 @@ public class Contact {
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.email = email;
+    }
 
+    public Contact() {
     }
 
     public String getFirstName() {
@@ -34,5 +36,21 @@ public class Contact {
 
     public String getAddress() {
         return address;
+    }
+
+    public void setFirstName(String name) {
+        firstName = name;
+    }
+
+    public void setLastName(String name) {
+        lastName = name;
+    }
+
+    public void setEmail(String newEmail) {
+        email = newEmail;
+    }
+
+    public void setPhoneNumber(String newNum) {
+        phoneNumber = newNum;
     }
 }

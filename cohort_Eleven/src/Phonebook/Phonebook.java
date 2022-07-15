@@ -7,10 +7,12 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Phonebook {
+    Contact contact;
     private final ArrayList<Contact> listOfContacts;
 
     public Phonebook() {
         listOfContacts = new ArrayList<>();
+        contact = new Contact();
     }
 
     public void addNewContact(Contact contact) {
@@ -30,11 +32,11 @@ public class Phonebook {
     @Nullable
     private Contact getContactInfo(String name) {
         for (Contact listOfContact : listOfContacts) {
-                if (Objects.equals(listOfContact.getFirstName(), name) ||
-                    Objects.equals(listOfContact.getLastName(), name)) {
-                    return listOfContact;
-                }
+            if (Objects.equals(listOfContact.getFirstName(), name) ||
+                Objects.equals(listOfContact.getLastName(), name)) {
+                return listOfContact;
             }
+        }
         return null;
     }
 
@@ -65,6 +67,40 @@ public class Phonebook {
         return null;
     }
 
-//    public String getContactFirtName() {
-//    }
+    public ArrayList<Contact> getListOfContacts() {
+        return listOfContacts;
+    }
+
+    public void editContactName(String firstName, String lastName, String newFirstName, String newLastName) {
+        for (Contact listOfContact : listOfContacts) {
+            if (Objects.equals(listOfContact.getFirstName(), firstName) ||
+                Objects.equals(listOfContact.getLastName(), lastName)) {
+                if (!newFirstName.isEmpty()) {
+                    listOfContact.setFirstName(newFirstName);
+                }
+                if (!newLastName.isEmpty()) {
+                    listOfContact.setLastName(newLastName);
+                }
+                break;
+            }
+
+        }
+    }
+
+    public void editEmail(String oldEmail, String newEmail) {
+        for (Contact listOfContact : listOfContacts) {
+            if (Objects.equals(listOfContact.getEmail(), oldEmail)) {
+                listOfContact.setEmail(newEmail);
+                break;
+            }
+        }
+    }
+
+    public void editPhoneNumber(String oldNum, String newNum) {
+        for (Contact listOfContact : listOfContacts) {
+            if (Objects.equals(listOfContact.getPhoneNumber(), oldNum)) {
+                listOfContact.setPhoneNumber(newNum);
+            }
+        }
+    }
 }
